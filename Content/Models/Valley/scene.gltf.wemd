@@ -1,0 +1,30 @@
+!WaveEngine.Assets.Exporters.ModelMetaFile,WaveEngine.Assets
+Id: b2b26844-450a-4fe5-83f8-0d43773cc2ee
+Clips: []
+DefaultProfile:
+  ExcludeAsset: false
+  Name: null
+  Platform: Undefined
+ExportAnimations: true
+ExportAsRaw: false
+GenerateTangentSpace: true
+Profiles: {}
+Source:
+  Header:
+    Id: 3212becb-3924-4785-9a79-92858be86a6d
+    IsCompressed: true
+  LastModified: 0001-01-01T00:00:00.0000000
+  ModelInfo:
+    Id: 2dbb79d8-c768-4e4e-9f0d-2dd71256172c
+    AnimationTracks: []
+    EmbeddedResources: null
+    Materials:
+      - Item1: DefaultMaterial
+        Item2: 31a4e624-947f-4199-b99c-cc8d83b2dff2
+    Nodes:
+      - RootNode (gltf orientation matrix)
+      - RootNode (gltf orientation matrix).RootNode (model correction matrix)
+      - RootNode (gltf orientation matrix).RootNode (model correction matrix).Collada visual scene group
+      - RootNode (gltf orientation matrix).RootNode (model correction matrix).Collada visual scene group.g
+      - RootNode (gltf orientation matrix).RootNode (model correction matrix).Collada visual scene group.g.defaultMaterial
+SwapWindingOrder: false

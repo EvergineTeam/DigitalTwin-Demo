@@ -1,0 +1,56 @@
+﻿body {
+    margin: 0;
+}
+
+html {
+    overflow: hidden;
+}
+
+#splash {
+    background: white;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%;
+}
+
+    #splash > #splash-content {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+.progress {
+    margin: 0 auto;
+    width: 160px;
+}
+
+.progress-bar {
+    background-color: #0f72e8;
+    border-radius: 4px;
+    height: 8px;
+    width: 0%;
+}
+
+.progress-infinite .progress-bar {
+    animation: kitt 1s ease infinite;
+    background-image: linear-gradient(to right, #0f72e8 0%, white 50%, #0f72e8 100%);
+    background-size: 300% 100%;
+    width: 100%;
+}
+
+@keyframes kitt {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}

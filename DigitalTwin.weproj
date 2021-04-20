@@ -1,0 +1,26 @@
+Profiles:
+  - AdditionalEffectTechniqueCombinations: SHADOW_SUPPORTED
+    AlphaCompressionFormat: BC3_UNorm
+    CompileEffects: false
+    GraphicsBackend: DirectX11
+    LauncherType: Default
+    Name: Windows
+    NonAlphaCompressionFormat: BC3_UNorm
+    Platform: Windows
+  - AdditionalEffectTechniqueCombinations: LOW_PROFILE-SHADOW_SUPPORTED, LOW_PROFILE-GAMMA_COLORSPACE-SHADOW_SUPPORTED
+    AlphaCompressionFormat: R8G8B8A8_UNorm
+    CompileEffects: true
+    GraphicsBackend: WebGL2
+    LauncherType: Default
+    Name: Web
+    NonAlphaCompressionFormat: R8G8B8A8_UNorm
+    Platform: Web
+  - AdditionalEffectTechniqueCombinations: null
+    AlphaCompressionFormat: R8G8B8A8_UNorm
+    CompileEffects: false
+    GraphicsBackend: OpenGL
+    LauncherType: OpenGL
+    Name: Windows.OpenGL
+    NonAlphaCompressionFormat: R8G8B8A8_UNorm
+    Platform: Windows
+ResourcesPath: Content

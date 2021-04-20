@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>DigitalTwin.Web</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="waveengine/mono-config.js"></script>
+    <script type="text/javascript" src="waveengine/runtime.js"></script>
+    <script type="text/javascript" src="waveengine.js"></script>
+</head>
+<body>
+    <canvas id="wave-engine-canvas" oncontextmenu="return false;" tabindex="1"></canvas>
+    <div id="splash">
+        <div id="splash-content">
+            <img src="wave-engine-splash-logo.png" />
+            <div id="loading-bar" class="progress">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        App.configure('wave-engine-canvas', 'DigitalTwin.Web', 'DigitalTwin.Web.Program');
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+!WaveEngine.Assets.Exporters.ModelMetaFile,WaveEngine.Assets
+Id: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+Clips: []
+DefaultProfile:
+  ExcludeAsset: false
+  Name: null
+  Platform: Undefined
+ExportAnimations: true
+ExportAsRaw: false
+GenerateTangentSpace: true
+Profiles: {}
+Source:
+  Header:
+    Id: 0f851ee0-c043-4ef2-9db6-00e41a340c2a
+    IsCompressed: true
+  LastModified: 0001-01-01T00:00:00.0000000
+  ModelInfo:
+    Id: ff48a913-491d-489a-98cc-68aacb762e5f
+    AnimationTracks: []
+    EmbeddedResources: null
+    Materials:
+      - Item1: panel_mat
+        Item2: d229094a-9184-49cf-bcec-5b443cc3e1f9
+    Nodes:
+      - RootNode.base.base_001
+      - RootNode.base
+      - RootNode.placa.placa_001
+      - RootNode.placa
+      - RootNode
+SwapWindingOrder: false

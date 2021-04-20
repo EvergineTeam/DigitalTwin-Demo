@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.0.96" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Whatever change in the Web project forces a Build of this one and the execution of CopyWasmFiles Target -->
+    <FileWrites Include="..\DigitalTwin.Web\**\*" />
+    <ProjectReference Include="..\DigitalTwin.Web\DigitalTwin.Web.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Target Name="CopyWasmFiles" AfterTargets="Build">
+    <ItemGroup>
+      <OutputFiles Include="..\DigitalTwin.Web\bin\$(Configuration)\wasm\**\*"></OutputFiles>
+      <FileWrites Include="@(OutputFiles)" />
+    </ItemGroup>
+    <Copy SourceFiles="@(OutputFiles)" DestinationFiles="wwwroot\waveengine\%(RecursiveDir)\%(Filename)%(Extension)" OverwriteReadOnlyFiles="true" />
+  </Target>
+</Project>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Mono.WebAssembly.Sdk/0.2.2">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateWaveContent>False</GenerateWaveContent>
+    <GenerateWaveAssets>True</GenerateWaveAssets>
+    <WasmShellMonoRuntimeExecutionMode>Interpreter</WasmShellMonoRuntimeExecutionMode>
+    <DefineConstants>WASM</DefineConstants>
+    <MonoWasmLinkMode>None</MonoWasmLinkMode>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="aot-link-descriptor.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="aot-link-descriptor.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="WaveEngine.Framework" Version="3.1.0.7397-nightly" />
+    <PackageReference Include="WaveEngine.Targets" Version="3.1.0.7397-nightly" />
+    <PackageReference Include="WaveEngine.Targets.Web" Version="3.1.0.7397-nightly" />
+    <PackageReference Include="WaveEngine.Web" Version="3.1.0.7397-nightly" />
+    <PackageReference Include="WaveEngine.OpenGL" Version="3.1.0.7397-nightly" />
+    <PackageReference Include="WaveEngine.HLSLEverywhere" Version="3.1.0.7397-nightly" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DigitalTwin\DigitalTwin.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,4082 @@
+!WaveEngine.Framework.Assets.AssetSources.Entities.SceneModel,WaveEngine.Framework
+Items:
+  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+    Name: SceneManagers
+    Tag: null
+    IsEnabled: true
+    IsStatic: false
+    Components:
+      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+        Id: 7cf652b5-0d2e-4a05-ac0b-02015791fb99
+        IsEnabled: true
+        LocalOrientation:
+          W: 1.0
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
+        LocalPosition:
+          X: 0.999729156
+          Y: 1.580235
+          Z: 0.843612909
+        LocalScale:
+          X: 1.0
+          Y: 1.0
+          Z: 1.0
+      - !WaveEngine.Components.Graphics3D.EnvironmentComponent,WaveEngine.Framework
+        Id: 94fb114a-c4d8-4674-bd4d-409893d8ab53
+        IntensityMultiplier: 1.0
+        IsEnabled: true
+        ReflectionProbe: cb4c9738-03a0-494f-a839-20a22581fb59
+      - !WaveEngine.Components.Graphics3D.ShadowMapComponent,WaveEngine.Framework
+        Id: 4dc7a18d-bde5-4e59-8c0c-67b68a42207e
+        AutoDepthBounds: false
+        DirectionalResolution: Size_1024
+        IsEnabled: true
+        PunctualResolution: Size_512
+        ShadowFilter: PCF3x3
+        SpotResolution: Size_512
+      - !DigitalTwin.Features.Colliders.CollisionManager,DigitalTwin
+        Id: c7d8369f-d40c-4295-97b7-29873c25ae46
+        IsEnabled: true
+      - !DigitalTwin.Features.Picking.PointerManager,DigitalTwin
+        Id: 2bf1a58f-e7b4-4d67-b209-a12955d16ab0
+        IsEnabled: true
+      - !DigitalTwin.Features.Picking.TapManager,DigitalTwin
+        Id: 87b240d7-beca-43eb-8f72-f36f30c2c477
+        IsEnabled: true
+    Children: []
+    Id: 3aea6832-ccae-4bc6-9bb7-64229c7c2de0
+  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+    Name: SkyAtmosphere
+    Tag: Skybox
+    IsEnabled: true
+    IsStatic: false
+    Components:
+      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+        Id: 34fe1903-039d-4944-bc32-d2226ad76267
+        IsEnabled: true
+        LocalOrientation:
+          W: 1.0
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
+        LocalPosition:
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
+        LocalScale:
+          X: 1.0
+          Y: 1.0
+          Z: 1.0
+      - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+        Id: bb44cd62-4d92-418a-8a42-bbc2ed2b6f07
+        AsignedTo: Default
+        IsEnabled: true
+        Material: f5c42078-dcdd-4d4b-8f60-12f885b1677d
+      - !WaveEngine.Components.Graphics3D.SphereMesh,WaveEngine.Components
+        Id: 3ef37285-f016-4173-bbf0-278ec1624224
+        Diameter: 1.0
+        IsEnabled: true
+        Model: 00000000-0000-0000-0000-000000000000
+        ModelMeshName: sphere_primitive
+        Tessellation: 32
+        UVHorizontalFlip: false
+        UVVerticalFlip: false
+      - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+        Id: 1665742b-454f-4cda-9b9b-df6698342e5d
+        DebugBoundingbox: true
+        IsCullingEnabled: false
+        IsEnabled: true
+        OrderBias: 0
+        RenderFlags: CastShadows
+      - !WaveEngine.Components.Environment.AtmosphereController,WaveEngine.Components
+        Id: 18617d72-081f-4fb6-bbac-b3dfbf177924
+        AtmosphereRadiusInKm: 6471.0
+        IsEnabled: true
+        MiePreferredScatteringDirection: 0.758000016
+        MieScaleHeight: 1200.0
+        MieScatteringCoefficient: 21.0
+        ModifySunColor: true
+        PlanetRadiusInKm: 6371.0
+        RayleighScaleHeight: 8000.0
+        RayleighScatteringCoefficient:
+          X: 5.5
+          Y: 13.0
+          Z: 22.3999996
+        SunDiskEnabled: true
+        SunDiskSize: 0.0199999996
+        SunIntensity: 22.0
+        UpdateOrder: 0.5
+    Children: []
+    Id: 6a094fea-e84d-4cbc-bb6e-60ccc60b5693
+  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+    Name: CameraRoot
+    Tag: null
+    IsEnabled: true
+    IsStatic: false
+    Components:
+      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+        Id: cc074e34-f9dd-4a59-9772-318b92ec02c6
+        IsEnabled: true
+        LocalOrientation:
+          W: 1.0
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
+        LocalPosition:
+          X: -2.93745899
+          Y: -8.64966125E-07
+          Z: -0.365937382
+        LocalScale:
+          X: 1.0
+          Y: 1.0
+          Z: 1.0
+      - !DigitalTwin.Features.Orbit.MouseOrbitBehavior,DigitalTwin
+        Id: 6300f627-b643-483f-a65d-4f9cc3716d37
+        AngleFactor:
+          X: 1.0
+          Y: 0.0
+        IsEnabled: true
+        OrbitFactor: 0.00249999994
+        UpdateOrder: 0.5
+      - !DigitalTwin.Features.Orbit.TouchOrbitBehavior,DigitalTwin
+        Id: 6cbd15be-1ad7-4c75-aec3-8b4dfdc6d5e3
+        AngleFactor:
+          X: 1.0
+          Y: 0.0
+        IsEnabled: true
+        OrbitFactor: 0.00249999994
+        UpdateOrder: 0.5
+    Children:
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: Target
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: 24592713-8b4d-4cb4-a07a-ba33ed5a87e6
+            IsEnabled: true
+            LocalOrientation:
+              W: 1.0
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            LocalPosition:
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            LocalScale:
+              X: 1.0
+              Y: 1.0
+              Z: 1.0
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: Camera
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 809f1d2c-2305-4916-acfe-f81399ffb235
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.999653339
+                  X: -0.0263287015
+                  Y: 9.41587786E-09
+                  Z: 0.0
+                LocalPosition:
+                  X: -4.76837158E-07
+                  Y: 2.55743337
+                  Z: 9.06621265
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+              - !WaveEngine.Framework.Graphics.Camera3D,WaveEngine.Framework
+                Id: 5b10653e-93d2-48e7-884f-a07b2ac173ee
+                Aperture: 1.0
+                AspectRatio: 1.60084033
+                AutoDepthBounds: false
+                AutoExposureEnabled: false
+                CameraOrder: 0.0
+                ClearDepth: 1.0
+                ClearFlags: All
+                ClearStencil: 0
+                Compensation: 0.0
+                DepthRange:
+                  MaxDepth: 1.0
+                  MinDepth: 0.0
+                DisplayTag: null
+                DisplayTagDirty: false
+                Exposure: 1.0
+                FarPlane: 80.0
+                FieldOfView: 0.785398185
+                FieldOfViewAxis: Vertical
+                FocalDistance: 1.0
+                FocalLength: 50.0
+                FrustumCullingEnabled: true
+                HDREnabled: true
+                IsEnabled: true
+                LayerMaskDefaultValue: true
+                LinearBackgroundColor:
+                  A: 1.0
+                  B: 0.851251662
+                  G: 0.306634784
+                  R: 0.12752977
+                LogLuminanceRange: 12.0
+                MinLogLuminance: -10.0
+                NearPlane: 0.100000001
+                ScreenViewport:
+                  Height: 238.0
+                  MaxDepth: 1.0
+                  MinDepth: 0.0
+                  Width: 381.0
+                  X: 0.0
+                  Y: 0.0
+                Sensitivity: 100.0
+                SensorSize:
+                  X: 36.0
+                  Y: 24.0
+                ShutterSpeed: 1.20000005
+                TAU: 1.10000002
+                TagFilter: null
+                UpVector:
+                  X: 0.0
+                  Y: 1.0
+                  Z: 0.0
+                UsePhysicalParameters: false
+            Children: []
+            Id: 9841b6b3-9c09-4b60-b442-a5c63257ee02
+        Id: 9d80b303-edbe-4080-b1c0-7af1e22177c3
+    Id: f4423e48-0c55-4f9c-8651-f063dbcd7991
+  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+    Name: Valley
+    Tag: null
+    IsEnabled: true
+    IsStatic: false
+    Components:
+      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+        Id: 182d3c72-907f-4f9f-9fe7-eb493384c34b
+        IsEnabled: true
+        LocalOrientation:
+          W: 0.585346341
+          X: -0.585346282
+          Y: 0.396698505
+          Z: 0.396698475
+        LocalPosition:
+          X: -5.26231718
+          Y: 4.39084578
+          Z: 0.802220404
+        LocalScale:
+          X: 30.0
+          Y: 30.0
+          Z: 30.0
+    Children:
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: RootNode (model correction matrix)
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: 0909045e-6d02-4c23-b2aa-fd316a7e17a2
+            IsEnabled: true
+            LocalOrientation:
+              W: 1.0
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            LocalPosition:
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            LocalScale:
+              X: 1.0
+              Y: 1.0
+              Z: 1.0
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: Collada visual scene group
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 0e7080ec-60da-4f0f-a88a-7e043a0a7555
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106769
+                  X: 0.707106769
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: g
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 318adafa-2805-44f5-bfed-7afa892ea0ac
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                Children:
+                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                    Name: defaultMaterial
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                        Id: e30b49d6-5bc1-4102-8c0c-6947c3e09506
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalPosition:
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalScale:
+                          X: 1.0
+                          Y: 1.0
+                          Z: 1.0
+                      - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                        Id: 2dfce638-afd0-4d91-a635-2f5540fc5036
+                        AsignedTo: DefaultMaterial
+                        IsEnabled: true
+                        Material: 31a4e624-947f-4199-b99c-cc8d83b2dff2
+                      - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                        Id: a6b21c7e-8ec5-4e22-bcba-95615f6b0f2a
+                        IsEnabled: true
+                        Model: b2b26844-450a-4fe5-83f8-0d43773cc2ee
+                        ModelMeshName: defaultMaterial
+                      - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                        Id: eea313ea-f6b0-44e4-8c20-a73c214c59aa
+                        DebugBoundingbox: true
+                        IsCullingEnabled: true
+                        IsEnabled: true
+                        OrderBias: 0
+                        RenderFlags: CastShadows
+                    Children: []
+                    Id: ae30874d-6371-4967-966b-29e56c0a0b56
+                Id: ca893558-335d-4c4a-8920-c96dc29fef8e
+            Id: b200e0cf-53c3-4ded-ab09-37b924c8c527
+        Id: 8cf9026c-10cd-4749-b824-7b1fa9da88a0
+    Id: 58342903-a1b9-4d2f-83c4-d26614dfb5b3
+  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+    Name: SunPivot
+    Tag: null
+    IsEnabled: true
+    IsStatic: false
+    Components:
+      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+        Id: ede81421-56ee-4078-b42b-fa73397660d7
+        IsEnabled: true
+        LocalOrientation:
+          W: -0.342020065
+          X: 0.939692676
+          Y: 2.49558667E-07
+          Z: 2.49558667E-07
+        LocalPosition:
+          X: -4.53270019E-07
+          Y: 1.38265324
+          Z: 1.64825209E-07
+        LocalScale:
+          X: 1.0
+          Y: 1.0
+          Z: 1.0
+    Children:
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: SunLight
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: d73a976d-b2ab-4572-9ec9-351ded5f6fd3
+            IsEnabled: true
+            LocalOrientation:
+              W: 1.0
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            LocalPosition:
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            LocalScale:
+              X: 1.0
+              Y: 1.0
+              Z: 1.0
+          - !WaveEngine.Framework.Graphics.PhotometricDirectionalLight,WaveEngine.Framework
+            Id: 5f6768ca-a7e6-4ab7-82b2-d9b3c42d111f
+            Color:
+              A: 0
+              B: 225
+              G: 238
+              R: 248
+            ColorByTemperature: true
+            DebugMode: false
+            GammaDistribution: 1.0
+            Illuminance: 10.0
+            Intensity: 10.0
+            IsEnabled: true
+            IsShadowEnabled: true
+            LinearColor:
+              A: 0.0
+              B: 0.759229541
+              G: 0.862923861
+              R: 0.93927443
+            OverrideFilter: false
+            ShadowBias: 0.00499999989
+            ShadowDistance: 80.0
+            ShadowFilter: PCF3x3
+            ShadowOpacity: 1.0
+            SplitDistance:
+              - 0.0
+              - 0.0
+              - 0.0
+              - 0.0
+            Temperature: 6500.0
+          - !WaveEngine.Framework.Graphics.SunComponent,WaveEngine.Framework
+            Id: 6f2b70f3-a505-49a6-9454-130b04d48cd3
+            IsEnabled: true
+          - !DigitalTwin.Features.Sun.SunAngleUpdater,DigitalTwin
+            Id: 8c90223b-b3e9-4e16-b559-a88260bfade0
+            IsEnabled: true
+          - !WaveEngine.Components.WorkActions.WorkActionUpdaterBehavior,WaveEngine.Components
+            Id: 2b0bea25-c252-4344-9657-c8e5654fd12a
+            IsEnabled: true
+            UpdateOrder: 0.5
+        Children: []
+        Id: 3f7df33e-e1b9-411e-9601-362975b0c871
+    Id: 7d5810cc-58fb-454f-a173-fb62e990dd6e
+  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+    Name: SolarPanels
+    Tag: null
+    IsEnabled: true
+    IsStatic: false
+    Components:
+      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+        Id: 8a657164-51da-4b12-8f0c-7c3fde4b77a7
+        IsEnabled: true
+        LocalOrientation:
+          W: 1.0
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
+        LocalPosition:
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
+        LocalScale:
+          X: 1.0
+          Y: 1.0
+          Z: 1.0
+    Children:
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: Tracker01
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: 7970e151-7b69-4600-a430-9ffbafbbe986
+            IsEnabled: true
+            LocalOrientation:
+              W: 0.531435311
+              X: 0.53143537
+              Y: 0.46645081
+              Z: -0.466451138
+            LocalPosition:
+              X: 0.563399792
+              Y: -3.35810526E-08
+              Z: -0.483737469
+            LocalScale:
+              X: 0.00100000005
+              Y: 0.00100000005
+              Z: 0.00100000005
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: base
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 4b03cfe2-62de-4646-8f61-7ba1d363f9f8
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106709
+                  X: -0.707106829
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: base_001
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 58f0b453-31b0-4e82-9180-ea33fb13a577
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: fb29e63a-bce5-48ef-bf66-f6a267ef28f5
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 1e821997-da3b-4edf-bdd8-26ac1ea2458c
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: base
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 61651228-7e29-46c0-82f5-f335f8255582
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                Children: []
+                Id: 27f8130c-5cf6-4062-b0ba-91801ba2dff2
+            Id: 33a69d54-2c5a-4572-9c38-ccc953e07803
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: placa
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 449884a5-806a-4c52-88fd-e5b1bc3899e8
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.923879564
+                  X: -0.382683367
+                  Y: -0.0
+                  Z: -0.0
+                LocalPosition:
+                  X: 3.05175781E-05
+                  Y: 1.52587891E-05
+                  Z: -335.149048
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: Tracker1
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 2fccd5ea-b401-4edf-8032-3a3672a156b1
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 2.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: cd6128c3-4168-4b06-a2fa-f6e11a40ef80
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 3070f204-d85f-47cf-a0b7-ae991c09fe9b
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: placa
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 1b861128-f288-47c4-bfeb-0884e833dd95
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
+                    Id: 98b61719-4751-4a63-a343-d680ca88737d
+                    DistanceFactor: 0.0
+                    IsEnabled: true
+                    boundingBox:
+                      Center:
+                        X: 0.563399971
+                        Y: 0.33514908
+                        Z: -0.483737558
+                      HalfExtent:
+                        X: 0.681821585
+                        Y: 0.189878896
+                        Z: 0.18987903
+                      Orientation:
+                        W: 0.69435364
+                        X: 0.287610859
+                        Y: 0.60944742
+                        Z: -0.252441734
+                  - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
+                    Id: 75ba5337-7143-4636-8ddb-592617167487
+                    IsEnabled: true
+                  - !WaveEngine.Components.WorkActions.WorkActionUpdaterBehavior,WaveEngine.Components
+                    Id: 9da65d40-f142-41b4-8cbe-688e9756eb81
+                    IsEnabled: true
+                    UpdateOrder: 0.5
+                Children: []
+                Id: 58fe122c-d146-4160-aba5-172f54dadbe8
+            Id: 82285f5e-5d66-4557-8c28-450d96111c99
+        Id: 065289f0-3bcc-4938-bd81-ae276e8e102c
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: Tracker02
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: e39f1d10-ef60-48bc-b42a-6a3001a0c00d
+            IsEnabled: true
+            LocalOrientation:
+              W: 0.531435311
+              X: 0.53143537
+              Y: 0.46645081
+              Z: -0.466451138
+            LocalPosition:
+              X: -0.25
+              Y: 3.84794106E-07
+              Z: -0.574771881
+            LocalScale:
+              X: 0.00100000005
+              Y: 0.00100000005
+              Z: 0.00100000005
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: base
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: b6b67e27-7a2c-4fab-aa52-121488ee3209
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106709
+                  X: -0.707106829
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: base_001
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 6eb3b4f3-be2f-4a22-b7d5-cd7589f2fb72
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: f7003ff6-4f2e-4228-878c-d377230cee5f
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 124b6cce-a598-48ce-98fb-55c8bd844e7f
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: base
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 33a3cbbd-f504-4802-a189-134ce73ddbfd
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                Children: []
+                Id: b68412c1-2560-4f31-8b7d-c0f7aecded1e
+            Id: 9b0b0f4e-63f8-4ffe-b1a4-de84ca53f75e
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: placa
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: a8d6db8f-2a4c-415b-98b3-3bf80d5c8b93
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.923879504
+                  X: -0.382683456
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 3.05175781E-05
+                  Y: 1.52587891E-05
+                  Z: -335.149048
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: Tracker2
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: c05d8e94-a204-4a87-ad86-fcd20d6e71b5
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 2.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: aff8d6ae-21ce-4f03-8831-0c9ad085fc15
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 820074e6-fee1-414b-aac6-45daed5f0761
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: placa
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 63231330-1907-494d-a733-44be5b4ea598
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
+                    Id: 4480408e-102a-40f5-b642-1a0786b25ed6
+                    DistanceFactor: 0.0
+                    IsEnabled: true
+                    boundingBox:
+                      Center:
+                        X: -0.249999836
+                        Y: 0.335149497
+                        Z: -0.574771941
+                      HalfExtent:
+                        X: 0.681821585
+                        Y: 0.189878896
+                        Z: 0.18987903
+                      Orientation:
+                        W: 0.69435364
+                        X: 0.287610769
+                        Y: 0.609447539
+                        Z: -0.252441674
+                  - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
+                    Id: a497998c-bd66-40e6-9871-cf75638e69cb
+                    IsEnabled: true
+                  - !WaveEngine.Components.WorkActions.WorkActionUpdaterBehavior,WaveEngine.Components
+                    Id: ad7a502a-6d7c-4099-a716-3782a7765d3e
+                    IsEnabled: true
+                    UpdateOrder: 0.5
+                Children: []
+                Id: c954ac6d-3fd6-423e-b636-908511fe7e13
+            Id: bb22897a-2bd0-45e4-a39f-e06d172e990d
+        Id: 2a128b0c-e826-4a12-8202-f1517da66c3f
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: Tracker03
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: 3b9f55da-4f9c-41b5-83e9-eeb1a3ae4d15
+            IsEnabled: true
+            LocalOrientation:
+              W: 0.531435311
+              X: 0.53143537
+              Y: 0.46645081
+              Z: -0.466451138
+            LocalPosition:
+              X: -1.0
+              Y: 8.13874294E-07
+              Z: -0.668132842
+            LocalScale:
+              X: 0.00100000005
+              Y: 0.00100000005
+              Z: 0.00100000005
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: base
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: fb21fb69-a09a-495c-9458-914c32169b9c
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106709
+                  X: -0.707106829
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: base_001
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 070039b1-6f53-4075-837d-1148890fb1b6
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 77671d39-97f7-4335-a101-83efa969c9ba
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: ae1c9609-cd83-4e79-a830-257df39271a6
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: base
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 03624d30-05c2-480f-a909-e20762f21657
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                Children: []
+                Id: b687d246-e2ad-4e11-8f85-cdbd191f3c41
+            Id: 8692e5ae-1f72-42bb-a2cf-8bf7b96283eb
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: placa
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 5714e94e-ff35-4b56-879e-013be609b11c
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.923879504
+                  X: -0.382683456
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 3.05175781E-05
+                  Y: 1.52587891E-05
+                  Z: -335.149048
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: Tracker3
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 7e0bfaa8-cc67-4303-9542-20fbfd1b765e
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 2.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: e7368a89-fa98-47db-8ca9-0a38bfcff307
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 19aadf6a-af46-4128-b591-3804661b3a38
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: placa
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 47a2f416-cde1-4829-a309-02ad9b75f9fc
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
+                    Id: c7327a4c-4902-4145-b3cd-bf756b45eadd
+                    DistanceFactor: 0.0
+                    IsEnabled: true
+                    boundingBox:
+                      Center:
+                        X: -0.999999821
+                        Y: 0.335149914
+                        Z: -0.668132901
+                      HalfExtent:
+                        X: 0.681821585
+                        Y: 0.189878896
+                        Z: 0.18987903
+                      Orientation:
+                        W: 0.69435364
+                        X: 0.287610769
+                        Y: 0.609447539
+                        Z: -0.252441674
+                  - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
+                    Id: 7421b9ec-0e62-434d-96ca-17ad2e1a4943
+                    IsEnabled: true
+                  - !WaveEngine.Components.WorkActions.WorkActionUpdaterBehavior,WaveEngine.Components
+                    Id: feef9553-7c7c-4560-8990-cc4c9c729c6d
+                    IsEnabled: true
+                    UpdateOrder: 0.5
+                Children: []
+                Id: 17062aad-a2e0-4fc6-8269-1f86817a2e88
+            Id: 86d16c63-a9cf-4165-a14a-314b758a30ce
+        Id: 5f62aa91-17f0-484b-bb0d-3ddb5aaaaad1
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: Tracker04
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: a8ddffd3-d802-48ed-bccf-8572bd62023f
+            IsEnabled: true
+            LocalOrientation:
+              W: 0.531435311
+              X: 0.53143537
+              Y: 0.46645081
+              Z: -0.466451138
+            LocalPosition:
+              X: -1.73840415
+              Y: 7.55253154E-07
+              Z: -0.756786346
+            LocalScale:
+              X: 0.00100000005
+              Y: 0.00100000005
+              Z: 0.00100000005
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: base
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: a74daa51-cadb-484f-9d95-41eb96c4a728
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106709
+                  X: -0.707106829
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: base_001
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 6561882a-ba27-4f8a-a7ac-10527414d9fa
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: f953425e-8ecf-4ae1-8e5b-a75b0f38222d
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 5592cf20-c9f8-4e38-a2e3-42d3ed7637e2
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: base
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 352398e7-34e2-4247-b319-efc5e84d6f0f
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                Children: []
+                Id: ef1a2b22-84b5-4fac-ad79-94615d9c1d8f
+            Id: fea2de83-0ac2-42a0-84b0-93d672387f02
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: placa
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: f593ec19-c3c4-4cb3-aff6-b8eb0507080c
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.923879504
+                  X: -0.382683456
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 3.05175781E-05
+                  Y: 1.52587891E-05
+                  Z: -335.149048
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: Tracker4
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 3fe2fcf0-4b20-4fcc-9ee2-bc2ddc7799e1
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 2.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 9a03771f-86f2-40a6-80a8-8db1c265526a
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: ffa5ec59-6909-4782-a3c2-65ecf0cc8430
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: placa
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 84645cdb-a3b6-4606-aa41-555104ac1089
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
+                    Id: 7dd0ce8b-bd09-4cd5-99fa-dea1d2d04dfd
+                    DistanceFactor: 0.0
+                    IsEnabled: true
+                    boundingBox:
+                      Center:
+                        X: -1.73840404
+                        Y: 0.335149854
+                        Z: -0.756786406
+                      HalfExtent:
+                        X: 0.681821585
+                        Y: 0.189878896
+                        Z: 0.18987903
+                      Orientation:
+                        W: 0.69435364
+                        X: 0.287610769
+                        Y: 0.609447539
+                        Z: -0.252441674
+                  - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
+                    Id: 17c35581-db1e-40e7-9f30-155ffa9e4f22
+                    IsEnabled: true
+                  - !WaveEngine.Components.WorkActions.WorkActionUpdaterBehavior,WaveEngine.Components
+                    Id: fd710f29-1df2-475d-9d0e-27955d134315
+                    IsEnabled: true
+                    UpdateOrder: 0.5
+                Children: []
+                Id: e07ac602-88b0-484e-8ed1-10b3d9dbbcf0
+            Id: c9777f6a-62f3-4461-aafe-fae21a7f771b
+        Id: f490c18d-2c62-48a7-861a-9e3d3779927b
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: Tracker05
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: 7facfb55-37d3-42d4-9bed-a88db2dffe51
+            IsEnabled: true
+            LocalOrientation:
+              W: 0.531435311
+              X: 0.53143537
+              Y: 0.46645081
+              Z: -0.466451138
+            LocalPosition:
+              X: -2.48744464
+              Y: 6.91777018E-07
+              Z: -0.852783561
+            LocalScale:
+              X: 0.00100000005
+              Y: 0.00100000005
+              Z: 0.00100000005
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: base
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: fbefa362-c282-411b-baec-3d50d0b52c68
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106709
+                  X: -0.707106829
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: base_001
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: a16a769c-0f10-451b-812d-667c574b601a
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 04b4d52a-4d80-4e88-9a6e-b493d6455a4c
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 7ff9a896-f739-4d01-b3b2-e39fdebfad4b
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: base
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 4bc91bfd-256d-4bf6-af62-4b8da9dadbaf
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                Children: []
+                Id: ba43ee9a-79c0-45a6-a417-487156e13f2a
+            Id: 779ea2f1-d641-4a45-a8ec-0a4a0484eced
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: placa
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 4a3dd81b-cb5c-437f-abfd-a84d37e26bce
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.923879504
+                  X: -0.382683456
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 3.05175781E-05
+                  Y: 1.52587891E-05
+                  Z: -335.149048
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: Tracker5
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: f60f7911-9af8-4327-8229-2fb81a046eb8
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 2.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 420112a4-3b3e-4b66-bfef-ffc0d09635c6
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: b9d4b976-1159-40e2-9006-6d09d15f7ac3
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: placa
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: be4943f1-32ed-4338-bf88-ad302e51f11e
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
+                    Id: c46a6daa-6b69-49be-b829-1abe2c86fed6
+                    DistanceFactor: 0.0
+                    IsEnabled: true
+                    boundingBox:
+                      Center:
+                        X: -2.4874444
+                        Y: 0.335149795
+                        Z: -0.85278362
+                      HalfExtent:
+                        X: 0.681821585
+                        Y: 0.189878896
+                        Z: 0.18987903
+                      Orientation:
+                        W: 0.69435364
+                        X: 0.287610769
+                        Y: 0.609447539
+                        Z: -0.252441674
+                  - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
+                    Id: d8c217a3-c7d0-45ec-ae1c-2fbd7380646f
+                    IsEnabled: true
+                  - !WaveEngine.Components.WorkActions.WorkActionUpdaterBehavior,WaveEngine.Components
+                    Id: f452b63a-b126-4d50-b960-f65556dc48f1
+                    IsEnabled: true
+                    UpdateOrder: 0.5
+                Children: []
+                Id: 31e21570-ef2b-4b8f-a5a9-4e26cd58f317
+            Id: 9e35af71-3d0c-40b0-8e09-5555b4edfe75
+        Id: f960f7cb-e591-4561-8a3e-77127cd96412
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: Tracker06
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: 7fdabd87-1c87-4297-abe6-1b443faa0a7b
+            IsEnabled: true
+            LocalOrientation:
+              W: 0.531435311
+              X: 0.53143537
+              Y: 0.46645081
+              Z: -0.466451138
+            LocalPosition:
+              X: -3.237679
+              Y: 6.29502551E-07
+              Z: -0.946962059
+            LocalScale:
+              X: 0.00100000005
+              Y: 0.00100000005
+              Z: 0.00100000005
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: base
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 94837d3c-c36b-43dc-82a6-bdf80c6c2ac5
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106709
+                  X: -0.707106829
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: base_001
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 92fbc841-8a98-4a4b-947c-a5e3e7c9b867
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 100bae3b-ae72-4676-80ae-973f60ad0581
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: b31a2182-f60c-4abc-a1c1-c57ee0176a15
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: base
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 5ec242bf-658b-429a-a25f-ea0a32f76f08
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                Children: []
+                Id: 5a31ec59-ce11-47cf-a6ca-97306085c5e8
+            Id: 3218cd77-453b-4990-86e8-8bb637ab05b9
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: placa
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: d2c0c733-194d-482c-8681-4a2bca879a4f
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.923879504
+                  X: -0.382683456
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 3.05175781E-05
+                  Y: 1.52587891E-05
+                  Z: -335.149048
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: Tracker6
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 3d0d1640-e1b0-4e77-bcd3-c0acbcd37fdc
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 2.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 606286a5-c3c0-478b-bd14-7397ce0eb55e
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: d2277467-5d71-400d-8743-62d6017047fe
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: placa
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: c3fefb38-933c-4444-9a64-a70b82b7d0b1
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
+                    Id: 5a68156d-97ca-4179-98b8-00dcbdd27d92
+                    DistanceFactor: 0.0
+                    IsEnabled: true
+                    boundingBox:
+                      Center:
+                        X: -3.23767877
+                        Y: 0.335149735
+                        Z: -0.946962118
+                      HalfExtent:
+                        X: 0.681821585
+                        Y: 0.189878896
+                        Z: 0.18987903
+                      Orientation:
+                        W: 0.69435364
+                        X: 0.287610769
+                        Y: 0.609447539
+                        Z: -0.252441674
+                  - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
+                    Id: 5cb14550-639f-4acf-be54-70ac3cdecd6b
+                    IsEnabled: true
+                  - !WaveEngine.Components.WorkActions.WorkActionUpdaterBehavior,WaveEngine.Components
+                    Id: 4488a63e-b770-4ff9-86f5-ebecb6b26ab5
+                    IsEnabled: true
+                    UpdateOrder: 0.5
+                Children: []
+                Id: f7646892-3469-4ba0-a713-bfd265ab571a
+            Id: 49c6e82e-5428-48cd-84d8-09b018734c0f
+        Id: c8a1921a-e579-4993-859c-d8c979da0065
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: Tracker07
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: a55c4b18-5489-4489-bef1-0ba3104666a0
+            IsEnabled: true
+            LocalOrientation:
+              W: 0.531435311
+              X: 0.53143537
+              Y: 0.46645081
+              Z: -0.466451138
+            LocalPosition:
+              X: -3.9960475
+              Y: 8.81696167E-07
+              Z: -1.03639674
+            LocalScale:
+              X: 0.00100000005
+              Y: 0.00100000005
+              Z: 0.00100000005
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: base
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 4caea69a-f700-434e-b7ef-7c3b04a26554
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106709
+                  X: -0.707106829
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: base_001
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 068c2643-8c53-4bb1-bd32-c88341a3b202
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 04497950-5761-4d34-a9f6-22bdb90220bb
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: a1a5c12a-cd55-4fa3-8b30-1eedd9a29f7c
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: base
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: fe459881-6fba-4e46-813a-79c6d5e5d8cd
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                Children: []
+                Id: 0a91149b-c7cc-4240-b828-d12e410c7ad4
+            Id: 67c724c3-dc09-407e-b9f4-811418c964e2
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: placa
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: c61eecdd-5ccd-4c09-8b99-3cb901efcc82
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.923879504
+                  X: -0.382683456
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 3.05175781E-05
+                  Y: 1.52587891E-05
+                  Z: -335.149048
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: Tracker7
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 37cbe9d5-89a3-4edd-95a5-becd3952e936
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 2.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 561faccb-5b29-469a-b8a8-4f3889602535
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 205bae95-6587-45ae-bd1f-d83884d11109
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: placa
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: e52bff71-95f6-4cd2-98ac-a509e672510d
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
+                    Id: ff0295c4-760f-46fa-a08e-b98919365b68
+                    DistanceFactor: 0.0
+                    IsEnabled: true
+                    boundingBox:
+                      Center:
+                        X: -3.99604726
+                        Y: 0.335150003
+                        Z: -1.03639686
+                      HalfExtent:
+                        X: 0.681821585
+                        Y: 0.189878896
+                        Z: 0.18987903
+                      Orientation:
+                        W: 0.69435364
+                        X: 0.287610769
+                        Y: 0.609447539
+                        Z: -0.252441674
+                  - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
+                    Id: e73df66f-f0f5-41a1-8e25-1cbd09e5ea23
+                    IsEnabled: true
+                  - !WaveEngine.Components.WorkActions.WorkActionUpdaterBehavior,WaveEngine.Components
+                    Id: a3bc3a87-0a57-4b3c-82cc-2b07bd9fd4ce
+                    IsEnabled: true
+                    UpdateOrder: 0.5
+                Children: []
+                Id: 0341ad77-0558-4e9b-b97d-a5f422329a3d
+            Id: 27b0ee41-22dc-442f-a90d-eaedb9144a09
+        Id: dd9ec76d-f154-4748-912c-c59fb0770bea
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: Tracker08
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: 2a3f23a6-0344-41e4-94ac-174a2bc32b47
+            IsEnabled: true
+            LocalOrientation:
+              W: 0.531435311
+              X: 0.53143537
+              Y: 0.46645081
+              Z: -0.466451138
+            LocalPosition:
+              X: -4.73798847
+              Y: 8.20969035E-07
+              Z: -1.12823522
+            LocalScale:
+              X: 0.00100000005
+              Y: 0.00100000005
+              Z: 0.00100000005
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: base
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: f3aace5a-0726-4a61-b386-ae522ae069af
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106709
+                  X: -0.707106829
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: base_001
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: b1fe2841-4bd8-45f8-8c8c-3b7a69cd94d4
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 692c6515-9684-4067-9564-26c6c9443cd3
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 8db15024-3dbe-41ae-bc09-a4ec5d749722
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: base
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 4be86b54-affb-4315-ae57-bf8b73a20e55
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                Children: []
+                Id: ac70e8bf-326a-48a0-a2ad-e0dec477942f
+            Id: de20c5d0-f390-4ab2-8e9e-c48d08711702
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: placa
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 17e4e186-d00a-408a-aeb8-e5f47c4c0094
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.923879504
+                  X: -0.382683456
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 3.05175781E-05
+                  Y: 1.52587891E-05
+                  Z: -335.149048
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: Tracker8
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 9d2ba353-c5f2-4e29-91fe-9786b4686230
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 2.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 47b3201a-5fb3-4b45-a732-b613127b4772
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: d8b25b75-b6ad-4a11-9e42-60f067a41167
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: placa
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 3971067c-d31d-46c6-a31d-598c9694774e
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
+                    Id: 0a16410a-efe1-41e2-991c-17ee8b644c13
+                    DistanceFactor: 0.0
+                    IsEnabled: true
+                    boundingBox:
+                      Center:
+                        X: -4.73798847
+                        Y: 0.335149944
+                        Z: -1.12823534
+                      HalfExtent:
+                        X: 0.681821585
+                        Y: 0.189878896
+                        Z: 0.18987903
+                      Orientation:
+                        W: 0.69435364
+                        X: 0.287610769
+                        Y: 0.609447539
+                        Z: -0.252441674
+                  - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
+                    Id: 32fa0487-7db1-4bbf-9e34-d509c8ba1e0c
+                    IsEnabled: true
+                  - !WaveEngine.Components.WorkActions.WorkActionUpdaterBehavior,WaveEngine.Components
+                    Id: 66dc56b0-050c-406e-9844-7c6a7a784e10
+                    IsEnabled: true
+                    UpdateOrder: 0.5
+                Children: []
+                Id: ae62c409-c328-4c5f-bdc2-49d225cdea07
+            Id: d6dd9686-bef0-48c1-b55f-f0d8368a2529
+        Id: 309f0941-1a65-46d8-927f-89beadc32a6d
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: Tracker09
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: b247e83e-520c-4ac2-9778-c19a146658ba
+            IsEnabled: true
+            LocalOrientation:
+              W: 0.531435311
+              X: 0.53143537
+              Y: 0.46645081
+              Z: -0.466451138
+            LocalPosition:
+              X: -5.4863348
+              Y: 7.51871482E-07
+              Z: -1.2327348
+            LocalScale:
+              X: 0.00100000005
+              Y: 0.00100000005
+              Z: 0.00100000005
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: base
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: f4b82537-50bc-4a36-b497-7344ceae8df2
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106709
+                  X: -0.707106829
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: base_001
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: c66e20e1-f537-4905-86c6-e932b7a96372
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: c8a156b0-50ce-44c7-b915-dc848f96c5cd
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: ecb25773-e446-43d0-918e-19b65aa7c3c7
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: base
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 7206e6d5-d8c1-403c-b976-4b3108016f92
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                Children: []
+                Id: 9d9a15ce-2745-4fa9-be93-f71af73eec6f
+            Id: 408da9a4-4ab7-475e-890b-9b024086b73e
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: placa
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 2f8772d3-3796-47bc-8614-8fa756780017
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.923879504
+                  X: -0.382683456
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 3.05175781E-05
+                  Y: 1.52587891E-05
+                  Z: -335.149048
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: Tracker9
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 46510672-6dcd-4047-a76d-44529a36c0d2
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 2.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: efa90ab3-dc89-4e62-b357-68c871a55e7f
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 8c5b3547-c826-4247-af3b-109066699c86
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: placa
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 244eef3e-ee66-4c89-b645-f0f05eba93cf
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
+                    Id: caeebc6d-cb5e-4501-b3ea-450e50cb882a
+                    DistanceFactor: 0.0
+                    IsEnabled: true
+                    boundingBox:
+                      Center:
+                        X: -5.4863348
+                        Y: 0.335149854
+                        Z: -1.23273492
+                      HalfExtent:
+                        X: 0.681821585
+                        Y: 0.189878896
+                        Z: 0.18987903
+                      Orientation:
+                        W: 0.69435364
+                        X: 0.287610769
+                        Y: 0.609447539
+                        Z: -0.252441674
+                  - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
+                    Id: 72fba3a9-492b-442c-b180-f367856282b7
+                    IsEnabled: true
+                  - !WaveEngine.Components.WorkActions.WorkActionUpdaterBehavior,WaveEngine.Components
+                    Id: 0e2c3e16-3c56-4128-a0b4-c9db625895a6
+                    IsEnabled: true
+                    UpdateOrder: 0.5
+                Children: []
+                Id: 38e70aa7-2345-446d-a5a7-e48cead72b84
+            Id: 12bf95d6-21a1-40b5-a2aa-be3d4c1cbfa9
+        Id: ec683e79-4c0f-48b8-82b1-78f1ae992d4a
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: Tracker10
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: 6234073e-2ff7-4dfb-90c6-eae227e16994
+            IsEnabled: true
+            LocalOrientation:
+              W: 0.531435311
+              X: 0.53143537
+              Y: 0.46645081
+              Z: -0.466451138
+            LocalPosition:
+              X: -6.23694611
+              Y: 6.85855298E-07
+              Z: -1.33257055
+            LocalScale:
+              X: 0.00100000005
+              Y: 0.00100000005
+              Z: 0.00100000005
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: base
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 71084075-eb5b-45d9-bd67-276110e5c3f4
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106709
+                  X: -0.707106829
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: base_001
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 7d60a014-a903-495c-8303-f98e58ad2b56
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 7b9735bf-335f-486b-bc00-6cf93dbd8430
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 86d4463e-f808-4f95-8db1-7a2772e15089
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: base
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: e641421e-52e5-4224-98b6-068d251cb3b7
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                Children: []
+                Id: 65437919-f99b-4b05-b582-8885bd3eb1a3
+            Id: 10030372-ceeb-48d2-b36f-572d74a8b6f5
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: placa
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: ed2bb154-8b70-470c-89a0-358da4e53e54
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.923879504
+                  X: -0.382683456
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 3.05175781E-05
+                  Y: 1.52587891E-05
+                  Z: -335.149048
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: Tracker10
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 941ba956-f04a-47a8-93b8-ebf27e4c400c
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 2.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: e21e4aff-c4c6-4bad-bb55-6820e3d16141
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 9100a01d-731c-4bcd-8bb2-6255d6a9d995
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: placa
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 08fad46b-eb6f-4a5f-a18c-acc9482ce6e3
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
+                    Id: 95a73da1-a081-4514-b274-6617747d06df
+                    DistanceFactor: 0.0
+                    IsEnabled: true
+                    boundingBox:
+                      Center:
+                        X: -6.23694611
+                        Y: 0.335149795
+                        Z: -1.33257067
+                      HalfExtent:
+                        X: 0.681821585
+                        Y: 0.189878896
+                        Z: 0.18987903
+                      Orientation:
+                        W: 0.69435364
+                        X: 0.287610769
+                        Y: 0.609447539
+                        Z: -0.252441674
+                  - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
+                    Id: 2d268e09-2c48-4f94-b5e3-8473fa978550
+                    IsEnabled: true
+                  - !WaveEngine.Components.WorkActions.WorkActionUpdaterBehavior,WaveEngine.Components
+                    Id: c35f9add-896c-4653-8963-b50ab84f3344
+                    IsEnabled: true
+                    UpdateOrder: 0.5
+                Children: []
+                Id: 2e96af7d-ded6-4051-94cb-08df8e46f69b
+            Id: 5a2e7eb0-485d-4dca-8244-67217da5da64
+        Id: 2501a886-fd1d-4633-b872-73746ce74b57
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: Tracker11
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: 41e52f97-4269-4c64-be42-6387d331be52
+            IsEnabled: true
+            LocalOrientation:
+              W: 0.531435311
+              X: 0.53143537
+              Y: 0.46645081
+              Z: -0.466451138
+            LocalPosition:
+              X: 0.373675317
+              Y: 9.25540689E-07
+              Z: 1.0
+            LocalScale:
+              X: 0.00100000005
+              Y: 0.00100000005
+              Z: 0.00100000005
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: base
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: a41f744b-45f4-41d0-a554-4ea3e26c1ac2
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106709
+                  X: -0.707106829
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: base_001
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 8c1a89fd-00c1-4705-b7c6-8f0d153d50fb
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 23c9e72e-7d7c-445e-87e7-50770f16279a
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: a7d71ef5-9acf-4108-9d27-a266a7cd4257
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: base
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 653e3dad-e414-4954-b8e2-839cfd4c840d
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                Children: []
+                Id: 0c6509ee-47f1-4c02-b56f-8012f26d2b15
+            Id: 77ee263d-db27-4978-8b7b-c7d77117e874
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: placa
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 70121e74-a25b-4ece-972d-16931c653fec
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.923879504
+                  X: -0.382683456
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 3.05175781E-05
+                  Y: 1.52587891E-05
+                  Z: -335.149048
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: Tracker11
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: b03580cf-c737-4f92-afdc-da02cb4dd4a7
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 2.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 65772bde-8d86-431b-acd3-56282f99eaac
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 722e5ec5-e46b-45b0-9cde-2d3f357d2d5a
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: placa
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: f0bf5f9a-0b54-4f08-985a-3fadd1ee4f58
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
+                    Id: 910bfe3b-8e83-4785-aaf4-7d2901e8f11c
+                    DistanceFactor: 0.0
+                    IsEnabled: true
+                    boundingBox:
+                      Center:
+                        X: 0.373675466
+                        Y: 0.335150033
+                        Z: 0.99999994
+                      HalfExtent:
+                        X: 0.681821585
+                        Y: 0.189878896
+                        Z: 0.18987903
+                      Orientation:
+                        W: 0.69435364
+                        X: 0.287610769
+                        Y: 0.609447539
+                        Z: -0.252441674
+                  - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
+                    Id: d556b911-efc3-41c1-b41a-84fab72ffb9a
+                    IsEnabled: true
+                  - !WaveEngine.Components.WorkActions.WorkActionUpdaterBehavior,WaveEngine.Components
+                    Id: 7ece1705-ed7f-44b4-ac51-6ce20bd3905b
+                    IsEnabled: true
+                    UpdateOrder: 0.5
+                Children: []
+                Id: be9b268a-3624-473a-8153-f0bc1c9aa594
+            Id: 3730f8e8-2dcb-4609-af82-f6ead7008b42
+        Id: 9469a5e7-07eb-4825-baf0-231b55e51bad
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: Tracker12
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: 8ce0b4e7-e20c-49b9-9fb4-249e67ef1720
+            IsEnabled: true
+            LocalOrientation:
+              W: 0.531435311
+              X: 0.53143537
+              Y: 0.46645081
+              Z: -0.466451138
+            LocalPosition:
+              X: -0.441231549
+              Y: 1.35154392E-06
+              Z: 0.887270927
+            LocalScale:
+              X: 0.00100000005
+              Y: 0.00100000005
+              Z: 0.00100000005
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: base
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 3150585d-61e5-4f29-b6a8-b61d3903b1b5
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106709
+                  X: -0.707106829
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: base_001
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 2a475c40-6d7d-4641-819d-fa87c9890bc1
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 75b0fada-9503-4091-a9eb-d335f98bb8ba
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 82334258-eabf-4b71-a6dc-dc88307e84a7
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: base
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: e4325955-ce90-4ca3-b92e-e9aa34644c64
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                Children: []
+                Id: 3b552b3c-be84-4f57-8092-56e955bc83d2
+            Id: 009bcf5c-b7bc-41f5-8ccd-d75bd83cebb6
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: placa
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 85d452c8-38ec-406e-b54a-18c8f3bfdbc5
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.923879504
+                  X: -0.382683456
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 3.05175781E-05
+                  Y: 1.52587891E-05
+                  Z: -335.149048
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: Tracker12
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: d1f3e127-824a-4502-a282-dfb4c62985de
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 2.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 5ce1c5ce-74d1-4133-8774-2d330ff30171
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: b521ac96-428f-44db-97c4-3a73ac567a1e
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: placa
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 013a2ad1-8021-4a7e-9509-a0d2b9c767be
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
+                    Id: 8b361d22-bb9d-41a7-926c-0067f572ba8a
+                    DistanceFactor: 0.0
+                    IsEnabled: true
+                    boundingBox:
+                      Center:
+                        X: -0.4412314
+                        Y: 0.33515045
+                        Z: 0.887270868
+                      HalfExtent:
+                        X: 0.681821585
+                        Y: 0.189878896
+                        Z: 0.18987903
+                      Orientation:
+                        W: 0.69435364
+                        X: 0.287610769
+                        Y: 0.609447539
+                        Z: -0.252441674
+                  - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
+                    Id: 08a8be83-532c-469e-8045-a4dde373c910
+                    IsEnabled: true
+                  - !WaveEngine.Components.WorkActions.WorkActionUpdaterBehavior,WaveEngine.Components
+                    Id: 93770b2f-1dd9-41e2-963e-282fba6093d3
+                    IsEnabled: true
+                    UpdateOrder: 0.5
+                Children: []
+                Id: db5d0cc7-1154-4922-990c-771c31b362cf
+            Id: 4d1e735a-8610-471e-9f93-d24cdb138233
+        Id: 781e4834-f4fa-4007-9a61-921319581481
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: Tracker13
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: 69246fde-1f85-4b58-a2af-d373b6a5d474
+            IsEnabled: true
+            LocalOrientation:
+              W: 0.531435311
+              X: 0.53143537
+              Y: 0.46645081
+              Z: -0.466451138
+            LocalPosition:
+              X: -1.1921823
+              Y: 1.78544451E-06
+              Z: 0.80118072
+            LocalScale:
+              X: 0.00100000005
+              Y: 0.00100000005
+              Z: 0.00100000005
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: base
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: ad9c1c25-858c-4c86-a3d1-9fc82c6b5816
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106709
+                  X: -0.707106829
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: base_001
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 6edcb909-6811-46b2-b5b0-f185cbae6303
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 896b7e1e-19fb-4702-afc8-addd12dbc8bc
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 3876923f-0b02-4654-b188-8d0849547309
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: base
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: cc996995-0a29-40a5-9c08-5627729d2ccb
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                Children: []
+                Id: e2566d38-63c4-49ec-8f0d-d72fc55a8ba5
+            Id: 495fc43a-8379-45ce-a3ec-6c15d7898ac3
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: placa
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 551a69b8-d631-497f-9f7a-b74127bbb002
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.923879504
+                  X: -0.382683456
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 3.05175781E-05
+                  Y: 1.52587891E-05
+                  Z: -335.149048
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: Tracker13
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: cb440d15-8e84-44b4-a970-32741c711094
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 2.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 7894b010-7e81-4eb9-a4ba-3b37c4ae1373
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 908bde24-e722-4aa6-a89e-8dca6c184dbe
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: placa
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: dc553d98-2cd9-4939-85c0-d90d56cb8e72
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
+                    Id: 6554352f-28b9-4365-ab2f-1f25eeeebd8d
+                    DistanceFactor: 0.0
+                    IsEnabled: true
+                    boundingBox:
+                      Center:
+                        X: -1.19218218
+                        Y: 0.335150898
+                        Z: 0.801180661
+                      HalfExtent:
+                        X: 0.681821585
+                        Y: 0.189878896
+                        Z: 0.18987903
+                      Orientation:
+                        W: 0.69435364
+                        X: 0.287610769
+                        Y: 0.609447539
+                        Z: -0.252441674
+                  - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
+                    Id: 970b0693-9224-4b0d-9e25-a8d355db84d8
+                    IsEnabled: true
+                  - !WaveEngine.Components.WorkActions.WorkActionUpdaterBehavior,WaveEngine.Components
+                    Id: 02a437ab-1bb8-485d-9e46-2d6211945ec9
+                    IsEnabled: true
+                    UpdateOrder: 0.5
+                Children: []
+                Id: 4487cc56-f916-4146-bf47-a30cdea9da63
+            Id: 6d6066da-fd42-4d24-83ae-c1b8b584c235
+        Id: 214ec47f-365f-463d-9972-a21d75aac54e
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: Tracker14
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: 10f81091-ac05-4b60-b12c-f4aedefa846f
+            IsEnabled: true
+            LocalOrientation:
+              W: 0.531435311
+              X: 0.53143537
+              Y: 0.46645081
+              Z: -0.466451138
+            LocalPosition:
+              X: -1.92731297
+              Y: 1.71027648E-06
+              Z: 0.687511325
+            LocalScale:
+              X: 0.00100000005
+              Y: 0.00100000005
+              Z: 0.00100000005
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: base
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 88b141dd-af7f-42c4-b685-552508a6f79e
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106709
+                  X: -0.707106829
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: base_001
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: e1f0d85b-7aa3-4e7a-8f32-0d3807ad37cf
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 3068837c-ae9b-4d91-b7a0-bd2e38b9451f
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 94ce02ad-e1d8-4617-b2b3-dba5a5efd1a5
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: base
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: ead804e9-b73a-4a56-85c5-d997e9343a6d
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                Children: []
+                Id: ed3b9442-2acd-4874-bb96-34c84f9d6b4e
+            Id: 6b24f94e-d523-411a-98c9-aaa34d97fd86
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: placa
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 9c7c19b4-2c5c-415b-b464-7abc29f2c9c0
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.923879504
+                  X: -0.382683456
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 3.05175781E-05
+                  Y: 1.52587891E-05
+                  Z: -335.149048
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: Tracker14
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: ce235397-0480-48f6-b369-1ed45e228707
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 2.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 02df64f8-bac2-4179-b684-fb0f4f1e9e4b
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 04e8717d-6c07-46b2-b34d-529a13cd0f6a
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: placa
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: c36e99ff-0e97-4cf8-8edd-cd5b86847ac8
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
+                    Id: dfd7c8b8-5c55-4120-90c0-5e65c44a37f8
+                    DistanceFactor: 0.0
+                    IsEnabled: true
+                    boundingBox:
+                      Center:
+                        X: -1.92731285
+                        Y: 0.335150808
+                        Z: 0.687511265
+                      HalfExtent:
+                        X: 0.681821585
+                        Y: 0.189878896
+                        Z: 0.18987903
+                      Orientation:
+                        W: 0.69435364
+                        X: 0.287610769
+                        Y: 0.609447539
+                        Z: -0.252441674
+                  - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
+                    Id: 4337ea59-16f6-4ad0-a88c-0dccbc0ac134
+                    IsEnabled: true
+                  - !WaveEngine.Components.WorkActions.WorkActionUpdaterBehavior,WaveEngine.Components
+                    Id: d8804094-beb8-44d5-ab39-172835dadb33
+                    IsEnabled: true
+                    UpdateOrder: 0.5
+                Children: []
+                Id: 963988ba-1892-4c10-a304-545cd04db883
+            Id: 0f7f5768-7146-400d-9f1a-2430cc6aa945
+        Id: e340a416-a3fa-43ed-904d-16bcb521a74c
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: Tracker15
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: aad4e281-5167-4f32-bc94-513c1ce17680
+            IsEnabled: true
+            LocalOrientation:
+              W: 0.531435311
+              X: 0.53143537
+              Y: 0.46645081
+              Z: -0.466451138
+            LocalPosition:
+              X: -2.67668414
+              Y: 1.64844801E-06
+              Z: 0.594009519
+            LocalScale:
+              X: 0.00100000005
+              Y: 0.00100000005
+              Z: 0.00100000005
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: base
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 31e499b3-77ef-4945-8f72-7780c281889c
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106709
+                  X: -0.707106829
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: base_001
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 7cf2b5f5-3026-4f95-bbde-0c6c570bc067
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: baa4b731-1b2a-4ca4-aac2-5307b30f6e39
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 83fb72da-0dda-4f37-ac07-00cede57b9de
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: base
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 167bce51-f849-4409-af2b-c7f6241419bf
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                Children: []
+                Id: e51aaa22-07df-4997-8076-9f9a94923c39
+            Id: 1629fc3c-02ad-49e6-b84b-a6c2b06f0750
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: placa
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: fc0bfa76-395a-4d4a-8ec0-a8f4c8555b10
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.923879504
+                  X: -0.382683456
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 3.05175781E-05
+                  Y: 1.52587891E-05
+                  Z: -335.149048
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: Tracker15
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: c771acdc-7dfc-471a-b43e-50c4236a5254
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 2.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 9c404c55-69d4-42dd-9cc3-27db316eceba
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: ddb547dd-c29f-4394-8fd2-e5aabe317550
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: placa
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: a4404b56-6756-47b7-b6e9-82a82467907f
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
+                    Id: 5b6aa0b7-22c7-4df2-872d-09371c00b995
+                    DistanceFactor: 0.0
+                    IsEnabled: true
+                    boundingBox:
+                      Center:
+                        X: -2.6766839
+                        Y: 0.335150748
+                        Z: 0.594009459
+                      HalfExtent:
+                        X: 0.681821585
+                        Y: 0.189878896
+                        Z: 0.18987903
+                      Orientation:
+                        W: 0.69435364
+                        X: 0.287610769
+                        Y: 0.609447539
+                        Z: -0.252441674
+                  - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
+                    Id: 10116519-e5aa-4a06-b44d-36a116a6f78c
+                    IsEnabled: true
+                  - !WaveEngine.Components.WorkActions.WorkActionUpdaterBehavior,WaveEngine.Components
+                    Id: 8980257e-9f81-4e38-99d6-2bff2c57c7bd
+                    IsEnabled: true
+                    UpdateOrder: 0.5
+                Children: []
+                Id: f2ddbf56-5c98-46fb-8217-d134e8e6d2cf
+            Id: d01d8844-e908-454c-bb92-3593fd433b6b
+        Id: e4e8eb51-149e-4c37-ad22-f579a284cc11
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: Tracker16
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: 556ff444-694a-4657-81b4-5561d63df637
+            IsEnabled: true
+            LocalOrientation:
+              W: 0.531435311
+              X: 0.53143537
+              Y: 0.46645081
+              Z: -0.466451138
+            LocalPosition:
+              X: -3.42809987
+              Y: 1.59218575E-06
+              Z: 0.508922637
+            LocalScale:
+              X: 0.00100000005
+              Y: 0.00100000005
+              Z: 0.00100000005
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: base
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 98c40bf6-64a5-4006-906b-3110ee6be5b6
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106709
+                  X: -0.707106829
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: base_001
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 425b947f-e06b-440b-bd75-9fbaca0b8813
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 4f504a26-2d18-47ee-bff4-e86d1e6e8e84
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 098bea66-ee9d-46e1-9d4b-2df9921bbfb6
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: base
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: e36f252c-b7c0-44aa-8255-4ebc0bb949a3
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                Children: []
+                Id: accea572-de8c-4e4b-9391-c138ce4a3d70
+            Id: 02974dd9-11d9-4ae4-8904-e068556f5b2c
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: placa
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: b1fcf9e7-fc8c-45cb-a972-f545de4101d7
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.923879504
+                  X: -0.382683456
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 3.05175781E-05
+                  Y: 1.52587891E-05
+                  Z: -335.149048
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: Tracker16
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 907c6880-e309-4ba1-849e-1c973fa588a7
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 2.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: e97ee28a-0e42-469d-aa28-b30f499214ed
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: cdd4a8fd-daaf-48d9-8b5b-882ff94dc5c8
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: placa
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: ffb3e211-826e-4005-9a86-4a1737215969
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
+                    Id: 92db1836-f179-42cc-be88-17a067519ccb
+                    DistanceFactor: 0.0
+                    IsEnabled: true
+                    boundingBox:
+                      Center:
+                        X: -3.42809963
+                        Y: 0.335150689
+                        Z: 0.508922577
+                      HalfExtent:
+                        X: 0.681821585
+                        Y: 0.189878896
+                        Z: 0.18987903
+                      Orientation:
+                        W: 0.69435364
+                        X: 0.287610769
+                        Y: 0.609447539
+                        Z: -0.252441674
+                  - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
+                    Id: 38fa5140-276a-4dae-9544-e6be143b4827
+                    IsEnabled: true
+                  - !WaveEngine.Components.WorkActions.WorkActionUpdaterBehavior,WaveEngine.Components
+                    Id: 423294ae-3ee1-492d-ae50-27e38243a1a3
+                    IsEnabled: true
+                    UpdateOrder: 0.5
+                Children: []
+                Id: ad43f1cb-1988-4f6b-85e3-17ab2f7c4e18
+            Id: 1e0061dd-ca55-4782-822a-b1a48fc3f817
+        Id: 783fe388-fa16-46e7-9fe0-fb20bdd9d285
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: Tracker17
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: 08c48539-614b-4423-836c-6e97cfafcaad
+            IsEnabled: true
+            LocalOrientation:
+              W: 0.531435311
+              X: 0.53143537
+              Y: 0.46645081
+              Z: -0.466451138
+            LocalPosition:
+              X: -4.18501043
+              Y: 1.83696784E-06
+              Z: 0.408281386
+            LocalScale:
+              X: 0.00100000005
+              Y: 0.00100000005
+              Z: 0.00100000005
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: base
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 2039041e-389c-4096-8cc0-3c45725e45f3
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106709
+                  X: -0.707106829
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: base_001
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: a9b19bd3-a609-4cc6-bdda-bf67fb2e08c9
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 7fb2216d-3187-4c54-b3ee-3f66165288ed
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 380953f3-0a2d-4e02-b22a-3103f6730de7
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: base
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: c905ebbe-92f2-4709-927c-5f07a840e1bb
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                Children: []
+                Id: d95b5985-42da-47db-9b71-ed06337bd2f4
+            Id: bcc67e5a-4337-4feb-ad79-2796ffadac2f
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: placa
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: b745f43d-d8fc-400b-912a-e7fb79eb14fb
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.923879504
+                  X: -0.382683456
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 3.05175781E-05
+                  Y: 1.52587891E-05
+                  Z: -335.149048
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: Tracker17
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 333addde-9b96-449f-825f-97353aac95a2
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 2.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 172c8a89-8a20-45ed-a5e7-21317abaf36d
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 5ddad9aa-2d05-4bf7-a550-2c7068c6434d
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: placa
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: daad3d57-b2cf-4857-9eea-3f51069c908c
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
+                    Id: 8a4073a8-9b33-4be9-a8b6-c4c5ea6c0135
+                    DistanceFactor: 0.0
+                    IsEnabled: true
+                    boundingBox:
+                      Center:
+                        X: -4.18501043
+                        Y: 0.335150957
+                        Z: 0.408281296
+                      HalfExtent:
+                        X: 0.681821585
+                        Y: 0.189878896
+                        Z: 0.18987903
+                      Orientation:
+                        W: 0.69435364
+                        X: 0.287610769
+                        Y: 0.609447539
+                        Z: -0.252441674
+                  - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
+                    Id: b7e6eff4-6cb1-42cf-a401-2a1ee4cafcfa
+                    IsEnabled: true
+                  - !WaveEngine.Components.WorkActions.WorkActionUpdaterBehavior,WaveEngine.Components
+                    Id: a1b7b2b6-3197-4dbf-b628-1992160982c4
+                    IsEnabled: true
+                    UpdateOrder: 0.5
+                Children: []
+                Id: b73bc07e-a721-4335-ad7b-105529ae7e1d
+            Id: c71266f5-756b-419f-9ba1-0e4d72e48433
+        Id: cd1382c2-e68a-49a5-a04e-9ab72196627f
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: Tracker18
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: 67b8c6fa-3fe0-4ce6-8e00-d772c34803c4
+            IsEnabled: true
+            LocalOrientation:
+              W: 0.531435311
+              X: 0.53143537
+              Y: 0.46645081
+              Z: -0.466451138
+            LocalPosition:
+              X: -4.92771435
+              Y: 1.78008247E-06
+              Z: 0.322247088
+            LocalScale:
+              X: 0.00100000005
+              Y: 0.00100000005
+              Z: 0.00100000005
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: base
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 9fa2add4-bf95-4591-92ea-2e884687bbb4
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106709
+                  X: -0.707106829
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: base_001
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 95b2c37b-e14e-42d8-a94d-d7fb33a0ae80
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 85ddcb09-6663-4020-bf47-c768d34a972d
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 6a36559d-68f5-4940-8adb-a56e3dfca207
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: base
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 79bbd04f-bde1-4a2f-8262-4c0115b733d8
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                Children: []
+                Id: d2d90b41-d533-4d7d-b6cd-f6ef97e85884
+            Id: 432bb0b1-e8bd-4ef5-a2ff-f8de1a861f4d
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: placa
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: ffcd6766-ba9d-4b18-9bc0-3dfd5016b6d8
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.923879504
+                  X: -0.382683456
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 3.05175781E-05
+                  Y: 1.52587891E-05
+                  Z: -335.149048
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: Tracker18
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: e2d77933-c543-4960-939a-af33fa1bf23f
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 2.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 783b28f2-7d3a-4880-a6be-21b2cfa7e6c2
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: bf8fe73d-bedc-4bf0-a0be-6603dabe9d30
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: placa
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 4d98f7a0-0bd2-4faa-9bb9-7bd4c7e7384c
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
+                    Id: e34aaccc-9926-40d1-862f-46f2347ccf8b
+                    DistanceFactor: 0.0
+                    IsEnabled: true
+                    boundingBox:
+                      Center:
+                        X: -4.92771435
+                        Y: 0.335150898
+                        Z: 0.322246999
+                      HalfExtent:
+                        X: 0.681821585
+                        Y: 0.189878896
+                        Z: 0.18987903
+                      Orientation:
+                        W: 0.69435364
+                        X: 0.287610769
+                        Y: 0.609447539
+                        Z: -0.252441674
+                  - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
+                    Id: 1b3dc82b-65ad-4e8d-8f59-7593f11cab31
+                    IsEnabled: true
+                  - !WaveEngine.Components.WorkActions.WorkActionUpdaterBehavior,WaveEngine.Components
+                    Id: f21a2637-90e2-4ae1-a93c-9f7c7de68149
+                    IsEnabled: true
+                    UpdateOrder: 0.5
+                Children: []
+                Id: 6de9722b-18b7-4a63-aa5f-e9f950cb87d7
+            Id: 4e907f04-5556-4dcf-9b66-c9765a1a2bc5
+        Id: 78973534-bf41-4b21-a19a-7a40476953a9
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: Tracker19
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: 45943899-282e-477a-8542-85fcac784313
+            IsEnabled: true
+            LocalOrientation:
+              W: 0.531435311
+              X: 0.53143537
+              Y: 0.46645081
+              Z: -0.466451138
+            LocalPosition:
+              X: -5.67578554
+              Y: 1.7095972E-06
+              Z: 0.21564573
+            LocalScale:
+              X: 0.00100000005
+              Y: 0.00100000005
+              Z: 0.00100000005
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: base
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: b7973a89-509f-4e97-ae44-376f6a788ca6
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106709
+                  X: -0.707106829
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: base_001
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 1f440d58-4890-4c49-9839-1fac9d613dd4
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: df6f165e-7512-48eb-a6ae-d5e4f42d002b
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: f2bad138-ba39-42bd-9cf7-95e76efa1c0c
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: base
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 7c06e696-47f8-4942-ac1d-5e8a0d3e97a1
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                Children: []
+                Id: 56accfc1-6821-4a17-9ad8-4859667774b8
+            Id: 012123b5-4b9a-4567-b367-81797aa7bfed
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: placa
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 71dd39d0-4a28-4f50-9941-e9318d0737e8
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.923879504
+                  X: -0.382683456
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 3.05175781E-05
+                  Y: 1.52587891E-05
+                  Z: -335.149048
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: Tracker19
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 9351c1ea-1084-4b9a-bd6c-af9d63b459e9
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 2.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 2a1cc185-ce4a-44da-9640-adc1a85d7edf
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: c34440e3-49df-440c-bc0c-b8a80818ac3f
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: placa
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 1419b8f4-4ca5-4a57-965e-a3179a7e9c88
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
+                    Id: 7aec232a-ae8e-45fd-be2a-b2d8bf78c8e0
+                    DistanceFactor: 0.0
+                    IsEnabled: true
+                    boundingBox:
+                      Center:
+                        X: -5.67578554
+                        Y: 0.335150808
+                        Z: 0.215645641
+                      HalfExtent:
+                        X: 0.681821585
+                        Y: 0.189878896
+                        Z: 0.18987903
+                      Orientation:
+                        W: 0.69435364
+                        X: 0.287610769
+                        Y: 0.609447539
+                        Z: -0.252441674
+                  - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
+                    Id: 1ca01057-8b1e-411c-9197-65eeac5e32b8
+                    IsEnabled: true
+                  - !WaveEngine.Components.WorkActions.WorkActionUpdaterBehavior,WaveEngine.Components
+                    Id: ded6a552-131e-4464-ae1d-b274be16f56b
+                    IsEnabled: true
+                    UpdateOrder: 0.5
+                Children: []
+                Id: 8c5db968-13f8-4ddf-90f8-96250d1b14c2
+            Id: 705d7d8d-c849-48e3-b8c3-dfa96f13e81e
+        Id: ea5cc94e-fd32-4338-aae7-366007eb6bee
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: Tracker20
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: 7d3f935e-bb68-4897-b148-afcfd95a10dc
+            IsEnabled: true
+            LocalOrientation:
+              W: 0.531435311
+              X: 0.53143537
+              Y: 0.46645081
+              Z: -0.466451138
+            LocalPosition:
+              X: -6.42728996
+              Y: 1.64813628E-06
+              Z: 0.122702479
+            LocalScale:
+              X: 0.00100000005
+              Y: 0.00100000005
+              Z: 0.00100000005
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: base
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: d01b5881-8ebf-42f8-a8aa-6697ae7f184f
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106709
+                  X: -0.707106829
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: base_001
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 90c9a8c3-0f4c-43dd-b5b5-ed82d204ef61
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 59e0a226-3031-4f69-9a9d-49d05e394a5c
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: a9602369-fad2-4fd6-833d-392ac2ecfbf5
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: base
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: b8ba222d-f836-4b53-99a9-692ceb583241
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                Children: []
+                Id: e86c5365-ad81-491d-a688-c6f6175fe967
+            Id: 4bdb1ba4-1022-4f23-b463-efd205935fcd
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: placa
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 860b5d12-573f-482a-a6e5-09554e8641fc
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.923879504
+                  X: -0.382683456
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 3.05175781E-05
+                  Y: 1.52587891E-05
+                  Z: -335.149048
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: Tracker20
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: bb6d4f03-8b03-4805-9fca-0098d46c043f
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 2.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: ebcacddb-083c-4c0b-922d-905aebfe1515
+                    AsignedTo: panel_mat
+                    IsEnabled: true
+                    Material: d229094a-9184-49cf-bcec-5b443cc3e1f9
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: f63e39a1-f528-4041-8f08-63070ca7a8f2
+                    IsEnabled: true
+                    Model: 39c8ed3c-a277-4912-b9bf-c4dc71a7614c
+                    ModelMeshName: placa
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: fc3fe084-eb50-4f01-9b24-9b5b525cdb3b
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
+                    Id: b1f26572-ccf4-419e-aa19-ebd8fb61d1d5
+                    DistanceFactor: 0.0
+                    IsEnabled: true
+                    boundingBox:
+                      Center:
+                        X: -6.42728996
+                        Y: 0.335150748
+                        Z: 0.12270239
+                      HalfExtent:
+                        X: 0.681821585
+                        Y: 0.189878896
+                        Z: 0.18987903
+                      Orientation:
+                        W: 0.69435364
+                        X: 0.287610769
+                        Y: 0.609447539
+                        Z: -0.252441674
+                  - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
+                    Id: 69f4bc03-a28b-434f-a0ce-bf121795264d
+                    IsEnabled: true
+                  - !WaveEngine.Components.WorkActions.WorkActionUpdaterBehavior,WaveEngine.Components
+                    Id: b531a601-6f60-4913-836d-c95c22fa3bd5
+                    IsEnabled: true
+                    UpdateOrder: 0.5
+                Children: []
+                Id: 1e1cf536-16e6-4946-b0d7-7fa8e56eb9ac
+            Id: 89fade8e-64ab-44e9-84b7-e59224955887
+        Id: cc5ffde7-4864-4373-88ad-47e96294a34e
+    Id: 165ed504-e4ca-4ca6-8cdf-589d2410dc4d
+Managers: []
