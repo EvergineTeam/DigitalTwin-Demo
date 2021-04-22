@@ -53,6 +53,7 @@ namespace DigitalTwin
             this.Container.RegisterType<AssetsService>();
             this.Container.RegisterType<ForegroundTaskSchedulerService>();            
             this.Container.RegisterType<WorkActionScheduler>();
+            this.Container.RegisterInstance(new TimeLapseService());
         }
 
         public override void Initialize()

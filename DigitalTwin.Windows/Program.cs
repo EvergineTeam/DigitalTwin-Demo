@@ -1,10 +1,8 @@
-using System;
 using System.Diagnostics;
 using WaveEngine.Common.Graphics;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Services;
-using WaveEngine.Mathematics;
 
 namespace DigitalTwin.Windows
 {
@@ -28,24 +26,7 @@ namespace DigitalTwin.Windows
             var xaudio = new WaveEngine.XAudio2.XAudioDevice();
             application.Container.RegisterInstance(xaudio);
 
-            uint dataCount = 100;
-            float[] sunAngles = new float[dataCount];
-            float[] trackerAngles = new float[dataCount];
-            uint index = 0;
-
-            //Fill angles
-            int start = -90;
-            int end = 90;
-            for (int i = 0; i < dataCount; i++)
-            {
-                int value1 = (int)WaveEngine.Mathematics.MathHelper.Lerp(start, end, (float)i / (float)dataCount);
-                sunAngles[i] = MathHelper.ToRadians(value1);
-                int value2 = (int)WaveEngine.Mathematics.MathHelper.Lerp(start + 35, end - 35, (float)i / (float)dataCount);
-                trackerAngles[i] = MathHelper.ToRadians(value2);
-            }
-
             Stopwatch clockTimer = Stopwatch.StartNew();
-            TimeSpan updateTimer = TimeSpan.Zero;
 
             windowsSystem.Run(
             () =>
@@ -55,16 +36,7 @@ namespace DigitalTwin.Windows
             () =>
             {
                 var gameTime = clockTimer.Elapsed;
-                updateTimer += gameTime;
                 clockTimer.Restart();
-
-                if (updateTimer.TotalSeconds > 0.5f)
-                {
-                    updateTimer = TimeSpan.Zero;
-                    index = (index + 1) % (uint)sunAngles.Length;
-                    MyApplication.SunAngle = sunAngles[index];
-                    MyApplication.TrackerAngle = trackerAngles[index];
-                }
                 
                 application.UpdateFrame(gameTime);
                 application.DrawFrame(gameTime);
