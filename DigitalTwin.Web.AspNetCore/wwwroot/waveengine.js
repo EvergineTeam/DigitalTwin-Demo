@@ -82,6 +82,9 @@ let App = {
         invoke: function (methodName, args) {
             BINDING.call_static_method(`[${this.assemblyName}] ${this.className}:${methodName}`, args);
         }
+    },
+    openDialog: () => {
+        $("#dialog").dialog("open");
     }
 };
 
@@ -91,6 +94,30 @@ let WaveEngine = {
     },
     onEvent: function (id) {
         console.log(id);
+        var trackerName = document.getElementById('trackerName');
+        trackerName.innerHTML = id;
+        App.openDialog();
+    },
+    onTrackerAngleUpdated: function (angle) {
+        console.log(angle);
+        var trackerName = document.getElementById('trackerPosition');
+        trackerName.innerHTML = angle;
+
+        for (var i = 1; i <= 3; i++) {
+            var element = document.getElementById('trackerVoltage' + i);
+            element.innerHTML = MathHelper.getRandomNumber(220, 245);
+        }
+
+        for (var i = 1; i <= 3; i++) {
+            var element = document.getElementById('trackerIntensity' + i);
+            element.innerHTML = MathHelper.getRandomNumber(275, 330);
+        }
+    }
+};
+
+let MathHelper = {
+    getRandomNumber: function (min, max) {
+        return Math.random() * (max - min) + min;
     }
 };
 

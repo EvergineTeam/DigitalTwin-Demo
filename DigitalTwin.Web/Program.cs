@@ -23,7 +23,8 @@ namespace DigitalTwin.Web
             // Create app
             var application = new MyApplication();
 
-            MyApplication.EntitySelected += MyApplication_EntitySelected; ;
+            MyApplication.EntitySelected += MyApplication_EntitySelected;
+            MyApplication.TrackerAngleUpdated += MyApplication_TrackerAngleUpdated;
 
             // Create Services
             var windowsSystem = new WebWindowsSystem();
@@ -59,6 +60,12 @@ namespace DigitalTwin.Web
         private static void MyApplication_EntitySelected(object sender, string e)
         {
             Runtime.InvokeJS($"WaveEngine.onEvent(\"{e}\");");
+        }
+
+        private static void MyApplication_TrackerAngleUpdated(object sender, float angle)
+        {
+            var angleAsDegrees = MathHelper.ToDegrees(angle);
+            Runtime.InvokeJS($"WaveEngine.onTrackerAngleUpdated({angleAsDegrees});");
         }
 
         public static void UpdateCanvasSize(string canvasId)
