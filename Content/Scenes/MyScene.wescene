@@ -72,13 +72,11 @@ Items:
         Id: bb44cd62-4d92-418a-8a42-bbc2ed2b6f07
         AsignedTo: Default
         IsEnabled: true
-        Material: f5c42078-dcdd-4d4b-8f60-12f885b1677d
+        Material: 09f58a98-ee28-4861-a39d-033b5f86cdea
       - !WaveEngine.Components.Graphics3D.SphereMesh,WaveEngine.Components
         Id: 3ef37285-f016-4173-bbf0-278ec1624224
         Diameter: 1.0
         IsEnabled: true
-        Model: 00000000-0000-0000-0000-000000000000
-        ModelMeshName: sphere_primitive
         Tessellation: 32
         UVHorizontalFlip: false
         UVVerticalFlip: false
@@ -451,10 +449,8 @@ Items:
               B: 0.759229541
               G: 0.862923861
               R: 0.93927443
-            OverrideFilter: false
             ShadowBias: 0.00499999989
             ShadowDistance: 80.0
-            ShadowFilter: PCF3x3
             ShadowOpacity: 1.0
             SplitDistance:
               - 0.0
