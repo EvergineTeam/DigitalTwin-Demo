@@ -14,9 +14,11 @@
 	[Directives:AmbientOcclusion AO_OFF AO]
 	[Directives:Multiview MULTIVIEW_OFF MULTIVIEW]
 	[Directives:LowProfile LOW_PROFILE_OFF LOW_PROFILE]
+	[Directives:DebugMode DEBUG_OFF DEBUG]
 	[Directives:ColorSpace GAMMA_COLORSPACE_OFF GAMMA_COLORSPACE]
 	[Directives:ShadowSupported SHADOW_SUPPORTED_OFF SHADOW_SUPPORTED]
-	
+	[Directives:ShadowFilter SHADOW_FILTER_OFF SHADOWFILTER3 SHADOWFILTER5 SHADOWFILTER7]
+
 	struct LightProperties
 	{
 		float3	Position;
@@ -30,7 +32,7 @@
 		float	Radius;
 		float3	Left;
 		int		ShadowMapIndex;
-		int 	ShadowFilter;
+		int 	ShadowMapResolution;
 		float	ShadowOpacity;
 		int		ShadowProjectionIndex;
 		int		DebugMode;
@@ -44,11 +46,6 @@
 		inline bool DebugModeEnabled()
 		{
 			return (DebugMode == 1);
-		}
-	
-		inline float ShadowMapResolution()
-		{
-			return Extra.w;
 		}
 	};
 	
@@ -148,8 +145,8 @@
 
 [Begin_Pass:ShadowMap]
 	[Profile 10_0]
-	[entrypoints VS = VertexFunction PS=PixelFunction]
-
+	[Entrypoints VS = VertexFunction PS=PixelFunction]
+	[DepthClipEnable False]
 	
 	struct VSInputPbr
 	{
@@ -1287,23 +1284,20 @@
 	}
 	
 	#if SHADOW_SUPPORTED
-	inline float SampleShadowMap(Texture2DArray textureArray, SamplerComparisonState shadowMapSampler, in float2 base_uv, in float u, in float v, in float2 shadowMapSizeInv,
+	float SampleShadowMap(Texture2DArray textureArray, SamplerComparisonState shadowMapSampler, in float2 base_uv, in float u, in float v, in float2 shadowMapSizeInv,
 	                      in uint cascadeIdx,  in float depth) {
 	
 	    float2 uv = base_uv + float2(u, v) * shadowMapSizeInv;
 	    return textureArray.SampleCmpLevelZero(shadowMapSampler, float3(uv, cascadeIdx), depth);
 	}
 	
-	float SampleShadowMapPCF(Texture2DArray textureArray, SamplerComparisonState shadowMapSampler,in int shadowFilter, in float3 shadowPosition, in uint cascadeIdx, in float shadowBias, in float shadowMapResolution)
+	float SampleShadowMapPCF(Texture2DArray textureArray, SamplerComparisonState shadowMapSampler, in float3 shadowPosition, in uint cascadeIdx, in float shadowBias, in float shadowMapResolution)
 	{
 	    float2 shadowTexcoord = shadowPosition.xy * float2(0.5, -0.5) + float2(0.5, 0.5);
 		float lightDepth = saturate(shadowPosition.z - shadowBias);
-		
-		if(shadowFilter == 0)
-		{
-			return textureArray.SampleCmpLevelZero(shadowMapSampler, float3(shadowTexcoord.xy, cascadeIdx), lightDepth);
-		}
-		
+
+	#if SHADOWFILTER3 || SHADOWFILTER5 || SHADOWFILTER7
+	
 		float2 shadowMapSize = float2(shadowMapResolution, shadowMapResolution);
 	
 		float2 uv = shadowTexcoord.xy * shadowMapSize; // 1 unit - 1 texel
@@ -1322,115 +1316,253 @@
 		
 	    float sum = 0;
 	
-		if(shadowFilter == 1)
-		{
-			float uw0 = (3 - 2 * s);
-		    float uw1 = (1 + 2 * s);
+		#if SHADOWFILTER3
+
+		float uw0 = (3 - 2 * s);
+	    float uw1 = (1 + 2 * s);
+	
+	    float u0 = (2 - s) / uw0 - 1;
+	    float u1 = s / uw1 + 1;
+	
+	    float vw0 = (3 - 2 * t);
+	    float vw1 = (1 + 2 * t);
+	
+	    float v0 = (2 - t) / vw0 - 1;
+	    float v1 = t / vw1 + 1;
+	
+	    sum += uw0 * vw0 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u0, v0, shadowMapSizeInv, cascadeIdx, lightDepth);
+	    sum += uw1 * vw0 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u1, v0, shadowMapSizeInv, cascadeIdx, lightDepth);
+	    sum += uw0 * vw1 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u0, v1, shadowMapSizeInv, cascadeIdx, lightDepth);
+	    sum += uw1 * vw1 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u1, v1, shadowMapSizeInv, cascadeIdx, lightDepth);
+	
+	    return sum * 1.0 / 16;
+	    
+		#elif SHADOWFILTER5
+
+		float uw0 = (4 - 3 * s);
+	    float uw1 = 7;
+	    float uw2 = (1 + 3 * s);
+	
+	    float u0 = (3 - 2 * s) / uw0 - 2;
+	    float u1 = (3 + s) / uw1;
+	    float u2 = s / uw2 + 2;
+	
+	    float vw0 = (4 - 3 * t);
+	    float vw1 = 7;
+	    float vw2 = (1 + 3 * t);
+	
+	    float v0 = (3 - 2 * t) / vw0 - 2;
+	    float v1 = (3 + t) / vw1;
+	    float v2 = t / vw2 + 2;
+	
+	    sum += uw0 * vw0 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u0, v0, shadowMapSizeInv, cascadeIdx, lightDepth);
+	    sum += uw1 * vw0 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u1, v0, shadowMapSizeInv, cascadeIdx, lightDepth);
+	    sum += uw2 * vw0 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u2, v0, shadowMapSizeInv, cascadeIdx, lightDepth);
+	
+	    sum += uw0 * vw1 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u0, v1, shadowMapSizeInv, cascadeIdx, lightDepth);
+	    sum += uw1 * vw1 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u1, v1, shadowMapSizeInv, cascadeIdx, lightDepth);
+	    sum += uw2 * vw1 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u2, v1, shadowMapSizeInv, cascadeIdx, lightDepth);
+	
+	    sum += uw0 * vw2 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u0, v2, shadowMapSizeInv, cascadeIdx, lightDepth);
+	    sum += uw1 * vw2 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u1, v2, shadowMapSizeInv, cascadeIdx, lightDepth);
+	    sum += uw2 * vw2 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u2, v2, shadowMapSizeInv, cascadeIdx, lightDepth);
+	
+	    return sum * 1.0 / 144;
+		    
+		#elif SHADOWFILTER7
+
+		float uw0 = (5 * s - 6);
+		float uw1 = (11 * s - 28);
+		float uw2 = -(11 * s + 17);
+		float uw3 = -(5 * s + 1);
 		
-		    float u0 = (2 - s) / uw0 - 1;
-		    float u1 = s / uw1 + 1;
+		float u0 = (4 * s - 5) / uw0 - 3;
+		float u1 = (4 * s - 16) / uw1 - 1;
+		float u2 = -(7 * s + 5) / uw2 + 1;
+		float u3 = -s / uw3 + 3;
 		
-		    float vw0 = (3 - 2 * t);
-		    float vw1 = (1 + 2 * t);
+		float vw0 = (5 * t - 6);
+		float vw1 = (11 * t - 28);
+		float vw2 = -(11 * t + 17);
+		float vw3 = -(5 * t + 1);
 		
-		    float v0 = (2 - t) / vw0 - 1;
-		    float v1 = t / vw1 + 1;
+		float v0 = (4 * t - 5) / vw0 - 3;
+		float v1 = (4 * t - 16) / vw1 - 1;
+		float v2 = -(7 * t + 5) / vw2 + 1;
+		float v3 = -t / vw3 + 3;
 		
-		    sum += uw0 * vw0 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u0, v0, shadowMapSizeInv, cascadeIdx, lightDepth);
-		    sum += uw1 * vw0 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u1, v0, shadowMapSizeInv, cascadeIdx, lightDepth);
-		    sum += uw0 * vw1 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u0, v1, shadowMapSizeInv, cascadeIdx, lightDepth);
-		    sum += uw1 * vw1 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u1, v1, shadowMapSizeInv, cascadeIdx, lightDepth);
+		sum += uw0 * vw0 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u0, v0, shadowMapSizeInv, cascadeIdx, lightDepth);
+		sum += uw1 * vw0 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u1, v0, shadowMapSizeInv, cascadeIdx, lightDepth);
+		sum += uw2 * vw0 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u2, v0, shadowMapSizeInv, cascadeIdx, lightDepth);
+		sum += uw3 * vw0 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u3, v0, shadowMapSizeInv, cascadeIdx, lightDepth);
 		
-		    return sum * 1.0 / 16;
-		}
-		else if(shadowFilter == 2)
-		{
-			float uw0 = (4 - 3 * s);
-		    float uw1 = 7;
-		    float uw2 = (1 + 3 * s);
+		sum += uw0 * vw1 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u0, v1, shadowMapSizeInv, cascadeIdx, lightDepth);
+		sum += uw1 * vw1 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u1, v1, shadowMapSizeInv, cascadeIdx, lightDepth);
+		sum += uw2 * vw1 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u2, v1, shadowMapSizeInv, cascadeIdx, lightDepth);
+		sum += uw3 * vw1 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u3, v1, shadowMapSizeInv, cascadeIdx, lightDepth);
 		
-		    float u0 = (3 - 2 * s) / uw0 - 2;
-		    float u1 = (3 + s) / uw1;
-		    float u2 = s / uw2 + 2;
+		sum += uw0 * vw2 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u0, v2, shadowMapSizeInv, cascadeIdx, lightDepth);
+		sum += uw1 * vw2 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u1, v2, shadowMapSizeInv, cascadeIdx, lightDepth);
+		sum += uw2 * vw2 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u2, v2, shadowMapSizeInv, cascadeIdx, lightDepth);
+		sum += uw3 * vw2 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u3, v2, shadowMapSizeInv, cascadeIdx, lightDepth);
 		
-		    float vw0 = (4 - 3 * t);
-		    float vw1 = 7;
-		    float vw2 = (1 + 3 * t);
+		sum += uw0 * vw3 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u0, v3, shadowMapSizeInv, cascadeIdx, lightDepth);
+		sum += uw1 * vw3 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u1, v3, shadowMapSizeInv, cascadeIdx, lightDepth);
+		sum += uw2 * vw3 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u2, v3, shadowMapSizeInv, cascadeIdx, lightDepth);
+		sum += uw3 * vw3 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u3, v3, shadowMapSizeInv, cascadeIdx, lightDepth);
 		
-		    float v0 = (3 - 2 * t) / vw0 - 2;
-		    float v1 = (3 + t) / vw1;
-		    float v2 = t / vw2 + 2;
+		return sum * 1.0 / 2704;
 		
-		    sum += uw0 * vw0 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u0, v0, shadowMapSizeInv, cascadeIdx, lightDepth);
-		    sum += uw1 * vw0 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u1, v0, shadowMapSizeInv, cascadeIdx, lightDepth);
-		    sum += uw2 * vw0 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u2, v0, shadowMapSizeInv, cascadeIdx, lightDepth);
+		#endif
+	#else
+	
+		return textureArray.SampleCmpLevelZero(shadowMapSampler, float3(shadowTexcoord.xy, cascadeIdx), lightDepth);
 		
-		    sum += uw0 * vw1 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u0, v1, shadowMapSizeInv, cascadeIdx, lightDepth);
-		    sum += uw1 * vw1 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u1, v1, shadowMapSizeInv, cascadeIdx, lightDepth);
-		    sum += uw2 * vw1 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u2, v1, shadowMapSizeInv, cascadeIdx, lightDepth);
-		
-		    sum += uw0 * vw2 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u0, v2, shadowMapSizeInv, cascadeIdx, lightDepth);
-		    sum += uw1 * vw2 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u1, v2, shadowMapSizeInv, cascadeIdx, lightDepth);
-		    sum += uw2 * vw2 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u2, v2, shadowMapSizeInv, cascadeIdx, lightDepth);
-		
-		    return sum * 1.0 / 144;
-		}
-		else
-		{		
-			float uw0 = (5 * s - 6);
-			float uw1 = (11 * s - 28);
-			float uw2 = -(11 * s + 17);
-			float uw3 = -(5 * s + 1);
-			
-			float u0 = (4 * s - 5) / uw0 - 3;
-			float u1 = (4 * s - 16) / uw1 - 1;
-			float u2 = -(7 * s + 5) / uw2 + 1;
-			float u3 = -s / uw3 + 3;
-			
-			float vw0 = (5 * t - 6);
-			float vw1 = (11 * t - 28);
-			float vw2 = -(11 * t + 17);
-			float vw3 = -(5 * t + 1);
-			
-			float v0 = (4 * t - 5) / vw0 - 3;
-			float v1 = (4 * t - 16) / vw1 - 1;
-			float v2 = -(7 * t + 5) / vw2 + 1;
-			float v3 = -t / vw3 + 3;
-			
-			sum += uw0 * vw0 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u0, v0, shadowMapSizeInv, cascadeIdx, lightDepth);
-			sum += uw1 * vw0 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u1, v0, shadowMapSizeInv, cascadeIdx, lightDepth);
-			sum += uw2 * vw0 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u2, v0, shadowMapSizeInv, cascadeIdx, lightDepth);
-			sum += uw3 * vw0 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u3, v0, shadowMapSizeInv, cascadeIdx, lightDepth);
-			
-			sum += uw0 * vw1 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u0, v1, shadowMapSizeInv, cascadeIdx, lightDepth);
-			sum += uw1 * vw1 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u1, v1, shadowMapSizeInv, cascadeIdx, lightDepth);
-			sum += uw2 * vw1 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u2, v1, shadowMapSizeInv, cascadeIdx, lightDepth);
-			sum += uw3 * vw1 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u3, v1, shadowMapSizeInv, cascadeIdx, lightDepth);
-			
-			sum += uw0 * vw2 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u0, v2, shadowMapSizeInv, cascadeIdx, lightDepth);
-			sum += uw1 * vw2 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u1, v2, shadowMapSizeInv, cascadeIdx, lightDepth);
-			sum += uw2 * vw2 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u2, v2, shadowMapSizeInv, cascadeIdx, lightDepth);
-			sum += uw3 * vw2 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u3, v2, shadowMapSizeInv, cascadeIdx, lightDepth);
-			
-			sum += uw0 * vw3 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u0, v3, shadowMapSizeInv, cascadeIdx, lightDepth);
-			sum += uw1 * vw3 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u1, v3, shadowMapSizeInv, cascadeIdx, lightDepth);
-			sum += uw2 * vw3 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u2, v3, shadowMapSizeInv, cascadeIdx, lightDepth);
-			sum += uw3 * vw3 * SampleShadowMap(textureArray, shadowMapSampler, base_uv, u3, v3, shadowMapSizeInv, cascadeIdx, lightDepth);
-			
-			return sum * 1.0 / 2704;
-		}
+	#endif
 	}
 	
-	inline float3 ShadowCascade(Texture2DArray textureArray, SamplerComparisonState shadowMapSampler, in LightProperties lightProperties, in float3 shadowPosition, in uint cascadeIdx)
+	float3 ShadowCascade(Texture2DArray textureArray, SamplerComparisonState shadowMapSampler, in LightProperties lightProperties, in float3 shadowPosition, in uint cascadeIdx)
 	{
 		float3 shadow = 0;
 		float3 cascadeColor = 1.0;
+
+#if DEBUG
+		if(lightProperties.DebugModeEnabled())
+		{
+	        const float3 CascadeColors[6] =
+	        {
+	            float3(1.0, 0.0, 0.0),
+	            float3(0.0, 1.0, 0.0),
+	            float3(0.0, 0.0, 1.0),
+	            float3(1.0, 1.0, 0.0),
+	            float3(1.0, 0.0, 1.0),
+	            float3(0.0, 1.0, 1.0)
+	        };
 	
-		shadow = SampleShadowMapPCF(textureArray, shadowMapSampler, lightProperties.ShadowFilter, shadowPosition, lightProperties.ShadowMapIndex + cascadeIdx, lightProperties.ShadowBias, lightProperties.ShadowMapResolution());
+	        cascadeColor = CascadeColors[cascadeIdx];
+	    }
+#endif	
+	
+		shadow = SampleShadowMapPCF(textureArray, shadowMapSampler, shadowPosition, lightProperties.ShadowMapIndex + cascadeIdx, lightProperties.ShadowBias, lightProperties.ShadowMapResolution);
 		shadow = saturate(shadow + lightProperties.ShadowOpacity);
 		return shadow * cascadeColor;
 	}
+	
+	uint SampleCubeFace(float3 cubeTexcoord)
+	{
+	  float maxAxis = max( abs( cubeTexcoord.x ), max( abs( cubeTexcoord.y ), abs( cubeTexcoord.z ) ) );
+	  uint face = 6;
+	
+	  [flatten]
+	  if( maxAxis == abs( cubeTexcoord.x ) )
+	  {
+	    face = cubeTexcoord.x > 0 ? 0 : 1;
+	  }
+	
+	  [flatten]
+	  if( maxAxis == abs( cubeTexcoord.y ) )
+	  {
+	    face = cubeTexcoord.y > 0 ? 2 : 3;
+	  }
+	
+	  [flatten]
+	  if( maxAxis == abs( cubeTexcoord.z ) )
+	  {
+	    face = cubeTexcoord.z > 0 ? 4 : 5;
+	  }
+	
+	  return face;
+	}
 	#endif
+	
+	inline float3 GetLightColor(in LightProperties lightProperties)
+	{
+#if DEBUG
+		return lightProperties.DebugModeEnabled() ? float3(1,1,1) : lightProperties.Color;
+#else
+		return lightProperties.Color;
+#endif
+	}
+	
+	void PointLight(const ShadingParams shading, const MaterialInputs material, const PixelParams pixel, const LightProperties lightProperties, inout float3 color)
+	{
+		float3 worldPosition = shading.position;
+		float3 posToLight = lightProperties.Position - worldPosition;
+		float3 L = normalize(posToLight);
+		float attenuation = GetDistanceAttenuation(posToLight, lightProperties.Falloff);
+		float NoL = saturate(dot(shading.normal, L));
+	
+		[branch]
+		if (NoL * attenuation > 0)
+		{
+			float3 shadowTerm = 1;
+			
+		#if SHADOW_SUPPORTED
+			[branch]
+			if(lightProperties.IsCastingShadow())
+			{
+				float4 shadowPosition = 0;
+				uint face = SampleCubeFace(-posToLight);
+				
+				shadowPosition = mul(float4(shading.position, 1), ShadowViewProjectionArray[lightProperties.ShadowProjectionIndex + face]);
+				shadowPosition.xyz /= shadowPosition.w;
+				
+				shadowTerm = ShadowCascade(PunctualShadowMap, PunctualShadowMapSampler, lightProperties, shadowPosition.xyz, face);
+			}
+		#endif		
+			
+			float3 lightColor = GetLightColor(lightProperties) * 
+								ComputePreExposedIntensity(lightProperties.Intensity, Exposure) * 
+								material.ambientOcclusion * 
+								attenuation *
+								shadowTerm;
+			
+			SurfaceToLight surfaceToLight = CreateSurfaceToLight(pixel, shading, L, NoL);
+			color += SurfaceShading(shading, pixel, surfaceToLight, lightColor);
+		}
+	}
+	
+	float GetAngleAttenuation(const float3 lightDir, const float3 l, const float2 scaleOffset)
+	{
+		float cd = dot(lightDir, l);
+		float attenuation = saturate(cd * scaleOffset.x + scaleOffset.y);
+		return attenuation * attenuation;
+	}
+	
+	void SpotLight(const ShadingParams shading, const MaterialInputs material, const PixelParams pixel, const LightProperties lightProperties, inout float3 color)
+	{
+		float3 worldPosition = shading.position;
+		float3 posToLight = lightProperties.Position - worldPosition;
+		float3 L = normalize(posToLight);
+		float attenuation = GetDistanceAttenuation(posToLight, lightProperties.Falloff);
+		attenuation *= GetAngleAttenuation(-lightProperties.Direction, L, lightProperties.Scale);
+		float NoL = saturate(dot(shading.normal, L));
+	
+		[branch]
+		if (NoL * attenuation > 0)
+		{
+			float3 shadowTerm = 1;
+		
+		#if SHADOW_SUPPORTED		
+			[branch]
+			if(lightProperties.IsCastingShadow())
+			{
+				float4 shadowPosition = mul(float4(shading.position, 1), ShadowViewProjectionArray[lightProperties.ShadowProjectionIndex]);
+				shadowPosition.xyz /= shadowPosition.w;
+				shadowTerm = ShadowCascade(SpotShadowMap, SpotShadowMapSampler, lightProperties, shadowPosition.xyz, 0);
+			}
+		#endif
+			
+			float3 lightColor = lightProperties.Color * 
+								ComputePreExposedIntensity(lightProperties.Intensity, Exposure) * 
+								material.ambientOcclusion * 
+								attenuation * 
+								shadowTerm;
+								
+			SurfaceToLight surfaceToLight = CreateSurfaceToLight(pixel, shading, L, NoL);
+			color += SurfaceShading(shading, pixel, surfaceToLight, lightColor);
+		}
+	}
 	
 	void DirectionalLight(const ShadingParams shading, const MaterialInputs material, const PixelParams pixel, const LightProperties lightProperties, inout float3 color, in float depthVS)
 	{
@@ -1464,13 +1596,319 @@
 			}
 		#endif		
 			
-			float3 lightColor = lightProperties.Color *
+			float3 lightColor = GetLightColor(lightProperties) *
 								ComputePreExposedIntensity(lightProperties.Intensity, Exposure) * 
 								material.ambientOcclusion *
 								shadowTerm;
 								
 			SurfaceToLight surfaceToLight = CreateSurfaceToLight(pixel, shading, L, NoL);
 			color += SurfaceShading(shading, pixel, surfaceToLight, lightColor);
+		}
+	}
+	
+	void TubeLight(const ShadingParams shading, const MaterialInputs material, const PixelParams pixel, const LightProperties lightProperties, inout float3 color)
+	{
+		float3 lightLeft = lightProperties.Left;
+		float lightWidth = lightProperties.Scale.x * 0.5;
+		float lightRadius = lightProperties.Radius;
+		float3 lightPosition = lightProperties.Position;
+	
+		float3 P0 = lightPosition - lightLeft * lightWidth;
+		float3 P1 = lightPosition + lightLeft * lightWidth;
+	
+		float3 forward = normalize(ClosestPointOnLine(P0, P1, shading.position) - shading.position);
+		float3 lightUp = cross(lightLeft, forward);
+	
+		float3 p0 = lightPosition - lightLeft * lightWidth + lightRadius * lightUp;
+		float3 p1 = lightPosition - lightLeft * lightWidth - lightRadius * lightUp;
+		float3 p2 = lightPosition + lightLeft * lightWidth - lightRadius * lightUp;
+		float3 p3 = lightPosition + lightLeft * lightWidth + lightRadius * lightUp;
+	
+		float solidAngle = RectangleSolidAngle(shading.position, p0, p1, p2, p3);
+	
+		float fLight = solidAngle * 0.2 * (
+			saturate(dot(normalize(p0 - shading.position), shading.normal)) +
+			saturate(dot(normalize(p1 - shading.position), shading.normal)) +
+			saturate(dot(normalize(p2 - shading.position), shading.normal)) +
+			saturate(dot(normalize(p3 - shading.position), shading.normal)) +
+			saturate(dot(normalize(lightPosition - shading.position), shading.normal)));
+	
+		float3 spherePosition = ClosestPointOnSegment(P0, P1, shading.position);
+		float3 sphereUnormL = spherePosition - shading.position;
+		float3 sphereL = normalize(sphereUnormL);
+		float sqrSphereDistance = dot(sphereUnormL, sphereUnormL);
+	
+		float fLightSphere = PI * saturate(dot(sphereL, shading.normal)) * ((lightRadius * lightRadius) / sqrSphereDistance);
+		fLight += fLightSphere;
+		fLight *= GetSquareFalloffAttenuation(sqrSphereDistance, lightProperties.Falloff);
+	
+		[branch]
+		if (fLight > 0)
+		{
+			float3 shadowTerm = 1;
+			
+			#if SHADOW_SUPPORTED	
+			[branch]
+			if(lightProperties.IsCastingShadow())
+			{
+				float4 shadowPosition = 0;
+				float3 posToLight = lightProperties.Position - shading.position;
+				uint face = SampleCubeFace(-posToLight);
+				
+				shadowPosition = mul(float4(shading.position, 1), ShadowViewProjectionArray[lightProperties.ShadowProjectionIndex + face]);
+				shadowPosition.xyz /= shadowPosition.w;
+				
+				shadowTerm = ShadowCascade(PunctualShadowMap, PunctualShadowMapSampler, lightProperties, shadowPosition.xyz, face);
+			}
+			#endif
+	
+			float3 lightColor = GetLightColor(lightProperties) * 
+								ComputePreExposedIntensity(lightProperties.Intensity, Exposure) * 
+								material.ambientOcclusion * 
+								fLight *
+								shadowTerm;
+			
+			float3 r = shading.reflected;
+			r = GetSpecularDominantDirArea(shading.normal, r, material.roughness);
+	
+			// First, the closest point to the ray on the segment
+			float3 L0 = P0 - shading.position;
+			float3 L1 = P1 - shading.position;
+			float3 Ld = L1 - L0;
+			float rdotLdSqr = dot(r, Ld);
+			float t = dot(r, L0) * rdotLdSqr - dot(L0, Ld);
+			t /= dot(Ld, Ld) - rdotLdSqr * rdotLdSqr;
+	
+			float3 L = (L0 + saturate(t) * Ld);
+	
+			// Then I place a sphere on that point and calculate the lisght vector like for sphere light.
+			float3 centerToRay = dot(L, r) * r - L;
+			float3 closestPoint = L + centerToRay * saturate(lightRadius / length(centerToRay));
+			L = normalize(closestPoint);
+	
+			SurfaceToLight surfaceToLight = CreateSurfaceToLight(pixel, shading, L);
+	
+			color += SurfaceShadingAreaLight(shading, pixel, surfaceToLight, lightColor, 1);
+		}
+	}
+	
+	void RectangleLight(const ShadingParams shading, const MaterialInputs material, const PixelParams pixel, const LightProperties lightProperties, inout float3 color)
+	{
+		float3 posToLight = lightProperties.Position - shading.position;
+	
+		float halfwidth = lightProperties.Scale.x * 0.5;
+		float halfheight = lightProperties.Scale.y * 0.5;
+		float3 lightPlaneNormal = lightProperties.Direction;
+		float3 lightLeft = lightProperties.Left;
+		float3 lightUp = cross(lightLeft, lightPlaneNormal);
+		float3 lightPosition = lightProperties.Position;
+	
+		float3 p0 = lightPosition + lightLeft * -halfwidth + lightUp * halfheight;
+		float3 p1 = lightPosition + lightLeft * -halfwidth + lightUp * -halfheight;
+		float3 p2 = lightPosition + lightLeft * halfwidth + lightUp * -halfheight;
+		float3 p3 = lightPosition + lightLeft * halfwidth + lightUp * halfheight;
+	
+		float solidAngle = RectangleSolidAngle(shading.position, p0, p1, p2, p3);
+	
+		if (dot(lightPlaneNormal, shading.position - lightPosition) < 0)
+		{
+			float fLight = solidAngle * 0.2 * (
+				saturate(dot(normalize(p0 - shading.position), shading.normal)) +
+				saturate(dot(normalize(p1 - shading.position), shading.normal)) +
+				saturate(dot(normalize(p2 - shading.position), shading.normal)) +
+				saturate(dot(normalize(p3 - shading.position), shading.normal)) +
+				saturate(dot(normalize(lightPosition - shading.position), shading.normal)));
+	
+			float sqrDist = dot(posToLight, posToLight);
+			fLight *= GetSquareFalloffAttenuation(sqrDist, lightProperties.Falloff);
+	
+			float3 r = shading.reflected;
+			r = GetSpecularDominantDirArea(shading.normal, r, material.roughness);
+			float specularAttenuation = saturate(abs(dot(lightPlaneNormal, r))); // if ray is perpendicular to light plane, it would break specular, so fade in that case
+	
+			float3 L;
+	
+			// We approximate L by the closest point on the reflection ray to the light source (representative point technique) to achieve a nice looking specular reflection
+			[branch]
+			if ((specularAttenuation * fLight) > 0)
+			{
+				float3 shadowTerm = 1;
+				
+				#if SHADOW_SUPPORTED
+				[branch]
+				if(lightProperties.IsCastingShadow())
+				{
+					float4 shadowPosition = 0;
+					uint face = SampleCubeFace(-posToLight);
+					
+					shadowPosition = mul(float4(shading.position, 1), ShadowViewProjectionArray[lightProperties.ShadowProjectionIndex + face]);
+					shadowPosition.xyz /= shadowPosition.w;
+					
+					shadowTerm = ShadowCascade(PunctualShadowMap, PunctualShadowMapSampler, lightProperties, shadowPosition.xyz, face);
+				}
+				#endif
+				
+				float3 lightColor = GetLightColor(lightProperties) *
+									ComputePreExposedIntensity(lightProperties.Intensity, Exposure) *
+									material.ambientOcclusion *
+									fLight *
+									shadowTerm;
+				
+				float traced = TraceRectangle(shading.position, r, p0, p1, p2, p3);
+				[branch]
+				if (traced > 0)
+				{
+					// Trace succeeded so the light vector L is the reflection vector itself
+					L = r;
+				}
+				else
+				{
+					// The trace didn't succeed, so we need to find the closest point to the ray on the rectangle
+	
+					// We find the intersection point on the plane of the rectangle
+					float3 tracedPlane = shading.position + r * TracePlane(shading.position, r, lightProperties.Position, lightPlaneNormal);
+	
+					// Then find the closest point along the edges of the rectangle (edge = segment)
+					float3 PC[4] = {
+						ClosestPointOnSegment(p0, p1, tracedPlane),
+						ClosestPointOnSegment(p1, p2, tracedPlane),
+						ClosestPointOnSegment(p2, p3, tracedPlane),
+						ClosestPointOnSegment(p3, p0, tracedPlane),
+					};
+					float dist[4] = {
+						distance(PC[0], tracedPlane),
+						distance(PC[1], tracedPlane),
+						distance(PC[2], tracedPlane),
+						distance(PC[3], tracedPlane),
+					};
+	
+					float3 min = PC[0];
+					float minDist = dist[0];
+					[unroll]
+					for (uint iLoop = 1; iLoop < 4; iLoop++)
+					{
+						if (dist[iLoop] < minDist)
+						{
+							minDist = dist[iLoop];
+							min = PC[iLoop];
+						}
+					}
+	
+					L = min - shading.position;
+					L = normalize(L); // TODO: Is it necessary?
+				}
+	
+				SurfaceToLight surfaceToLight = CreateSurfaceToLight(pixel, shading, L);
+	
+				color += SurfaceShadingAreaLight(shading, pixel, surfaceToLight, lightColor, specularAttenuation);
+			}
+		}
+	}
+	
+	void DiskLight(const ShadingParams shading, const MaterialInputs material, const PixelParams pixel, const LightProperties lightProperties, inout float3 color)
+	{
+		float3 posToLight = lightProperties.Position - shading.position;
+		float sqrDist = dot(posToLight, posToLight);
+		float3 L = normalize(posToLight);
+		float radius = lightProperties.Radius;
+	
+		float cosTheta = clamp(dot(shading.normal, L), -0.999, 0.999);
+		float sqrLightRadius = radius * radius;
+		float sinSigmaSqr = min(sqrLightRadius / sqrDist, 0.9999);
+		float fLight = illuminanceSphereOrDisk(cosTheta, sinSigmaSqr) * saturate(dot(lightProperties.Direction, L));
+		fLight *= GetSquareFalloffAttenuation(sqrDist, lightProperties.Falloff);
+	
+		[branch]
+		if (fLight > 0)
+		{
+			float3 r = shading.reflected;
+			r = GetSpecularDominantDirArea(shading.normal, r, material.roughness);
+	
+			float specularAttenuation = saturate(abs(dot(lightProperties.Direction, r)));
+	
+			[branch]
+			if (specularAttenuation > 0)
+			{
+				float3 shadowTerm = 1;
+				
+				#if SHADOW_SUPPORTED
+				[branch]
+				if(lightProperties.IsCastingShadow())
+				{
+					float4 shadowPosition = 0;
+					uint face = SampleCubeFace(-posToLight);
+					
+					shadowPosition = mul(float4(shading.position, 1), ShadowViewProjectionArray[lightProperties.ShadowProjectionIndex + face]);
+					shadowPosition.xyz /= shadowPosition.w;
+					
+					shadowTerm = ShadowCascade(PunctualShadowMap, PunctualShadowMapSampler, lightProperties, shadowPosition.xyz, face);
+				}
+				#endif
+				
+				float3 lightColor = GetLightColor(lightProperties) *
+									ComputePreExposedIntensity(lightProperties.Intensity, Exposure) * 
+									material.ambientOcclusion * 
+									fLight *
+									shadowTerm;
+				
+				float t = TracePlane(shading.position, r, lightProperties.Position, lightProperties.Direction);
+				float3 p = shading.position + r * t;
+				float3 centerToRay = p - lightProperties.Position;
+				float3 closestPoint = posToLight + centerToRay * saturate(radius / length(centerToRay));
+				L = normalize(closestPoint);
+				SurfaceToLight surfaceToLight = CreateSurfaceToLight(pixel, shading, L);
+	
+				color += SurfaceShadingAreaLight(shading, pixel, surfaceToLight, lightColor, specularAttenuation);
+			}
+		}
+	}
+	
+	void SphereLight(const ShadingParams shading, const MaterialInputs material, const PixelParams pixel, const LightProperties lightProperties, inout float3 color)
+	{
+		float3 posToLight = lightProperties.Position - shading.position;
+		float sqrDist = dot(posToLight, posToLight);
+		float3 L = normalize(posToLight);
+		float radius = lightProperties.Radius;
+	
+		float cosTheta = clamp(dot(shading.normal, L), -0.999, 0.999);
+		float sqrLightRadius = radius * radius;
+		float sinSigmaSqr = min(sqrLightRadius / sqrDist, 0.9999);
+		float fLight = illuminanceSphereOrDisk(cosTheta, sinSigmaSqr);
+		fLight *= GetSquareFalloffAttenuation(sqrDist, lightProperties.Falloff);
+	
+		if (fLight > 0)
+		{
+			float3 shadowTerm = 1;
+	
+			#if SHADOW_SUPPORTED
+			[branch]
+			if(lightProperties.IsCastingShadow())
+			{
+				float4 shadowPosition = 0;
+				uint face = SampleCubeFace(-posToLight);
+				
+				shadowPosition = mul(float4(shading.position, 1), ShadowViewProjectionArray[lightProperties.ShadowProjectionIndex + face]);
+				shadowPosition.xyz /= shadowPosition.w;
+				
+				shadowTerm = ShadowCascade(PunctualShadowMap, PunctualShadowMapSampler, lightProperties, shadowPosition.xyz, face);
+			}
+			#endif
+		
+			float3 lightColor = GetLightColor(lightProperties) * 
+								ComputePreExposedIntensity(lightProperties.Intensity, Exposure) * 
+								material.ambientOcclusion * 
+								fLight *
+								shadowTerm;
+	
+			float3 r = shading.reflected;
+			r = GetSpecularDominantDirArea(shading.normal, r, material.roughness);
+	
+			float3 centerToRay = dot(posToLight, r) * r - posToLight;
+			float3 closestPoint = posToLight + centerToRay * saturate(radius / length(centerToRay));
+			L = normalize(closestPoint);
+	
+			SurfaceToLight surfaceToLight = CreateSurfaceToLight(pixel, shading, L);
+			color += SurfaceShadingAreaLight(shading, pixel, surfaceToLight, lightColor, 1);
 		}
 	}
 	
@@ -1495,6 +1933,7 @@
 			const uint last_item = first_item + LightBufferCount - 1;
 			const uint first_bucket = first_item / 32;
 			const uint last_bucket = min(last_item / 32, 1); // only 2 buckets max (uint2) for forward pass!
+			
 			[loop]
 			for (uint bucket = first_bucket; bucket <= last_bucket; ++bucket)
 			{
@@ -1511,7 +1950,51 @@
 					bucket_bits ^= 1 << bucket_bit_index;
 	
 					LightProperties lightProperties = Lights[light_index];
-					DirectionalLight(shading, material, pixel, lightProperties, color, depthVS);
+					
+					[branch]
+					switch (lightProperties.LightType)
+					{
+						case DIRECTIONAL_LIGHT:
+						{
+							DirectionalLight(shading, material, pixel, lightProperties, color, depthVS);
+							break;
+						}
+						case POINT_LIGHT:
+						{
+							PointLight(shading, material, pixel, lightProperties, color);
+							break;
+						}
+						case SPOT_LIGHT:
+						{
+							SpotLight(shading, material, pixel, lightProperties, color);
+							break;
+						}
+#if !LOW_PROFILE
+						case TUBE_LIGHT:
+						{
+							TubeLight(shading, material, pixel, lightProperties, color);
+							break;
+						}
+
+						case RECTANGLE_LIGHT:
+						{
+							RectangleLight(shading, material, pixel, lightProperties, color);
+							break;
+						}
+	
+						case DISK_LIGHT:
+						{
+							DiskLight(shading, material, pixel, lightProperties, color);
+							break;
+						}
+	
+						case SPHERE_LIGHT:
+						{
+							SphereLight(shading, material, pixel, lightProperties, color);
+							break;
+						}
+#endif
+					}	
 				}
 			}
 		}
