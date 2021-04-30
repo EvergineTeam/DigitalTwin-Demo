@@ -1959,6 +1959,7 @@
 							DirectionalLight(shading, material, pixel, lightProperties, color, depthVS);
 							break;
 						}
+#if !LOW_PROFILE
 						case POINT_LIGHT:
 						{
 							PointLight(shading, material, pixel, lightProperties, color);
@@ -1969,7 +1970,7 @@
 							SpotLight(shading, material, pixel, lightProperties, color);
 							break;
 						}
-#if !LOW_PROFILE
+
 						case TUBE_LIGHT:
 						{
 							TubeLight(shading, material, pixel, lightProperties, color);

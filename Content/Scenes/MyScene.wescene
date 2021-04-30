@@ -72,7 +72,7 @@ Items:
         Id: bb44cd62-4d92-418a-8a42-bbc2ed2b6f07
         AsignedTo: Default
         IsEnabled: true
-        Material: 09f58a98-ee28-4861-a39d-033b5f86cdea
+        Material: 31695987-1fd1-4fa9-8e67-6d006f290bc4
       - !WaveEngine.Components.Graphics3D.SphereMesh,WaveEngine.Components
         Id: 3ef37285-f016-4173-bbf0-278ec1624224
         Diameter: 1.0
@@ -449,7 +449,7 @@ Items:
               B: 0.759229541
               G: 0.862923861
               R: 0.93927443
-            ShadowBias: 0.00499999989
+            ShadowBias: 0.00700000022
             ShadowDistance: 80.0
             ShadowOpacity: 1.0
             SplitDistance:
