@@ -2,6 +2,8 @@
 Digital Twin application sample based on a solar energy field. It simulates a time lapse and how
 users could check different measurements related to tracker angles, voltage or intensity.
 
+Live Demo: http://digitaltwin-demo.azurewebsites.net/
+
 ![alt Digital Twin Demo](Images/Measurements.JPG)
 
 ## Build and Test
