@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using WaveEngine.Components.WorkActions;
-using WaveEngine.Framework;
-using WaveEngine.Framework.Graphics;
-using WaveEngine.Framework.Services;
+using Evergine.Components.WorkActions;
+using Evergine.Framework;
+using Evergine.Framework.Graphics;
+using Evergine.Framework.Services;
 
 namespace DigitalTwin.Features.Sun
 {

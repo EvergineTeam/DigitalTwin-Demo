@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using WaveEngine.Common.Graphics;
-using WaveEngine.Components.Graphics3D;
-using WaveEngine.Framework;
-using WaveEngine.Framework.Graphics;
-using WaveEngine.Mathematics;
+using Evergine.Common.Graphics;
+using Evergine.Components.Graphics3D;
+using Evergine.Framework;
+using Evergine.Framework.Graphics;
+using Evergine.Mathematics;
 
 namespace DigitalTwin.Features.Colliders
 {
@@ -68,7 +68,7 @@ namespace DigitalTwin.Features.Colliders
             if (this.hasValidBBox)
             {
                 this.rawBBox = this.meshComponent.BoundingBox.Value;
-                this.aabb = WaveEngine.Mathematics.BoundingBox.Transform(this.rawBBox, this.transform.WorldTransform);
+                this.aabb = Evergine.Mathematics.BoundingBox.Transform(this.rawBBox, this.transform.WorldTransform);
 
                 this.boundingBox.HalfExtent = this.rawBBox.HalfExtent * this.transform.Scale;
                 this.boundingBox.Center = this.transform.Position;
@@ -81,7 +81,7 @@ namespace DigitalTwin.Features.Colliders
             this.boundingBox.Center = this.transform.Position;
             this.boundingBox.Orientation = this.transform.Orientation;
             this.boundingBox.HalfExtent = this.rawBBox.HalfExtent * this.transform.Scale;
-            this.aabb = WaveEngine.Mathematics.BoundingBox.Transform(this.rawBBox, this.transform.WorldTransform);
+            this.aabb = Evergine.Mathematics.BoundingBox.Transform(this.rawBBox, this.transform.WorldTransform);
         }
 
         private void MeshComponent_ChangedMesh(object sender, MeshContainer e)

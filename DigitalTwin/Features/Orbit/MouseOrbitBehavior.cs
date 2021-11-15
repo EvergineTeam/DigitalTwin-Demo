@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
-using WaveEngine.Common.Input.Keyboard;
-using WaveEngine.Common.Input.Mouse;
-using WaveEngine.Framework.Graphics;
-using WaveEngine.Mathematics;
+using Evergine.Common.Input.Keyboard;
+using Evergine.Common.Input.Mouse;
+using Evergine.Framework.Graphics;
+using Evergine.Mathematics;
 
 namespace DigitalTwin.Features.Orbit
 {

@@ -1,15 +1,15 @@
 ﻿// Forked from Wave Engine's develop (ce51ee3f557fbf2ebbba2c27ea5282e73e39ed2a):
-// src/Tools/Editor/WaveEngine.Runner/Viewers/Common/CameraBehavior.cs
-// https://dev.azure.com/waveengineteam/Wave.Engine/_git/WaveEngine?path=%2Fsrc%2FTools%2FEditor%2FWaveEngine.Runner%2FViewers%2FCommon%2FCameraBehavior.cs
+// src/Tools/Editor/Evergine.Runner/Viewers/Common/CameraBehavior.cs
+// https://dev.azure.com/Evergineteam/Wave.Engine/_git/Evergine?path=%2Fsrc%2FTools%2FEditor%2FEvergine.Runner%2FViewers%2FCommon%2FCameraBehavior.cs
 
 // Copyright © 2019 Wave Engine S.L. All rights reserved. Use is subject to license terms.
 
 using System;
 using System.Diagnostics;
 using System.Linq;
-using WaveEngine.Framework;
-using WaveEngine.Framework.Graphics;
-using WaveEngine.Mathematics;
+using Evergine.Framework;
+using Evergine.Framework.Graphics;
+using Evergine.Mathematics;
 
 namespace DigitalTwin.Features.Orbit
 {

@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using WaveEngine.Common.Attributes;
-using WaveEngine.Common.Input;
-using WaveEngine.Components.Graphics3D;
-using WaveEngine.Framework;
-using WaveEngine.Framework.Graphics;
-using WaveEngine.Mathematics;
+using Evergine.Common.Attributes;
+using Evergine.Common.Input;
+using Evergine.Components.Graphics3D;
+using Evergine.Framework;
+using Evergine.Framework.Graphics;
+using Evergine.Mathematics;
 
 namespace DigitalTwin.Features.Colliders
 {
@@ -16,7 +16,7 @@ namespace DigitalTwin.Features.Colliders
         private List<SimpleCollider3D> colliders = new List<SimpleCollider3D>();
         private Camera3D camera;
 
-        [WaveIgnore]
+        [IgnoreEvergine]
         public List<SimpleCollider3D> Colliders => this.colliders;
 
         public void AddCollider(SimpleCollider3D collider)

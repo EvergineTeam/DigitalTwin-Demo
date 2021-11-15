@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.Diagnostics;
-using WaveEngine.Common.Graphics;
-using WaveEngine.Framework;
-using WaveEngine.Framework.Graphics;
-using WaveEngine.Framework.Services;
-using WaveEngine.Mathematics;
-using WaveEngine.OpenGL;
-using WaveEngine.Web;
+using Evergine.Common.Graphics;
+using Evergine.Framework;
+using Evergine.Framework.Graphics;
+using Evergine.Framework.Services;
+using Evergine.Mathematics;
+using Evergine.OpenGL;
+using Evergine.Web;
 using WebAssembly;
 
 namespace DigitalTwin.Web
@@ -15,29 +15,38 @@ namespace DigitalTwin.Web
     {
         private static readonly Dictionary<string, WebSurface> appCanvas = new Dictionary<string, WebSurface>();
 
-        public static void Main(string canvasId)
+        private static WindowsSystem windowsSystem;
+        private static MyApplication application;
+        private static Evergine.Web.WebAssembly wasm;
+
+        public static void Main()
         {
             // Hack for AOT dll dependencies
-            var cp = new WaveEngine.Components.Graphics3D.Spinner();
+            var cp = new Evergine.Components.Graphics3D.Spinner();
 
             // Create app
-            var application = new MyApplication();
+            application = new MyApplication();
 
             MyApplication.EntitySelected += MyApplication_EntitySelected;
             MyApplication.TrackerAngleUpdated += MyApplication_TrackerAngleUpdated;
 
             // Create Services
-            var windowsSystem = new WebWindowsSystem();
+            windowsSystem = new WebWindowsSystem();
             application.Container.RegisterInstance(windowsSystem);
 
-            var document = (JSObject)Runtime.GetGlobalObject("document");
-            var canvas = (JSObject)document.Invoke("getElementById", canvasId);
+            // Wasm instance need to be initialized here for debugger
+            wasm = Evergine.Web.WebAssembly.GetInstance();
+        }
+
+        public static void Run(string canvasId)
+        {
+            var canvas = wasm.GetElementById(canvasId);
             var surface = (WebSurface)windowsSystem.CreateSurface(canvas);
             appCanvas[canvasId] = surface;
             ConfigureGraphicsContext(application, surface);
 
             // Audio is currently unsupported
-            //var xaudio = new WaveEngine.XAudio2.XAudioDevice();
+            //var xaudio = new Evergine.XAudio2.XAudioDevice();
             //application.Container.RegisterInstance(xaudio);
 
             Stopwatch clockTimer = Stopwatch.StartNew();
@@ -45,7 +54,7 @@ namespace DigitalTwin.Web
                 () =>
                 {
                     application.Initialize();
-                    Runtime.InvokeJS("WaveEngine.init();");
+                    wasm.Invoke("window._evergine_ready");
                 },
                 () =>
                 {
@@ -59,13 +68,13 @@ namespace DigitalTwin.Web
 
         private static void MyApplication_EntitySelected(object sender, string e)
         {
-            Runtime.InvokeJS($"WaveEngine.onEvent(\"{e}\");");
+            wasm.Invoke("window._onEvent", true, e);
         }
 
         private static void MyApplication_TrackerAngleUpdated(object sender, float angle)
         {
             var angleAsDegrees = MathHelper.ToDegrees(angle);
-            Runtime.InvokeJS($"WaveEngine.onTrackerAngleUpdated({angleAsDegrees});");
+            wasm.Invoke($"window._onTrackerAngleUpdated", true, angleAsDegrees);
         }
 
         public static void UpdateCanvasSize(string canvasId)
@@ -78,9 +87,9 @@ namespace DigitalTwin.Web
 
         private static void ConfigureGraphicsContext(Application application, Surface surface)
         {
-            // Enabled web canvas antialias (MSAA)
-            Runtime.InvokeJS("EGL.contextAttributes.antialias = true;");
-            Runtime.InvokeJS("EGL.contextAttributes.preserveDrawingBuffer = true;");
+			// Enabled web canvas antialias (MSAA)
+			//Runtime.InvokeJS("EGL.contextAttributes.antialias = true;");
+            //Runtime.InvokeJS("EGL.contextAttributes.preserveDrawingBuffer = true;");
 
             GraphicsContext graphicsContext = new GLGraphicsContext(GraphicsBackend.WebGL2);
             graphicsContext.CreateDevice();
@@ -109,8 +118,8 @@ namespace DigitalTwin.Web
 
         public static void UpdateData(JSObject command)
         {
-            var value1 = command.GetObjectProperty("TrackerPosition").ToString();
-            var value2 = command.GetObjectProperty("SolarPosition").ToString();
+            var value1 = command.GetObjectProperty<string>("TrackerPosition");
+            var value2 = command.GetObjectProperty<string>("SolarPosition");
             float.TryParse(value2, out float sunAngle);
             float.TryParse(value1, out float trackerAngle);
 

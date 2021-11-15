@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using WaveEngine.Common.Graphics;
-using WaveEngine.Components.Graphics3D;
-using WaveEngine.Framework;
-using WaveEngine.Framework.Graphics;
-using WaveEngine.Mathematics;
+using Evergine.Common.Graphics;
+using Evergine.Components.Graphics3D;
+using Evergine.Framework;
+using Evergine.Framework.Graphics;
+using Evergine.Mathematics;
 
 namespace DigitalTwin.Features.Colliders
 {

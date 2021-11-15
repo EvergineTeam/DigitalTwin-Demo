@@ -1,6 +1,7 @@
 Packages:
-  - Id: WaveEngine.Core
-    Version: 3.3.0.8524-preview
+  - Id: Evergine.Core
+    LocalPath: null
+    Version: 2021.11.12.3-preview
 Profiles:
   - AdditionalEffectTechniqueCombinations: SHADOW_SUPPORTED
     AlphaCompressionFormat: BC3_UNorm
@@ -10,14 +11,6 @@ Profiles:
     Name: Windows
     NonAlphaCompressionFormat: BC3_UNorm
     Platform: Windows
-  - AdditionalEffectTechniqueCombinations: LOW_PROFILE-SHADOW_SUPPORTED-SHADOWFILTER3, LOW_PROFILE-GAMMA_COLORSPACE-SHADOW_SUPPORTED-SHADOWFILTER3
-    AlphaCompressionFormat: R8G8B8A8_UNorm
-    CompileEffects: true
-    GraphicsBackend: WebGL2
-    LauncherType: Default
-    Name: Web
-    NonAlphaCompressionFormat: R8G8B8A8_UNorm
-    Platform: Web
   - AdditionalEffectTechniqueCombinations: null
     AlphaCompressionFormat: R8G8B8A8_UNorm
     CompileEffects: false
@@ -26,4 +19,12 @@ Profiles:
     Name: Windows.OpenGL
     NonAlphaCompressionFormat: R8G8B8A8_UNorm
     Platform: Windows
+  - AdditionalEffectTechniqueCombinations: LOW_PROFILE-SHADOW_SUPPORTED-SHADOWFILTER3, LOW_PROFILE-GAMMA_COLORSPACE-SHADOW_SUPPORTED-SHADOWFILTER3
+    AlphaCompressionFormat: R8G8B8A8_UNorm
+    CompileEffects: true
+    GraphicsBackend: WebGL2
+    LauncherType: Default
+    Name: Web
+    NonAlphaCompressionFormat: R8G8B8A8_UNorm
+    Platform: Web
 ResourcesPath: Content
