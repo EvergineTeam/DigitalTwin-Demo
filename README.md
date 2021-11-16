@@ -7,7 +7,7 @@ Live Demo: http://digitaltwin-demo.azurewebsites.net/
 ![alt Digital Twin Demo](Images/Measurements.JPG)
 
 ## Build and Test
-- Required Visual Studio 16.8 with .NET5 support
+- Required Visual Studio 2022 with .NET6 support
 - For web solution: [Web instructions](README.Web.md) 
 
 ### How to use
