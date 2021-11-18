@@ -25,23 +25,18 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0" PrivateAssets="all" />
-	<PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.5.1-rc" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Evergine.Framework" Version="2021.11.12.3-preview" />
-    <PackageReference Include="Evergine.Targets" Version="2021.11.12.3-preview" />
-    <PackageReference Include="Evergine.Targets.Web" Version="2021.11.12.3-preview" />
-    <PackageReference Include="Evergine.Web" Version="2021.11.12.3-preview" />
-    <PackageReference Include="Evergine.OpenGL" Version="2021.11.12.3-preview" />
-    <PackageReference Include="Evergine.HLSLEverywhere" Version="2021.11.12.3-preview" />
+    <PackageReference Include="Evergine.Framework" Version="2021.11.17.2-preview" />
+    <PackageReference Include="Evergine.Targets" Version="2021.11.17.2-preview" />
+    <PackageReference Include="Evergine.Targets.Web" Version="2021.11.17.2-preview" />
+    <PackageReference Include="Evergine.Web" Version="2021.11.17.2-preview" />
+    <PackageReference Include="Evergine.OpenGL" Version="2021.11.17.2-preview" />
+    <PackageReference Include="Evergine.HLSLEverywhere" Version="2021.11.17.2-preview" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\DigitalTwin\DigitalTwin.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ts\" />
   </ItemGroup>
 </Project>
