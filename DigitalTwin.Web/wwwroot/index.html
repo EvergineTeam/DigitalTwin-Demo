@@ -5,84 +5,93 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, user-scalable=yes" />
     <title>DigitalTwin.Web</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow" />
     <link rel="stylesheet" href="styles.css" />
-    <script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="evergine.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
-  <body>
-      <canvas id="evergine-canvas"
-              oncontextmenu="return false;"
-              tabindex="1"></canvas>
-      <div id="splash">
-          <div id="splash-content">
-              <img src="wave-engine-splash-logo.png" />
-              <div id="loading-bar" class="progress">
-                  <div id="loading-bar-percentage" class="progress-bar"></div>
-              </div>
-          </div>
-      </div>
-      <div id="dialog" title="Tracker data">
-          <div>
-              <span id="trackerName"></span>
-              <hr />
-              <img class="tracker-image" src="photovoltaic.webp" />
-              <p>
-                  <b>Position: </b><span id="trackerPosition"></span>
-              </p>
-              <p>
-                  <b>Voltage AC1: </b><span id="trackerVoltage1"></span>
-              </p>
-              <p>
-                  <b>Voltage AC2: </b><span id="trackerVoltage2"></span>
-              </p>
-              <p>
-                  <b>Voltage AC3: </b><span id="trackerVoltage3"></span>
-              </p>
-              <p>
-                  <b>Intensity AC1: </b><span id="trackerIntensity1"></span>
-              </p>
-              <p>
-                  <b>Intensity AC2: </b><span id="trackerIntensity2"></span>
-              </p>
-              <p>
-                  <b>Intensity AC3: </b><span id="trackerIntensity3"></span>
-              </p>
-          </div>
-      </div>
+<body class="dark">
+    <canvas id="evergine-canvas" oncontextmenu="return false;" tabindex="1"></canvas>
+    <div id="splash">
+        <div id="splash-content">
+            <div class="logo-container">
+                <img class="logo-img" alt="Evergine logo" />
+                <div class="separator"></div>
+            </div>
+            <div id="loading-bar" class="progress">
+                <div>
+                    <strong>Loading...</strong>
+                    <div class="loading-bar-container">
+                        <div id="loading-bar-percentage" class="progress-bar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="dialog" title="Tracker data">
+        <div>
+            <span id="trackerName"></span>
+            <hr />
+            <img class="tracker-image" src="photovoltaic.webp" />
+            <p>
+                <b>Position: </b><span id="trackerPosition"></span>
+            </p>
+            <p>
+                <b>Voltage AC1: </b><span id="trackerVoltage1"></span>
+            </p>
+            <p>
+                <b>Voltage AC2: </b><span id="trackerVoltage2"></span>
+            </p>
+            <p>
+                <b>Voltage AC3: </b><span id="trackerVoltage3"></span>
+            </p>
+            <p>
+                <b>Intensity AC1: </b><span id="trackerIntensity1"></span>
+            </p>
+            <p>
+                <b>Intensity AC2: </b><span id="trackerIntensity2"></span>
+            </p>
+            <p>
+                <b>Intensity AC3: </b><span id="trackerIntensity3"></span>
+            </p>
+        </div>
+    </div>
 
-      <!-- We first configure javascript wave functions on evergine.js-->
-      <script type="text/javascript">
-          App.configure(
-              "evergine-canvas",
-              "DigitalTwin.Web",
-              "DigitalTwin.Web.Program"
-          );
-          $(function () {
-              $("#dialog").dialog({
-                  autoOpen: false
-              });
-          });
-      </script>
+    <!-- We first configure javascript wave functions on evergine.js-->
+    <script type="text/javascript">
+        var Module = typeof Module !== "undefined" ? new EvergineModule(Module) : new EvergineModule();
+        var app = new App(
+            "evergine-canvas",
+            "DigitalTwin.Web",
+            "DigitalTwin.Web.Program",
+            Module);
+        $(function () {
+            $("#dialog").dialog({
+                autoOpen: false
+            });
+        });
+    </script>
 
-      <!-- Then we load web assembly code -->
-      <script src="_framework/blazor.webassembly.js"></script>
-      <!-- After it, start loading the assets into the vfs -->
-      <script src="assets.js"></script>
-      <!-- Finally, run wave when all assets are loaded -->
-      <script type="text/javascript">
-          function waitAndRun() {
-              if (areAllAssetsLoaded()) {
-                  console.log("Running...");
-                  App.run();
-              } else {
-                  setTimeout(waitAndRun, 100);
-              }
-          }
+    <!-- Then we load web assembly code -->
+    <script src="_framework/blazor.webassembly.js" autostart="false"></script>
+    <!-- After it, start loading the assets into the vfs -->
+    <script src="assets.js"></script>
+    <!-- Finally, run wave when all assets are loaded -->
+    <script type="text/javascript">
+        function waitAndRun() {
+            if (areAllAssetsLoaded()) {
+                console.log("Running...");
+                app.run();
+            } else {
+                setTimeout(waitAndRun, 100);
+            }
+        }
 
-          waitAndRun();
-      </script>
-  </body>
+        Blazor.start().then(function () {
+            waitAndRun();
+        });
+    </script>
+</body>
 </html>
