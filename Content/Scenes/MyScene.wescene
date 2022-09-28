@@ -1,6 +1,39 @@
 !Evergine.Framework.Assets.AssetSources.Entities.SceneModel,Evergine.Framework
 Items:
   - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
+    Name: Managers
+    Tag: null
+    IsEnabled: true
+    IsStatic: false
+    Components:
+      - !Evergine.Framework.Graphics.Transform3D,Evergine.Framework
+        Id: f80176b0-ec49-4bd9-a496-850dfa84e0e1
+        IsEnabled: true
+        LocalOrientation:
+          W: 1.0
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
+        LocalPosition:
+          X: 0.829695225
+          Y: 1.21748471
+          Z: -1.24610782
+        LocalScale:
+          X: 1.0
+          Y: 1.0
+          Z: 1.0
+      - !DigitalTwin.Features.Colliders.CollisionManager,DigitalTwin
+        Id: 690dbd27-f72f-4da6-ac57-e5094ee5ea39
+        IsEnabled: true
+      - !DigitalTwin.Features.Picking.TapManager,DigitalTwin
+        Id: ac4ad4df-aa67-4967-a1ac-b05aee10b270
+        IsEnabled: true
+      - !DigitalTwin.Features.Picking.PointerManager,DigitalTwin
+        Id: 18bc6539-4b4c-4a65-ba6a-2f54df8658fe
+        IsEnabled: true
+    Children: []
+    Id: fcad1e32-b26a-4121-8bd0-d1b5e73fb58d
+  - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
     Name: SkyAtmosphere
     Tag: Skybox
     IsEnabled: true
@@ -26,7 +59,7 @@ Items:
         Id: bb44cd62-4d92-418a-8a42-bbc2ed2b6f07
         AsignedTo: Default
         IsEnabled: true
-        Material: null
+        Material: 5a139d51-dc48-4fb4-bb1f-dede8222856c
         UseCopy: false
       - !Evergine.Components.Graphics3D.SphereMesh,Evergine.Components
         Id: 3ef37285-f016-4173-bbf0-278ec1624224
@@ -389,10 +422,10 @@ Items:
           - !Evergine.Framework.Graphics.PhotometricDirectionalLight,Evergine.Framework
             Id: 5f6768ca-a7e6-4ab7-82b2-d9b3c42d111f
             Color:
-              A: 255
-              B: 253
-              G: 248
-              R: 255
+              A: 0
+              B: 225
+              G: 238
+              R: 248
             ColorByTemperature: true
             DebugMode: false
             GammaDistribution: 1.0
@@ -401,10 +434,10 @@ Items:
             IsEnabled: true
             IsShadowEnabled: true
             LinearColor:
-              A: 1.0
-              B: 0.982790232
-              G: 0.943362474
-              R: 1.0
+              A: 0.0
+              B: 0.759229541
+              G: 0.862923861
+              R: 0.93927443
             ShadowBias: 0.00700000022
             ShadowDistance: 80.0
             ShadowOpacity: 1.0
