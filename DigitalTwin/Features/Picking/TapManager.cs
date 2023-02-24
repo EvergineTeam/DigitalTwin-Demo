@@ -1,8 +1,4 @@
-﻿using DigitalTwin.Features.Colliders;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Evergine.Framework;
+﻿using Evergine.Framework;
 using Evergine.Mathematics;
 
 namespace DigitalTwin.Features.Picking
@@ -10,12 +6,11 @@ namespace DigitalTwin.Features.Picking
     public class TapManager : Component
     {
         [BindComponent(source: BindComponentSource.Scene)]
-        private CollisionManager collisionManager;
-
-        [BindComponent(source: BindComponentSource.Scene)]
         private PointerManager pointerManager = null;
 
         private bool checkTap = false;
+
+        public float TestDistance = 1000;
 
         protected override bool OnAttached()
         {
@@ -57,11 +52,12 @@ namespace DigitalTwin.Features.Picking
             var camera3D = this.Managers.RenderManager.ActiveCamera3D;
             camera3D.CalculateRay(ref screenPos, out var ray);
 
-            var result = this.collisionManager.Test(ref ray);
-
-            if (result != null)
+            var result = this.Managers.PhysicManager3D.RayCast(ref ray, this.TestDistance);
+            if (result.Succeeded)
             {
-                MyApplication.FireEntitySelected(result.Name);
+                var name = result.PhysicBody.BodyComponent.Owner.Name;
+
+                MyApplication.FireEntitySelected(name);
             }
         }
     }

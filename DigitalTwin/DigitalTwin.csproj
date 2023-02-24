@@ -15,5 +15,6 @@
     <PackageReference Include="Evergine.Platform" Version="2023.2.24.1-nightly" />
     <PackageReference Include="Evergine.Targets" Version="2023.2.24.1-nightly" />
     <PackageReference Include="Evergine.CodeScenes" Version="2023.2.24.1-nightly" />
+    <PackageReference Include="Evergine.Bullet" Version="2023.2.24.1-nightly" />
   </ItemGroup>
 </Project>

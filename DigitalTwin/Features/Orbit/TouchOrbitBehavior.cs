@@ -11,10 +11,6 @@ namespace DigitalTwin.Features.Orbit
     public class TouchOrbitBehavior : OrbitBehavior
     {
         private static readonly TimeSpan maxTimeBetweenResetPoints = TimeSpan.FromMilliseconds(150);
-        
-        private Point firstPointToResetPosition;
-        
-        private DateTime firstPointToResetTime;
 
         protected override bool TryGetPointerPosition(out Vector2 position)
         {

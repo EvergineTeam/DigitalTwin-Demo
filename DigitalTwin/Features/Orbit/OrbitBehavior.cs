@@ -34,13 +34,9 @@ namespace DigitalTwin.Features.Orbit
         private Quaternion initialOrientation;
         private Quaternion targetInitialOrientation;
 
-        private float objectInitialAngleRadians;
-
         private float theta;
 
         private Quaternion objectOrbitSmoothDampDeriv;
-
-        private Quaternion targetOrbitSmoothDampDeriv;
 
         public float OrbitFactor = 0.0025f;
 
@@ -77,7 +73,6 @@ namespace DigitalTwin.Features.Orbit
             this.targetInitialOrientation = this.targetTransform.LocalOrientation;
 
             this.initialOrientation = this.Transform.LocalOrientation;
-            this.objectInitialAngleRadians = 0;
 
             this.theta = this.targetTransform.LocalRotation.Y * this.AngleFactor.X;
 

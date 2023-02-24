@@ -1,3 +1,4 @@
+using Evergine.Bullet;
 using Evergine.Common.Graphics;
 using Evergine.Components.Graphics3D;
 using Evergine.Framework;
@@ -10,9 +11,10 @@ namespace DigitalTwin
 {
     public class MyScene : Scene
     {
-		public override void RegisterManagers()
+        public override void RegisterManagers()
         {
-        	base.RegisterManagers();
+            base.RegisterManagers();
+            this.Managers.AddManager(new BulletPhysicManager3D());
         }
 
         protected override void CreateScene()

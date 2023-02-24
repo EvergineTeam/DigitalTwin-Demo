@@ -22,9 +22,6 @@ Items:
           X: 1.0
           Y: 1.0
           Z: 1.0
-      - !DigitalTwin.Features.Colliders.CollisionManager,DigitalTwin
-        Id: 690dbd27-f72f-4da6-ac57-e5094ee5ea39
-        IsEnabled: true
       - !DigitalTwin.Features.Picking.TapManager,DigitalTwin
         Id: ac4ad4df-aa67-4967-a1ac-b05aee10b270
         IsEnabled: true
@@ -59,7 +56,7 @@ Items:
         Id: bb44cd62-4d92-418a-8a42-bbc2ed2b6f07
         AsignedTo: Default
         IsEnabled: true
-        Material: 33ef3a5a-d52c-4929-8a4c-cf635cc2b490
+        Material: 8e6168dd-3ae6-471a-b1e7-d183b1bdb106
         UseCopy: false
       - !Evergine.Components.Graphics3D.SphereMesh,Evergine.Components
         Id: 3ef37285-f016-4173-bbf0-278ec1624224
@@ -620,29 +617,40 @@ Items:
                     IsEnabled: true
                     OrderBias: 0
                     RenderFlags: CastShadows
-                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
-                    Id: 98b61719-4751-4a63-a343-d680ca88737d
-                    DistanceFactor: 0.0
-                    IsEnabled: true
-                    boundingBox:
-                      Center:
-                        X: 0.563399911
-                        Y: 0.33514908
-                        Z: -0.483737558
-                      HalfExtent:
-                        X: 0.681821585
-                        Y: 0.189878896
-                        Z: 0.18987903
-                      Orientation:
-                        W: 0.69435364
-                        X: 0.287610859
-                        Y: 0.60944742
-                        Z: -0.252441734
                   - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
                     Id: 75ba5337-7143-4636-8ddb-592617167487
                     IsEnabled: true
+                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    Id: b3cee18e-1add-453f-9354-7af47fb6746c
+                    CcdMotionThreshold: 0.0
+                    CcdSweptSphereRadius: 0.200000003
+                    CollisionCategories: Cat1
+                    Friction: 0.5
+                    IsEnabled: true
+                    IsSensor: false
+                    MaskBits: All
+                    Restitution: 0.0
+                    RollingFriction: 0.0
+                    UpdateOrder: 0.5
+                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                    Id: 0ad394d1-80ea-42f7-b617-e1e3402d3027
+                    IsEnabled: true
+                    Margin: 0.0399999991
+                    Offset:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    OrientationOffset:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    Size:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
                   - !Evergine.Components.WorkActions.WorkActionUpdaterBehavior,Evergine.Components
-                    Id: 9da65d40-f142-41b4-8cbe-688e9756eb81
+                    Id: 442ca64d-bda3-42a4-a732-00891d626f7a
                     IsEnabled: true
                     UpdateOrder: 0.5
                 Children: []
@@ -801,24 +809,35 @@ Items:
                     IsEnabled: true
                     OrderBias: 0
                     RenderFlags: CastShadows
-                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
-                    Id: 4480408e-102a-40f5-b642-1a0786b25ed6
-                    DistanceFactor: 0.0
+                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    Id: b3cee18e-1add-453f-9354-7af47fb6746c
+                    CcdMotionThreshold: 0.0
+                    CcdSweptSphereRadius: 0.200000003
+                    CollisionCategories: Cat1
+                    Friction: 0.5
                     IsEnabled: true
-                    boundingBox:
-                      Center:
-                        X: -0.249999851
-                        Y: 0.335149497
-                        Z: -0.574771941
-                      HalfExtent:
-                        X: 0.681821585
-                        Y: 0.189878896
-                        Z: 0.18987903
-                      Orientation:
-                        W: 0.69435364
-                        X: 0.287610769
-                        Y: 0.609447539
-                        Z: -0.252441674
+                    IsSensor: false
+                    MaskBits: All
+                    Restitution: 0.0
+                    RollingFriction: 0.0
+                    UpdateOrder: 0.5
+                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                    Id: 0ad394d1-80ea-42f7-b617-e1e3402d3027
+                    IsEnabled: true
+                    Margin: 0.0399999991
+                    Offset:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    OrientationOffset:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    Size:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
                   - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
                     Id: a497998c-bd66-40e6-9871-cf75638e69cb
                     IsEnabled: true
@@ -982,24 +1001,35 @@ Items:
                     IsEnabled: true
                     OrderBias: 0
                     RenderFlags: CastShadows
-                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
-                    Id: c7327a4c-4902-4145-b3cd-bf756b45eadd
-                    DistanceFactor: 0.0
+                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    Id: b3cee18e-1add-453f-9354-7af47fb6746c
+                    CcdMotionThreshold: 0.0
+                    CcdSweptSphereRadius: 0.200000003
+                    CollisionCategories: Cat1
+                    Friction: 0.5
                     IsEnabled: true
-                    boundingBox:
-                      Center:
-                        X: -0.999999881
-                        Y: 0.335149914
-                        Z: -0.668132901
-                      HalfExtent:
-                        X: 0.681821585
-                        Y: 0.189878896
-                        Z: 0.18987903
-                      Orientation:
-                        W: 0.69435364
-                        X: 0.287610769
-                        Y: 0.609447539
-                        Z: -0.252441674
+                    IsSensor: false
+                    MaskBits: All
+                    Restitution: 0.0
+                    RollingFriction: 0.0
+                    UpdateOrder: 0.5
+                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                    Id: 0ad394d1-80ea-42f7-b617-e1e3402d3027
+                    IsEnabled: true
+                    Margin: 0.0399999991
+                    Offset:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    OrientationOffset:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    Size:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
                   - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
                     Id: 7421b9ec-0e62-434d-96ca-17ad2e1a4943
                     IsEnabled: true
@@ -1163,24 +1193,35 @@ Items:
                     IsEnabled: true
                     OrderBias: 0
                     RenderFlags: CastShadows
-                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
-                    Id: 7dd0ce8b-bd09-4cd5-99fa-dea1d2d04dfd
-                    DistanceFactor: 0.0
+                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    Id: b3cee18e-1add-453f-9354-7af47fb6746c
+                    CcdMotionThreshold: 0.0
+                    CcdSweptSphereRadius: 0.200000003
+                    CollisionCategories: Cat1
+                    Friction: 0.5
                     IsEnabled: true
-                    boundingBox:
-                      Center:
-                        X: -1.73840404
-                        Y: 0.335149854
-                        Z: -0.756786406
-                      HalfExtent:
-                        X: 0.681821585
-                        Y: 0.189878896
-                        Z: 0.18987903
-                      Orientation:
-                        W: 0.69435364
-                        X: 0.287610769
-                        Y: 0.609447539
-                        Z: -0.252441674
+                    IsSensor: false
+                    MaskBits: All
+                    Restitution: 0.0
+                    RollingFriction: 0.0
+                    UpdateOrder: 0.5
+                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                    Id: 0ad394d1-80ea-42f7-b617-e1e3402d3027
+                    IsEnabled: true
+                    Margin: 0.0399999991
+                    Offset:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    OrientationOffset:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    Size:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
                   - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
                     Id: 17c35581-db1e-40e7-9f30-155ffa9e4f22
                     IsEnabled: true
@@ -1344,24 +1385,35 @@ Items:
                     IsEnabled: true
                     OrderBias: 0
                     RenderFlags: CastShadows
-                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
-                    Id: c46a6daa-6b69-49be-b829-1abe2c86fed6
-                    DistanceFactor: 0.0
+                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    Id: b3cee18e-1add-453f-9354-7af47fb6746c
+                    CcdMotionThreshold: 0.0
+                    CcdSweptSphereRadius: 0.200000003
+                    CollisionCategories: Cat1
+                    Friction: 0.5
                     IsEnabled: true
-                    boundingBox:
-                      Center:
-                        X: -2.4874444
-                        Y: 0.335149795
-                        Z: -0.85278362
-                      HalfExtent:
-                        X: 0.681821585
-                        Y: 0.189878896
-                        Z: 0.18987903
-                      Orientation:
-                        W: 0.69435364
-                        X: 0.287610769
-                        Y: 0.609447539
-                        Z: -0.252441674
+                    IsSensor: false
+                    MaskBits: All
+                    Restitution: 0.0
+                    RollingFriction: 0.0
+                    UpdateOrder: 0.5
+                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                    Id: 0ad394d1-80ea-42f7-b617-e1e3402d3027
+                    IsEnabled: true
+                    Margin: 0.0399999991
+                    Offset:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    OrientationOffset:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    Size:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
                   - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
                     Id: d8c217a3-c7d0-45ec-ae1c-2fbd7380646f
                     IsEnabled: true
@@ -1525,24 +1577,35 @@ Items:
                     IsEnabled: true
                     OrderBias: 0
                     RenderFlags: CastShadows
-                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
-                    Id: 5a68156d-97ca-4179-98b8-00dcbdd27d92
-                    DistanceFactor: 0.0
+                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    Id: b3cee18e-1add-453f-9354-7af47fb6746c
+                    CcdMotionThreshold: 0.0
+                    CcdSweptSphereRadius: 0.200000003
+                    CollisionCategories: Cat1
+                    Friction: 0.5
                     IsEnabled: true
-                    boundingBox:
-                      Center:
-                        X: -3.23767877
-                        Y: 0.335149735
-                        Z: -0.946962118
-                      HalfExtent:
-                        X: 0.681821585
-                        Y: 0.189878896
-                        Z: 0.18987903
-                      Orientation:
-                        W: 0.69435364
-                        X: 0.287610769
-                        Y: 0.609447539
-                        Z: -0.252441674
+                    IsSensor: false
+                    MaskBits: All
+                    Restitution: 0.0
+                    RollingFriction: 0.0
+                    UpdateOrder: 0.5
+                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                    Id: 0ad394d1-80ea-42f7-b617-e1e3402d3027
+                    IsEnabled: true
+                    Margin: 0.0399999991
+                    Offset:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    OrientationOffset:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    Size:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
                   - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
                     Id: 5cb14550-639f-4acf-be54-70ac3cdecd6b
                     IsEnabled: true
@@ -1706,24 +1769,35 @@ Items:
                     IsEnabled: true
                     OrderBias: 0
                     RenderFlags: CastShadows
-                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
-                    Id: ff0295c4-760f-46fa-a08e-b98919365b68
-                    DistanceFactor: 0.0
+                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    Id: b3cee18e-1add-453f-9354-7af47fb6746c
+                    CcdMotionThreshold: 0.0
+                    CcdSweptSphereRadius: 0.200000003
+                    CollisionCategories: Cat1
+                    Friction: 0.5
                     IsEnabled: true
-                    boundingBox:
-                      Center:
-                        X: -3.99604726
-                        Y: 0.335150003
-                        Z: -1.03639686
-                      HalfExtent:
-                        X: 0.681821585
-                        Y: 0.189878896
-                        Z: 0.18987903
-                      Orientation:
-                        W: 0.69435364
-                        X: 0.287610769
-                        Y: 0.609447539
-                        Z: -0.252441674
+                    IsSensor: false
+                    MaskBits: All
+                    Restitution: 0.0
+                    RollingFriction: 0.0
+                    UpdateOrder: 0.5
+                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                    Id: 0ad394d1-80ea-42f7-b617-e1e3402d3027
+                    IsEnabled: true
+                    Margin: 0.0399999991
+                    Offset:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    OrientationOffset:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    Size:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
                   - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
                     Id: e73df66f-f0f5-41a1-8e25-1cbd09e5ea23
                     IsEnabled: true
@@ -1887,24 +1961,35 @@ Items:
                     IsEnabled: true
                     OrderBias: 0
                     RenderFlags: CastShadows
-                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
-                    Id: 0a16410a-efe1-41e2-991c-17ee8b644c13
-                    DistanceFactor: 0.0
+                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    Id: b3cee18e-1add-453f-9354-7af47fb6746c
+                    CcdMotionThreshold: 0.0
+                    CcdSweptSphereRadius: 0.200000003
+                    CollisionCategories: Cat1
+                    Friction: 0.5
                     IsEnabled: true
-                    boundingBox:
-                      Center:
-                        X: -4.73798847
-                        Y: 0.335149944
-                        Z: -1.12823534
-                      HalfExtent:
-                        X: 0.681821585
-                        Y: 0.189878896
-                        Z: 0.18987903
-                      Orientation:
-                        W: 0.69435364
-                        X: 0.287610769
-                        Y: 0.609447539
-                        Z: -0.252441674
+                    IsSensor: false
+                    MaskBits: All
+                    Restitution: 0.0
+                    RollingFriction: 0.0
+                    UpdateOrder: 0.5
+                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                    Id: 0ad394d1-80ea-42f7-b617-e1e3402d3027
+                    IsEnabled: true
+                    Margin: 0.0399999991
+                    Offset:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    OrientationOffset:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    Size:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
                   - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
                     Id: 32fa0487-7db1-4bbf-9e34-d509c8ba1e0c
                     IsEnabled: true
@@ -2068,24 +2153,35 @@ Items:
                     IsEnabled: true
                     OrderBias: 0
                     RenderFlags: CastShadows
-                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
-                    Id: caeebc6d-cb5e-4501-b3ea-450e50cb882a
-                    DistanceFactor: 0.0
+                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    Id: b3cee18e-1add-453f-9354-7af47fb6746c
+                    CcdMotionThreshold: 0.0
+                    CcdSweptSphereRadius: 0.200000003
+                    CollisionCategories: Cat1
+                    Friction: 0.5
                     IsEnabled: true
-                    boundingBox:
-                      Center:
-                        X: -5.4863348
-                        Y: 0.335149854
-                        Z: -1.23273492
-                      HalfExtent:
-                        X: 0.681821585
-                        Y: 0.189878896
-                        Z: 0.18987903
-                      Orientation:
-                        W: 0.69435364
-                        X: 0.287610769
-                        Y: 0.609447539
-                        Z: -0.252441674
+                    IsSensor: false
+                    MaskBits: All
+                    Restitution: 0.0
+                    RollingFriction: 0.0
+                    UpdateOrder: 0.5
+                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                    Id: 0ad394d1-80ea-42f7-b617-e1e3402d3027
+                    IsEnabled: true
+                    Margin: 0.0399999991
+                    Offset:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    OrientationOffset:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    Size:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
                   - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
                     Id: 72fba3a9-492b-442c-b180-f367856282b7
                     IsEnabled: true
@@ -2249,24 +2345,35 @@ Items:
                     IsEnabled: true
                     OrderBias: 0
                     RenderFlags: CastShadows
-                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
-                    Id: 95a73da1-a081-4514-b274-6617747d06df
-                    DistanceFactor: 0.0
+                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    Id: b3cee18e-1add-453f-9354-7af47fb6746c
+                    CcdMotionThreshold: 0.0
+                    CcdSweptSphereRadius: 0.200000003
+                    CollisionCategories: Cat1
+                    Friction: 0.5
                     IsEnabled: true
-                    boundingBox:
-                      Center:
-                        X: -6.23694611
-                        Y: 0.335149795
-                        Z: -1.33257067
-                      HalfExtent:
-                        X: 0.681821585
-                        Y: 0.189878896
-                        Z: 0.18987903
-                      Orientation:
-                        W: 0.69435364
-                        X: 0.287610769
-                        Y: 0.609447539
-                        Z: -0.252441674
+                    IsSensor: false
+                    MaskBits: All
+                    Restitution: 0.0
+                    RollingFriction: 0.0
+                    UpdateOrder: 0.5
+                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                    Id: 0ad394d1-80ea-42f7-b617-e1e3402d3027
+                    IsEnabled: true
+                    Margin: 0.0399999991
+                    Offset:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    OrientationOffset:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    Size:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
                   - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
                     Id: 2d268e09-2c48-4f94-b5e3-8473fa978550
                     IsEnabled: true
@@ -2430,24 +2537,35 @@ Items:
                     IsEnabled: true
                     OrderBias: 0
                     RenderFlags: CastShadows
-                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
-                    Id: 910bfe3b-8e83-4785-aaf4-7d2901e8f11c
-                    DistanceFactor: 0.0
+                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    Id: b3cee18e-1add-453f-9354-7af47fb6746c
+                    CcdMotionThreshold: 0.0
+                    CcdSweptSphereRadius: 0.200000003
+                    CollisionCategories: Cat1
+                    Friction: 0.5
                     IsEnabled: true
-                    boundingBox:
-                      Center:
-                        X: 0.373675495
-                        Y: 0.335150033
-                        Z: 0.99999994
-                      HalfExtent:
-                        X: 0.681821585
-                        Y: 0.189878896
-                        Z: 0.18987903
-                      Orientation:
-                        W: 0.69435364
-                        X: 0.287610769
-                        Y: 0.609447539
-                        Z: -0.252441674
+                    IsSensor: false
+                    MaskBits: All
+                    Restitution: 0.0
+                    RollingFriction: 0.0
+                    UpdateOrder: 0.5
+                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                    Id: 0ad394d1-80ea-42f7-b617-e1e3402d3027
+                    IsEnabled: true
+                    Margin: 0.0399999991
+                    Offset:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    OrientationOffset:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    Size:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
                   - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
                     Id: d556b911-efc3-41c1-b41a-84fab72ffb9a
                     IsEnabled: true
@@ -2611,24 +2729,35 @@ Items:
                     IsEnabled: true
                     OrderBias: 0
                     RenderFlags: CastShadows
-                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
-                    Id: 8b361d22-bb9d-41a7-926c-0067f572ba8a
-                    DistanceFactor: 0.0
+                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    Id: b3cee18e-1add-453f-9354-7af47fb6746c
+                    CcdMotionThreshold: 0.0
+                    CcdSweptSphereRadius: 0.200000003
+                    CollisionCategories: Cat1
+                    Friction: 0.5
                     IsEnabled: true
-                    boundingBox:
-                      Center:
-                        X: -0.44123137
-                        Y: 0.33515045
-                        Z: 0.887270868
-                      HalfExtent:
-                        X: 0.681821585
-                        Y: 0.189878896
-                        Z: 0.18987903
-                      Orientation:
-                        W: 0.69435364
-                        X: 0.287610769
-                        Y: 0.609447539
-                        Z: -0.252441674
+                    IsSensor: false
+                    MaskBits: All
+                    Restitution: 0.0
+                    RollingFriction: 0.0
+                    UpdateOrder: 0.5
+                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                    Id: 0ad394d1-80ea-42f7-b617-e1e3402d3027
+                    IsEnabled: true
+                    Margin: 0.0399999991
+                    Offset:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    OrientationOffset:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    Size:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
                   - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
                     Id: 08a8be83-532c-469e-8045-a4dde373c910
                     IsEnabled: true
@@ -2792,24 +2921,35 @@ Items:
                     IsEnabled: true
                     OrderBias: 0
                     RenderFlags: CastShadows
-                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
-                    Id: 6554352f-28b9-4365-ab2f-1f25eeeebd8d
-                    DistanceFactor: 0.0
+                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    Id: b3cee18e-1add-453f-9354-7af47fb6746c
+                    CcdMotionThreshold: 0.0
+                    CcdSweptSphereRadius: 0.200000003
+                    CollisionCategories: Cat1
+                    Friction: 0.5
                     IsEnabled: true
-                    boundingBox:
-                      Center:
-                        X: -1.19218218
-                        Y: 0.335150898
-                        Z: 0.801180661
-                      HalfExtent:
-                        X: 0.681821585
-                        Y: 0.189878896
-                        Z: 0.18987903
-                      Orientation:
-                        W: 0.69435364
-                        X: 0.287610769
-                        Y: 0.609447539
-                        Z: -0.252441674
+                    IsSensor: false
+                    MaskBits: All
+                    Restitution: 0.0
+                    RollingFriction: 0.0
+                    UpdateOrder: 0.5
+                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                    Id: 0ad394d1-80ea-42f7-b617-e1e3402d3027
+                    IsEnabled: true
+                    Margin: 0.0399999991
+                    Offset:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    OrientationOffset:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    Size:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
                   - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
                     Id: 970b0693-9224-4b0d-9e25-a8d355db84d8
                     IsEnabled: true
@@ -2973,24 +3113,35 @@ Items:
                     IsEnabled: true
                     OrderBias: 0
                     RenderFlags: CastShadows
-                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
-                    Id: dfd7c8b8-5c55-4120-90c0-5e65c44a37f8
-                    DistanceFactor: 0.0
+                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    Id: b3cee18e-1add-453f-9354-7af47fb6746c
+                    CcdMotionThreshold: 0.0
+                    CcdSweptSphereRadius: 0.200000003
+                    CollisionCategories: Cat1
+                    Friction: 0.5
                     IsEnabled: true
-                    boundingBox:
-                      Center:
-                        X: -1.92731285
-                        Y: 0.335150808
-                        Z: 0.687511265
-                      HalfExtent:
-                        X: 0.681821585
-                        Y: 0.189878896
-                        Z: 0.18987903
-                      Orientation:
-                        W: 0.69435364
-                        X: 0.287610769
-                        Y: 0.609447539
-                        Z: -0.252441674
+                    IsSensor: false
+                    MaskBits: All
+                    Restitution: 0.0
+                    RollingFriction: 0.0
+                    UpdateOrder: 0.5
+                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                    Id: 0ad394d1-80ea-42f7-b617-e1e3402d3027
+                    IsEnabled: true
+                    Margin: 0.0399999991
+                    Offset:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    OrientationOffset:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    Size:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
                   - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
                     Id: 4337ea59-16f6-4ad0-a88c-0dccbc0ac134
                     IsEnabled: true
@@ -3154,24 +3305,35 @@ Items:
                     IsEnabled: true
                     OrderBias: 0
                     RenderFlags: CastShadows
-                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
-                    Id: 5b6aa0b7-22c7-4df2-872d-09371c00b995
-                    DistanceFactor: 0.0
+                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    Id: b3cee18e-1add-453f-9354-7af47fb6746c
+                    CcdMotionThreshold: 0.0
+                    CcdSweptSphereRadius: 0.200000003
+                    CollisionCategories: Cat1
+                    Friction: 0.5
                     IsEnabled: true
-                    boundingBox:
-                      Center:
-                        X: -2.6766839
-                        Y: 0.335150748
-                        Z: 0.594009459
-                      HalfExtent:
-                        X: 0.681821585
-                        Y: 0.189878896
-                        Z: 0.18987903
-                      Orientation:
-                        W: 0.69435364
-                        X: 0.287610769
-                        Y: 0.609447539
-                        Z: -0.252441674
+                    IsSensor: false
+                    MaskBits: All
+                    Restitution: 0.0
+                    RollingFriction: 0.0
+                    UpdateOrder: 0.5
+                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                    Id: 0ad394d1-80ea-42f7-b617-e1e3402d3027
+                    IsEnabled: true
+                    Margin: 0.0399999991
+                    Offset:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    OrientationOffset:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    Size:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
                   - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
                     Id: 10116519-e5aa-4a06-b44d-36a116a6f78c
                     IsEnabled: true
@@ -3335,24 +3497,35 @@ Items:
                     IsEnabled: true
                     OrderBias: 0
                     RenderFlags: CastShadows
-                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
-                    Id: 92db1836-f179-42cc-be88-17a067519ccb
-                    DistanceFactor: 0.0
+                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    Id: b3cee18e-1add-453f-9354-7af47fb6746c
+                    CcdMotionThreshold: 0.0
+                    CcdSweptSphereRadius: 0.200000003
+                    CollisionCategories: Cat1
+                    Friction: 0.5
                     IsEnabled: true
-                    boundingBox:
-                      Center:
-                        X: -3.42809963
-                        Y: 0.335150689
-                        Z: 0.508922577
-                      HalfExtent:
-                        X: 0.681821585
-                        Y: 0.189878896
-                        Z: 0.18987903
-                      Orientation:
-                        W: 0.69435364
-                        X: 0.287610769
-                        Y: 0.609447539
-                        Z: -0.252441674
+                    IsSensor: false
+                    MaskBits: All
+                    Restitution: 0.0
+                    RollingFriction: 0.0
+                    UpdateOrder: 0.5
+                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                    Id: 0ad394d1-80ea-42f7-b617-e1e3402d3027
+                    IsEnabled: true
+                    Margin: 0.0399999991
+                    Offset:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    OrientationOffset:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    Size:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
                   - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
                     Id: 38fa5140-276a-4dae-9544-e6be143b4827
                     IsEnabled: true
@@ -3516,24 +3689,35 @@ Items:
                     IsEnabled: true
                     OrderBias: 0
                     RenderFlags: CastShadows
-                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
-                    Id: 8a4073a8-9b33-4be9-a8b6-c4c5ea6c0135
-                    DistanceFactor: 0.0
+                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    Id: b3cee18e-1add-453f-9354-7af47fb6746c
+                    CcdMotionThreshold: 0.0
+                    CcdSweptSphereRadius: 0.200000003
+                    CollisionCategories: Cat1
+                    Friction: 0.5
                     IsEnabled: true
-                    boundingBox:
-                      Center:
-                        X: -4.18501043
-                        Y: 0.335150957
-                        Z: 0.408281296
-                      HalfExtent:
-                        X: 0.681821585
-                        Y: 0.189878896
-                        Z: 0.18987903
-                      Orientation:
-                        W: 0.69435364
-                        X: 0.287610769
-                        Y: 0.609447539
-                        Z: -0.252441674
+                    IsSensor: false
+                    MaskBits: All
+                    Restitution: 0.0
+                    RollingFriction: 0.0
+                    UpdateOrder: 0.5
+                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                    Id: 0ad394d1-80ea-42f7-b617-e1e3402d3027
+                    IsEnabled: true
+                    Margin: 0.0399999991
+                    Offset:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    OrientationOffset:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    Size:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
                   - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
                     Id: b7e6eff4-6cb1-42cf-a401-2a1ee4cafcfa
                     IsEnabled: true
@@ -3697,24 +3881,35 @@ Items:
                     IsEnabled: true
                     OrderBias: 0
                     RenderFlags: CastShadows
-                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
-                    Id: e34aaccc-9926-40d1-862f-46f2347ccf8b
-                    DistanceFactor: 0.0
+                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    Id: b3cee18e-1add-453f-9354-7af47fb6746c
+                    CcdMotionThreshold: 0.0
+                    CcdSweptSphereRadius: 0.200000003
+                    CollisionCategories: Cat1
+                    Friction: 0.5
                     IsEnabled: true
-                    boundingBox:
-                      Center:
-                        X: -4.92771435
-                        Y: 0.335150898
-                        Z: 0.322246999
-                      HalfExtent:
-                        X: 0.681821585
-                        Y: 0.189878896
-                        Z: 0.18987903
-                      Orientation:
-                        W: 0.69435364
-                        X: 0.287610769
-                        Y: 0.609447539
-                        Z: -0.252441674
+                    IsSensor: false
+                    MaskBits: All
+                    Restitution: 0.0
+                    RollingFriction: 0.0
+                    UpdateOrder: 0.5
+                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                    Id: 0ad394d1-80ea-42f7-b617-e1e3402d3027
+                    IsEnabled: true
+                    Margin: 0.0399999991
+                    Offset:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    OrientationOffset:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    Size:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
                   - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
                     Id: 1b3dc82b-65ad-4e8d-8f59-7593f11cab31
                     IsEnabled: true
@@ -3878,24 +4073,35 @@ Items:
                     IsEnabled: true
                     OrderBias: 0
                     RenderFlags: CastShadows
-                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
-                    Id: 7aec232a-ae8e-45fd-be2a-b2d8bf78c8e0
-                    DistanceFactor: 0.0
+                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    Id: b3cee18e-1add-453f-9354-7af47fb6746c
+                    CcdMotionThreshold: 0.0
+                    CcdSweptSphereRadius: 0.200000003
+                    CollisionCategories: Cat1
+                    Friction: 0.5
                     IsEnabled: true
-                    boundingBox:
-                      Center:
-                        X: -5.67578554
-                        Y: 0.335150808
-                        Z: 0.215645641
-                      HalfExtent:
-                        X: 0.681821585
-                        Y: 0.189878896
-                        Z: 0.18987903
-                      Orientation:
-                        W: 0.69435364
-                        X: 0.287610769
-                        Y: 0.609447539
-                        Z: -0.252441674
+                    IsSensor: false
+                    MaskBits: All
+                    Restitution: 0.0
+                    RollingFriction: 0.0
+                    UpdateOrder: 0.5
+                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                    Id: 0ad394d1-80ea-42f7-b617-e1e3402d3027
+                    IsEnabled: true
+                    Margin: 0.0399999991
+                    Offset:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    OrientationOffset:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    Size:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
                   - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
                     Id: 1ca01057-8b1e-411c-9197-65eeac5e32b8
                     IsEnabled: true
@@ -4059,24 +4265,35 @@ Items:
                     IsEnabled: true
                     OrderBias: 0
                     RenderFlags: CastShadows
-                  - !DigitalTwin.Features.Colliders.SimpleBoxCollider3D,DigitalTwin
-                    Id: b1f26572-ccf4-419e-aa19-ebd8fb61d1d5
-                    DistanceFactor: 0.0
+                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    Id: b3cee18e-1add-453f-9354-7af47fb6746c
+                    CcdMotionThreshold: 0.0
+                    CcdSweptSphereRadius: 0.200000003
+                    CollisionCategories: Cat1
+                    Friction: 0.5
                     IsEnabled: true
-                    boundingBox:
-                      Center:
-                        X: -6.42728996
-                        Y: 0.335150748
-                        Z: 0.12270239
-                      HalfExtent:
-                        X: 0.681821585
-                        Y: 0.189878896
-                        Z: 0.18987903
-                      Orientation:
-                        W: 0.69435364
-                        X: 0.287610769
-                        Y: 0.609447539
-                        Z: -0.252441674
+                    IsSensor: false
+                    MaskBits: All
+                    Restitution: 0.0
+                    RollingFriction: 0.0
+                    UpdateOrder: 0.5
+                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                    Id: 0ad394d1-80ea-42f7-b617-e1e3402d3027
+                    IsEnabled: true
+                    Margin: 0.0399999991
+                    Offset:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    OrientationOffset:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    Size:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
                   - !DigitalTwin.Features.SolarPanel.TrackerAngleUpdater,DigitalTwin
                     Id: 69f4bc03-a28b-434f-a0ce-bf121795264d
                     IsEnabled: true
