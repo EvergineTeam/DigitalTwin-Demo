@@ -43,16 +43,16 @@ namespace DigitalTwin
 
         public MyApplication()
         {
-            this.Container.RegisterType<Clock>();
-            this.Container.RegisterType<TimerFactory>();
-            this.Container.RegisterType<Evergine.Framework.Services.Random>();
-            this.Container.RegisterType<ErrorHandler>();
-            this.Container.RegisterType<ScreenContextManager>();
-            this.Container.RegisterType<GraphicsPresenter>();
-            this.Container.RegisterType<AssetsDirectory>();
-            this.Container.RegisterType<AssetsService>();
-            this.Container.RegisterType<ForegroundTaskSchedulerService>();            
-            this.Container.RegisterType<WorkActionScheduler>();
+            this.Container.Register<Clock>();
+            this.Container.Register<TimerFactory>();
+            this.Container.Register<Evergine.Framework.Services.Random>();
+            this.Container.Register<ErrorHandler>();
+            this.Container.Register<ScreenContextManager>();
+            this.Container.Register<GraphicsPresenter>();
+            this.Container.Register<AssetsDirectory>();
+            this.Container.Register<AssetsService>();
+            this.Container.Register<ForegroundTaskSchedulerService>();            
+            this.Container.Register<WorkActionScheduler>();
             this.Container.RegisterInstance(new TimeLapseService());
         }
 

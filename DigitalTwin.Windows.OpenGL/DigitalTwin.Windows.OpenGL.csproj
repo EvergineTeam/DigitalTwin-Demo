@@ -1,16 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Evergine.OpenGL" Version="2023.3.1.1" />
-    <PackageReference Include="Evergine.HLSLEverywhere" Version="2023.3.1.1" />
-    <PackageReference Include="Evergine.XAudio2" Version="2023.3.1.1" />
-    <PackageReference Include="Evergine.Forms" Version="2023.3.1.1" />
-    <PackageReference Include="Evergine.Targets" Version="2023.3.1.1" />
-    <PackageReference Include="Evergine.Targets.Windows" Version="2023.3.1.1" />
+    <PackageReference Include="Evergine.OpenGL" Version="2023.9.28.510" />
+    <PackageReference Include="Evergine.HLSLEverywhere" Version="2023.9.28.510" />
+    <PackageReference Include="Evergine.XAudio2" Version="2023.9.28.510" />
+    <PackageReference Include="Evergine.Forms" Version="2023.9.28.510" />
+    <PackageReference Include="Evergine.Targets" Version="2023.9.28.510" />
+    <PackageReference Include="Evergine.Targets.Windows" Version="2023.9.28.510" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DigitalTwin\DigitalTwin.csproj" />
