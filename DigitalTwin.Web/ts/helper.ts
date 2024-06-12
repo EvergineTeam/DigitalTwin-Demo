@@ -213,3 +213,15 @@ function _onTrackerAngleUpdated(angle) {
         element.innerHTML = MathHelper.getRandomNumber(275, 330);
     }
 }
+
+function _evergine_EGL(contextId: string, canvasId: string) {
+    if (contextId && canvasId) {
+        const canvas = document.getElementById(canvasId) as HTMLCanvasElement;
+        canvas.getContext(contextId, { antialias: true, preserveDrawingBuffer: true });
+    } else if (window.EGL) {
+        window.EGL.contextAttributes.antialias = true;
+        window.EGL.contextAttributes.preserveDrawingBuffer = true;
+    } else {
+        console.log("_evergine_EGL cannot set context properties");
+    }
+}

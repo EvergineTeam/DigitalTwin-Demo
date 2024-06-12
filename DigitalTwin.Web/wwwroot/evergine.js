@@ -1,12 +1,21 @@
 class App {
-    constructor(canvasId, assemblyName, className, module) {
-        App.mainCanvasId = canvasId;
+    constructor(assemblyName, className, module) {
         this.program = new Program(assemblyName, className);
         this.module = module;
-        let canvas = document.getElementById(App.mainCanvasId);
-        if (!canvas) {
-            alert("Initialization failed: WebGL canvas element not found.");
+    }
+    startEvergine(containerId = "evergine-canvas-container", canvasId = "evergine-canvas") {
+        this.containerId = containerId;
+        this.canvasId = canvasId;
+        let container = document.getElementById(this.containerId);
+        if (!container) {
+            alert("Initialization failed: canvas container '" +
+                this.containerId +
+                "' not found.");
         }
+        let canvas = document.createElement("canvas");
+        canvas.id = this.canvasId;
+        canvas.tabIndex = 1;
+        canvas.addEventListener("contextmenu", (e) => e.preventDefault());
         // As a default initial behavior, pop up an alert when webgl context is lost. To make your
         // application robust, you may want to override this behavior before shipping!
         // See http://www.khronos.org/registry/webgl/specs/latest/1.0/#5.15.2
@@ -15,18 +24,28 @@ class App {
             e.preventDefault();
         }, false);
         this.module.canvas = canvas;
+        container.appendChild(canvas);
         this.updateCanvasSize();
         window.addEventListener("resize", this.resizeAppSize.bind(this));
+        this.waitAndRun();
     }
-    run() {
-        this.program.Run(App.mainCanvasId);
+    destroyEvergine() {
+        let container = document.getElementById(this.containerId);
+        container.replaceChildren();
+        this.program.Destroy(this.canvasId);
+    }
+    waitAndRun() {
+        if (areAllAssetsLoaded()) {
+            console.log("Running...");
+            this.program.Run(this.canvasId);
+        }
+        else {
+            setTimeout(this.waitAndRun.bind(this), 100);
+        }
     }
     resizeAppSize() {
         this.updateCanvasSize();
-        this.program.UpdateCanvasSize(App.mainCanvasId);
-    }
-    static openDialog() {
-        $("#dialog").dialog("open");
+        this.program.UpdateCanvasSize(this.canvasId);
     }
     static hideSplash() {
         let splash = document.getElementById("splash");
@@ -41,16 +60,19 @@ class App {
         this.module.canvas.width = window.innerWidth * devicePixelRatio;
         this.module.canvas.height = window.innerHeight * devicePixelRatio;
     }
-    static warnUnsupportedBrowser() {
+    warnUnsupportedBrowser() {
         App.hideSplash();
         let unsupportedBrowserErrorMessage = "Browser not supported";
         // Supposing Canvas2D is available
-        let evergineCanvas = document.getElementById(App.mainCanvasId);
-        evergineCanvas.setAttribute('style', 'image-rendering: crisp-edges');
+        let evergineCanvas = document.getElementById(this.canvasId);
+        evergineCanvas.setAttribute("style", "image-rendering: crisp-edges");
         let context = evergineCanvas.getContext("2d");
         context.fillStyle = "black";
         context.font = "16pt Arial";
         context.fillText(unsupportedBrowserErrorMessage, 4, 20);
+    }
+    static openDialog() {
+        $("#dialog").dialog("open");
     }
 }
 let isWebGL2Supported = function () {
@@ -212,9 +234,39 @@ function _onTrackerAngleUpdated(angle) {
         element.innerHTML = MathHelper.getRandomNumber(275, 330);
     }
 }
+function _evergine_EGL(contextId, canvasId) {
+    if (contextId && canvasId) {
+        const canvas = document.getElementById(canvasId);
+        canvas.getContext(contextId, { antialias: true, preserveDrawingBuffer: true });
+    }
+    else if (window.EGL) {
+        window.EGL.contextAttributes.antialias = true;
+        window.EGL.contextAttributes.preserveDrawingBuffer = true;
+    }
+    else {
+        console.log("_evergine_EGL cannot set context properties");
+    }
+}
 class EvergineModule {
+    get canvas() {
+        if (Blazor && Blazor.runtime && Blazor.runtime.Module) {
+            return Blazor.runtime.Module.canvas;
+        }
+        else {
+            return globalThis.Module.canvas;
+        }
+    }
+    set canvas(canvas) {
+        if (Blazor && Blazor.runtime && Blazor.runtime.Module) {
+            Blazor.runtime.Module.canvas = canvas;
+        }
+        else {
+            globalThis.Module.canvas = canvas;
+        }
+    }
     constructor(module) {
         Object.assign(this);
+        globalThis.evergineSetProgressCallback = this.setProgress;
     }
     locateFile(base) {
         return `evergine/${base}`;
@@ -236,13 +288,13 @@ class Program {
     Run(canvasId) {
         this.invoke("Run", canvasId);
     }
+    Destroy(canvasId) {
+        this.invoke("Destroy", canvasId);
+    }
     UpdateCanvasSize(canvasId) {
         this.invoke("UpdateCanvasSize", canvasId);
     }
-    UpdateData(command) {
-        this.invoke("UpdateData", command);
-    }
     invoke(methodName, ...args) {
-        window.BINDING.call_static_method(`[${this.assemblyName}] ${this.className}:${methodName}`, args);
+        DotNet.invokeMethod(`${this.assemblyName}`, `${this.className}:${methodName}`, ...args);
     }
 }
