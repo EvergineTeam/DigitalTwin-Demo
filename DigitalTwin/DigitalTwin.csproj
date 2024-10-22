@@ -3,9 +3,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <GenerateEvergineContent>True</GenerateEvergineContent>
     <GenerateEvergineAssets>False</GenerateEvergineAssets>
-    <GenerateEvergineScenesCode>True</GenerateEvergineScenesCode>
-    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
-    <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\Generated</CompilerGeneratedFilesOutputPath>
+    <GenerateEvergineScenesCode>True</GenerateEvergineScenesCode>    
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Evergine.Common" Version="2024.10.21.485-nightly" />
