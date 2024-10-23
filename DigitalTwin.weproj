@@ -2,7 +2,7 @@
 Packages:
   - Id: Evergine.Core
     LocalPath: null
-    Version: 2024.10.21.485-nightly
+    Version: 2024.10.24.7
 Profiles:
   - AdditionalEffectTechniqueCombinations: SHADOW_SUPPORTED
     AlphaCompressionFormat: BC3_UNorm
