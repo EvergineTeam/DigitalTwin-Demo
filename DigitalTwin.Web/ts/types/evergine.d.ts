@@ -1,5 +1,6 @@
 declare global {
     var areAllAssetsLoaded: any;
+    var startAssetsDownloadIfNeeded: any;
     var evergineSetProgressCallback: (progress: number) => void;
     var Blazor: any;
     var DotNet: any;
