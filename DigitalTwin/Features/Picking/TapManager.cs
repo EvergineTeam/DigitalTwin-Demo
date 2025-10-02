@@ -20,13 +20,13 @@ namespace DigitalTwin.Features.Picking
             return base.OnAttached();
         }
 
-        protected override void OnDetach()
+        protected override void OnDetached()
         {
             this.pointerManager.PointerUp -= this.PointerManager_PointerUp;
             this.pointerManager.PointerMove -= this.PointerManager_PointerMove;
             this.pointerManager.PointerDown -= this.PointerManager_PointerDown;
 
-            base.OnDeactivated();
+            base.OnDetached();
         }
 
         private void PointerManager_PointerDown(object sender, PointerArgs e)
