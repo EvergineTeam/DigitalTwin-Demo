@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <title>DigitalTwin.WebGPU</title>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Barlow" />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="text/javascript" src="evergine.js"></script>
+    <script type="text/javascript" src="stats.min.js"></script>
+</head>
+
+  <body class="dark">
+    <div id="evergine-canvas-container"></div>
+    <div id="splash">
+      <div id="splash-content">
+        <div class="logo-container">
+          <img class="logo-img" alt="Evergine logo" />
+          <div class="separator"></div>
+        </div>
+        <div id="loading-bar" class="progress">
+          <div>
+            <strong>Loading...</strong>
+            <div class="loading-bar-container">
+              <div id="loading-bar-percentage" class="progress-bar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- First we load web assembly code -->
+    <script src="_framework/blazor.webassembly.js" autostart="false"></script>
+
+    <!-- Then, start loading the assets into the vfs -->
+    <script src="assets.js"></script>
+
+    <!-- Finally, run evergine -->
+    <script type="text/javascript">
+      var app = new App(
+        "DigitalTwin.WebGPU",
+        "DigitalTwin.WebGPU.Program",
+        new EvergineModule()
+      );
+      Blazor.start().then(async function () {
+	  
+		// Set WebGPU device
+		const adapter = await navigator.gpu.requestAdapter();
+		const device = await adapter.requestDevice({
+			requiredLimits: {
+				maxStorageBuffersPerShaderStage: 10 // Request support for up to 10 storage buffers in a single shader stage
+			}
+		});
+
+		if (Blazor && Blazor.runtime && Blazor.runtime.Module) {
+			Blazor.runtime.Module.preinitializedWebGPUDevice = device;
+		} else {
+			window.Module.preinitializedWebGPUDevice = device;
+		}
+		
+        // It is not mandatory to run Evergine now, but it must run after blazor is started
+        app.startEvergine();
+      });
+
+      //// It is possible to delete the Evergine instance by running
+      // app.destroyEvergine();
+    </script>
+  </body>
+</html>

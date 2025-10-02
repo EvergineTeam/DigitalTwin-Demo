@@ -116,9 +116,15 @@ function _evergine_setRequestAnimationFrameCallback(
     targetInstance,
     callbackName
 ) {
+    var stats = new Stats();
+    stats.showPanel(0);
+    document.body.appendChild(stats.dom);
     if (callbackName) {
         App.requestAnimationFrameCallback = function (d) {
+            stats.begin();
             targetInstance.invokeMethod(callbackName, d);
+            stats.end();
+
             if (App.requestAnimationFrameCallback) {
                 window.requestAnimationFrame(App.requestAnimationFrameCallback);
             }

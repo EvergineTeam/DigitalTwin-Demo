@@ -72,9 +72,6 @@ class App {
         context.font = "16pt Arial";
         context.fillText(unsupportedBrowserErrorMessage, 4, 20);
     }
-    static openDialog() {
-        $("#dialog").dialog("open");
-    }
 }
 let isWebGL2Supported = function () {
     // Some browsers (e.g. Safari on macOS) pass this test, although its implementation it's not fully functional
@@ -216,38 +213,10 @@ function fadeOut(elem, ms, cbk) {
 function _evergine_ready() {
     App.hideSplash();
 }
-let MathHelper = {
-    getRandomNumber: function (min, max) {
-        return Math.random() * (max - min) + min;
-    }
-};
-function _onEvent(id) {
-    console.log(id);
-    var trackerName = document.getElementById('trackerName');
-    trackerName.innerHTML = id;
-    App.openDialog();
-}
-function _onTrackerAngleUpdated(angle) {
-    console.log(angle);
-    var trackerName = document.getElementById('trackerPosition');
-    trackerName.innerHTML = angle;
-    for (var i = 1; i <= 3; i++) {
-        var element = document.getElementById('trackerVoltage' + i);
-        element.innerHTML = MathHelper.getRandomNumber(220, 245);
-    }
-    for (var i = 1; i <= 3; i++) {
-        var element = document.getElementById('trackerIntensity' + i);
-        element.innerHTML = MathHelper.getRandomNumber(275, 330);
-    }
-}
 function _evergine_EGL(contextId, canvasId) {
     if (contextId && canvasId) {
         const canvas = document.getElementById(canvasId);
-        canvas.getContext(contextId, { antialias: true, preserveDrawingBuffer: true });
-    }
-    else if (window.EGL) {
-        window.EGL.contextAttributes.antialias = true;
-        window.EGL.contextAttributes.preserveDrawingBuffer = true;
+        canvas.getContext(contextId, { antialias: true, preserveDrawingBuffer: true, alpha: false });
     }
     else {
         console.log("_evergine_EGL cannot set context properties");
@@ -301,6 +270,9 @@ class Program {
         this.invoke("UpdateCanvasSize", canvasId);
     }
     invoke(methodName, ...args) {
-        DotNet.invokeMethod(`${this.assemblyName}`, `${this.className}:${methodName}`, ...args);
+        return DotNet.invokeMethod(`${this.assemblyName}`, `${this.className}:${methodName}`, ...args);
+    }
+    invokeAsync(methodName, ...args) {
+        return DotNet.invokeMethodAsync(`${this.assemblyName}`, `${this.className}:${methodName}`, ...args);
     }
 }
