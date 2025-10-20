@@ -36,5 +36,5 @@ Source:
       Type: Texture2D
       Usage: Default
       Width: 512
-    HasData: true
+    DataFormat: bitmap
     SamplerID: 9018edf8-ea96-4721-bf83-5561942432e0
