@@ -1,9 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
-
   <PropertyGroup>
     <PublishTrimmed Condition="'$(Configuration)' == 'Debug'">false</PublishTrimmed>
     <PublishTrimmed Condition="'$(Configuration)' == 'Release'">true</PublishTrimmed>
@@ -11,18 +9,15 @@
     <!-- <RunAOTCompilation>true</RunAOTCompilation> -->
     <!-- <AOTMode>LLVMOnly</AOTMode> -->
   </PropertyGroup>
-
   <ItemGroup>
     <TrimmerRootDescriptor Include="link-descriptor.xml" />
   </ItemGroup>
-
   <PropertyGroup>
     <DefineConstants>WASM</DefineConstants>
     <GenerateEvergineContent>False</GenerateEvergineContent>
     <GenerateEvergineAssets>True</GenerateEvergineAssets>
     <WasmAllowUndefinedSymbols>True</WasmAllowUndefinedSymbols>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.20" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.20" PrivateAssets="all" />
@@ -31,18 +26,16 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
-
   <ItemGroup>
-    <PackageReference Include="Evergine.Framework" Version="2025.10.2.194-nightly" />
-    <PackageReference Include="Evergine.HLSLEverywhere" Version="2025.10.2.194-nightly" />
+    <PackageReference Include="Evergine.Framework" Version="2025.10.18.193-nightly" />
+    <PackageReference Include="Evergine.HLSLEverywhere" Version="2025.10.18.193-nightly" />
     <PackageReference Include="Evergine.LibBulletc.Natives.Wasm" Version="2025.4.28.22" />
-    <PackageReference Include="Evergine.WebGPU" Version="2025.10.2.194-nightly" />
-    <PackageReference Include="Evergine.Serialization.Converters" Version="2025.10.2.194-nightly" />
-    <PackageReference Include="Evergine.Targets" Version="2025.10.2.194-nightly" />
-    <PackageReference Include="Evergine.Targets.Web" Version="2025.10.2.194-nightly" />
-    <PackageReference Include="Evergine.Web" Version="2025.10.2.194-nightly" />
+    <PackageReference Include="Evergine.WebGPU" Version="2025.10.18.193-nightly" />
+    <PackageReference Include="Evergine.Serialization.Converters" Version="2025.10.18.193-nightly" />
+    <PackageReference Include="Evergine.Targets" Version="2025.10.18.193-nightly" />
+    <PackageReference Include="Evergine.Targets.Web" Version="2025.10.18.193-nightly" />
+    <PackageReference Include="Evergine.Web" Version="2025.10.18.193-nightly" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\DigitalTwin\DigitalTwin.csproj" />
   </ItemGroup>
