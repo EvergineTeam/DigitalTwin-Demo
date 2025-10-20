@@ -1,0 +1,41 @@
+
+!Evergine.Assets.Exporters.TextureMetaFile,Evergine.Assets
+Id: ac2d9cc1-8556-41d0-a855-bb5e51e66c63
+DefaultProfile:
+  ExcludeAsset: false
+  ExportedItem: null
+  Name: default
+  PixelFormat: KTX
+  Platform: Undefined
+  ScaledHeight: 800
+  ScaledPercentage: 1.0
+  ScaledWidth: 800
+  ScalingType: Original
+ExportAsRaw: false
+GenerateMipMaps: true
+NinePatchType: None
+PremultipliedAlpha: true
+Profiles: {}
+SamplerID: 6aa94278-bc4e-4399-a531-93c83f6e17f5
+Source:
+  Header:
+    Id: d829c8b7-a96b-4a33-932c-942f0470a933
+    IsCompressed: true
+  LastModified: 0001-01-01T00:00:00.0000000
+  TextureInfo:
+    Id: 8ed7b601-2544-4add-b634-5e3ada24016f
+    DataFormat: KTX
+    Description:
+      ArraySize: 1
+      CpuAccess: None
+      Depth: 1
+      Faces: 1
+      Flags: ShaderResource
+      Format: KTX
+      Height: 800
+      MipLevels: 10
+      SampleCount: None
+      Type: Texture2D
+      Usage: Default
+      Width: 800
+    SamplerID: 9018edf8-ea96-4721-bf83-5561942432e0
