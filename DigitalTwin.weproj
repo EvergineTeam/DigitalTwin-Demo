@@ -2,7 +2,7 @@
 Packages:
   - Id: Evergine.Core
     LocalPath: null
-    Version: 2025.10.18.193-nightly
+    Version: 2025.10.21.8
 Parameters:
   MaxSkinningWeights: 4
   SparseMorphTargets: false
@@ -39,4 +39,28 @@ Profiles:
     Name: WebGPU
     NonAlphaCompressionFormat: R8G8B8A8_UNorm
     Platform: Web
+  - AdditionalEffectTechniqueCombinations: LOW_PROFILE-SHADOW_SUPPORTED-SHADOWFILTER3,LOW_PROFILE-SHADOW_SUPPORTED-SHADOWFILTER3-GAMMA_COLORSPACE,LOW_PROFILE-SHADOW_SUPPORTED-SHADOWFILTER3-POINT_LIGHT,LOW_PROFILE-SHADOW_SUPPORTED-SHADOWFILTER3-GAMMA_COLORSPACE-POINT_LIGHT,LOW_PROFILE-SHADOW_SUPPORTED-SHADOWFILTER3-SPOT_LIGHT,LOW_PROFILE-SHADOW_SUPPORTED-SHADOWFILTER3-GAMMA_COLORSPACE-SPOT_LIGHT,LOW_PROFILE-SHADOW_SUPPORTED-SHADOWFILTER3-POINT_LIGHT-SPOT_LIGHT,LOW_PROFILE-SHADOW_SUPPORTED-SHADOWFILTER3-GAMMA_COLORSPACE-POINT_LIGHT-SPOT_LIGHT
+    AlphaCompressionFormat: R4G4B4A4
+    CompileEffects: true
+    GraphicsBackend: Vulkan
+    LauncherType: Default
+    Name: Android
+    NonAlphaCompressionFormat: ETC1_RGB8
+    Platform: Android
+  - AdditionalEffectTechniqueCombinations: SHADOW_SUPPORTED-SHADOWFILTER3,SHADOW_SUPPORTED-SHADOWFILTER3-POINT_LIGHT,SHADOW_SUPPORTED-SHADOWFILTER3-SPOT_LIGHT,SHADOW_SUPPORTED-SHADOWFILTER3-POINT_LIGHT-SPOT_LIGHT
+    AlphaCompressionFormat: BC3_UNorm
+    CompileEffects: false
+    GraphicsBackend: DirectX12
+    LauncherType: DirectX12
+    Name: Windows.DirectX12
+    NonAlphaCompressionFormat: BC3_UNorm
+    Platform: Windows
+  - AdditionalEffectTechniqueCombinations: SHADOW_SUPPORTED-SHADOWFILTER3,SHADOW_SUPPORTED-SHADOWFILTER3-POINT_LIGHT,SHADOW_SUPPORTED-SHADOWFILTER3-SPOT_LIGHT,SHADOW_SUPPORTED-SHADOWFILTER3-POINT_LIGHT-SPOT_LIGHT
+    AlphaCompressionFormat: R8G8B8A8_UNorm
+    CompileEffects: false
+    GraphicsBackend: Vulkan
+    LauncherType: Vulkan
+    Name: Windows.Vulkan
+    NonAlphaCompressionFormat: R8G8B8A8_UNorm
+    Platform: Windows
 ResourcesPath: Content

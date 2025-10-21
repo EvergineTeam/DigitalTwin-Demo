@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Evergine.DirectX11" Version="2025.10.21.8" />
+    <PackageReference Include="Evergine.Vulkan" Version="2025.10.21.8" />
     <PackageReference Include="Evergine.HLSLEverywhere" Version="2025.10.21.8" />
     <PackageReference Include="Evergine.XAudio2" Version="2025.10.21.8" />
     <PackageReference Include="Evergine.Forms" Version="2025.10.21.8" />
@@ -14,8 +14,5 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DigitalTwin\DigitalTwin.csproj" />
-  </ItemGroup>
-  <ItemGroup Condition="$(DefineConstants.Contains('Evergine_EDITOR'))">
-    <ProjectReference Include="..\DigitalTwin.Editor\DigitalTwin.Editor.csproj" />
   </ItemGroup>
 </Project>
