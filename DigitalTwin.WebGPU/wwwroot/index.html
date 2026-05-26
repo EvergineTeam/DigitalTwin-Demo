@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="styles.css" />
     <script type="text/javascript" src="evergine.js"></script>
     <script type="text/javascript" src="stats.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
   <body class="dark">
@@ -30,6 +33,44 @@
         </div>
       </div>
     </div>
+
+    <div id="dialog" title="Tracker data">
+        <div>
+            <span id="trackerName"></span>
+            <hr />
+            <img class="tracker-image" src="photovoltaic.webp" />
+            <p>
+                <b>Position: </b><span id="trackerPosition"></span>
+            </p>
+            <p>
+                <b>Voltage AC1: </b><span id="trackerVoltage1"></span>
+            </p>
+            <p>
+                <b>Voltage AC2: </b><span id="trackerVoltage2"></span>
+            </p>
+            <p>
+                <b>Voltage AC3: </b><span id="trackerVoltage3"></span>
+            </p>
+            <p>
+                <b>Intensity AC1: </b><span id="trackerIntensity1"></span>
+            </p>
+            <p>
+                <b>Intensity AC2: </b><span id="trackerIntensity2"></span>
+            </p>
+            <p>
+                <b>Intensity AC3: </b><span id="trackerIntensity3"></span>
+            </p>
+        </div>
+    </div>
+
+    <!-- jqueryUI dialog definition -->
+    <script type="text/javascript">
+        $(function () {
+            $("#dialog").dialog({
+                autoOpen: false
+            });
+        });
+    </script>
 
     <!-- First we load web assembly code -->
     <script src="_framework/blazor.webassembly.js" autostart="false"></script>

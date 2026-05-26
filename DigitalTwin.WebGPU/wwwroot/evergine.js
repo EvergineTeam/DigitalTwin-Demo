@@ -1,3 +1,4 @@
+"use strict";
 class App {
     constructor(assemblyName, className, module) {
         this.program = new Program(assemblyName, className);
@@ -72,6 +73,9 @@ class App {
         context.font = "16pt Arial";
         context.fillText(unsupportedBrowserErrorMessage, 4, 20);
     }
+    static openDialog() {
+        $("#dialog").dialog("open");
+    }
 }
 let isWebGL2Supported = function () {
     // Some browsers (e.g. Safari on macOS) pass this test, although its implementation it's not fully functional
@@ -142,14 +146,9 @@ function _evergine_removeEventListener(src, eventName, options) {
     src.addEventListener(eventName, null, options);
 }
 function _evergine_setRequestAnimationFrameCallback(targetInstance, callbackName) {
-    var stats = new Stats();
-    stats.showPanel(0);
-    document.body.appendChild(stats.dom);
     if (callbackName) {
         App.requestAnimationFrameCallback = function (d) {
-            stats.begin();
             targetInstance.invokeMethod(callbackName, d);
-            stats.end();
             if (App.requestAnimationFrameCallback) {
                 window.requestAnimationFrame(App.requestAnimationFrameCallback);
             }
@@ -212,6 +211,30 @@ function fadeOut(elem, ms, cbk) {
 }
 function _evergine_ready() {
     App.hideSplash();
+}
+let MathHelper = {
+    getRandomNumber: function (min, max) {
+        return Math.random() * (max - min) + min;
+    }
+};
+function _onEvent(id) {
+    console.log(id);
+    var trackerName = document.getElementById('trackerName');
+    trackerName.innerHTML = id;
+    App.openDialog();
+}
+function _onTrackerAngleUpdated(angle) {
+    console.log(angle);
+    var trackerName = document.getElementById('trackerPosition');
+    trackerName.innerHTML = String(angle);
+    for (var i = 1; i <= 3; i++) {
+        var element = document.getElementById('trackerVoltage' + i);
+        element.innerHTML = String(MathHelper.getRandomNumber(220, 245));
+    }
+    for (var i = 1; i <= 3; i++) {
+        var element = document.getElementById('trackerIntensity' + i);
+        element.innerHTML = String(MathHelper.getRandomNumber(275, 330));
+    }
 }
 function _evergine_EGL(contextId, canvasId) {
     if (contextId && canvasId) {

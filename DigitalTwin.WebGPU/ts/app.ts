@@ -1,9 +1,11 @@
+declare var $: any;
+
 class App {
-  containerId: string;
-  canvasId: string;
+  containerId!: string;
+  canvasId!: string;
   program: Program;
   module: EvergineModule;
-  static requestAnimationFrameCallback: (d: any) => void;
+  static requestAnimationFrameCallback: ((d: any) => void) | undefined;
 
   constructor(assemblyName: string, className: string, module: EvergineModule) {
     this.program = new Program(assemblyName, className);
@@ -21,8 +23,8 @@ class App {
     if (!container) {
       alert(
         "Initialization failed: canvas container '" +
-          this.containerId +
-          "' not found."
+        this.containerId +
+        "' not found."
       );
     }
 
@@ -98,9 +100,13 @@ class App {
       this.canvasId
     ) as HTMLCanvasElement;
     evergineCanvas.setAttribute("style", "image-rendering: crisp-edges");
-    let context = evergineCanvas.getContext("2d");
+    let context = evergineCanvas.getContext("2d")!;
     context.fillStyle = "black";
     context.font = "16pt Arial";
     context.fillText(unsupportedBrowserErrorMessage, 4, 20);
+  }
+
+  static openDialog() {
+    $("#dialog").dialog("open");
   }
 }

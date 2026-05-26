@@ -20,10 +20,16 @@ class Program {
   }
 
   invoke(methodName: string, ...args: any[]) {
-    DotNet.invokeMethod(
-        `${this.assemblyName}`,
-        `${this.className}:${methodName}`,
-        ...args
-    );
+    return DotNet.invokeMethod(
+      `${this.assemblyName}`,
+      `${this.className}:${methodName}`,
+      ...args);
+  }
+
+  invokeAsync<T>(methodName: string, ...args: any[]): Promise<T> {
+    return DotNet.invokeMethodAsync(
+      `${this.assemblyName}`,
+      `${this.className}:${methodName}`,
+      ...args);
   }
 }

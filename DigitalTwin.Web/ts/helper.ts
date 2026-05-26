@@ -85,7 +85,7 @@ function _evergine_getPointSummary(src, event) {
 function _evergine_getTouchSummary(src, event) {
     event.preventDefault();
     let changed = event.changedTouches;
-    let summ = [];
+    let summ: string[] = [];
     for (let i = 0; i < changed.length; i++) {
         let touch = changed[i];
         summ.push(touch.identifier + "," + _evergine_getPointSummary(src, touch));
@@ -116,15 +116,9 @@ function _evergine_setRequestAnimationFrameCallback(
     targetInstance,
     callbackName
 ) {
-    var stats = new Stats();
-    stats.showPanel(0);
-    document.body.appendChild(stats.dom);
     if (callbackName) {
         App.requestAnimationFrameCallback = function (d) {
-            stats.begin();
             targetInstance.invokeMethod(callbackName, d);
-            stats.end();
-
             if (App.requestAnimationFrameCallback) {
                 window.requestAnimationFrame(App.requestAnimationFrameCallback);
             }
@@ -191,42 +185,10 @@ function _evergine_ready() {
     App.hideSplash();
 }
 
-let MathHelper = {
-    getRandomNumber: function (min, max) {
-        return Math.random() * (max - min) + min;
-    }
-};
-
-function _onEvent(id) {
-    console.log(id);
-    var trackerName = document.getElementById('trackerName');
-    trackerName.innerHTML = id;
-    App.openDialog();
-}
-
-function _onTrackerAngleUpdated(angle) {
-    console.log(angle);
-    var trackerName = document.getElementById('trackerPosition');
-    trackerName.innerHTML = angle;
-
-    for (var i = 1; i <= 3; i++) {
-        var element = document.getElementById('trackerVoltage' + i);
-        element.innerHTML = MathHelper.getRandomNumber(220, 245);
-    }
-
-    for (var i = 1; i <= 3; i++) {
-        var element = document.getElementById('trackerIntensity' + i);
-        element.innerHTML = MathHelper.getRandomNumber(275, 330);
-    }
-}
-
 function _evergine_EGL(contextId: string, canvasId: string) {
     if (contextId && canvasId) {
         const canvas = document.getElementById(canvasId) as HTMLCanvasElement;
-        canvas.getContext(contextId, { antialias: true, preserveDrawingBuffer: true });
-    } else if (window.EGL) {
-        window.EGL.contextAttributes.antialias = true;
-        window.EGL.contextAttributes.preserveDrawingBuffer = true;
+        canvas.getContext(contextId, { antialias: true, preserveDrawingBuffer: true, alpha: false });
     } else {
         console.log("_evergine_EGL cannot set context properties");
     }

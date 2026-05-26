@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text.Json.Serialization;
+using Evergine.Mathematics;
 
 namespace DigitalTwin.WebGPU
 {
@@ -51,6 +52,9 @@ namespace DigitalTwin.WebGPU
             appCanvas[canvasId] = surface;
             ConfigureGraphicsContext(application, surface, canvasId);
 
+            MyApplication.EntitySelected += MyApplication_EntitySelected;
+            MyApplication.TrackerAngleUpdated += MyApplication_TrackerAngleUpdated;
+
             Stopwatch clockTimer = Stopwatch.StartNew();
             windowsSystem.Run(
                 () =>
@@ -82,6 +86,17 @@ namespace DigitalTwin.WebGPU
             {
                 surface.RefreshSize();
             }
+        }
+
+        private static void MyApplication_EntitySelected(object sender, string e)
+        {
+            wasm.Invoke("window._onEvent", true, e);
+        }
+
+        private static void MyApplication_TrackerAngleUpdated(object sender, float angle)
+        {
+            var angleAsDegrees = MathHelper.ToDegrees(angle);
+            wasm.Invoke($"window._onTrackerAngleUpdated", true, angleAsDegrees);
         }
 
         private static void ConfigureGraphicsContext(Application application, Surface surface, string canvasId)

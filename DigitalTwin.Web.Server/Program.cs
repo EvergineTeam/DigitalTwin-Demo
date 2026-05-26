@@ -1,4 +1,4 @@
-using CompressedStaticFiles;
+﻿using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.AspNetCore.StaticFiles;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,7 +6,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddCompressedStaticFiles();
+builder.Services.AddResponseCompression(options =>
+{
+    options.EnableForHttps = true;
+    options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
+        new[] { "application/octet-stream" });
+});
 
 var app = builder.Build();
 
@@ -20,29 +25,26 @@ if (!app.Environment.IsDevelopment())
 else
 {
     app.UseDeveloperExceptionPage();
+    app.UseWebAssemblyDebugging();
 }
 
 app.UseHttpsRedirection();
+app.UseResponseCompression();
 
 app.UseBlazorFrameworkFiles();
-////app.UseStaticFiles(new StaticFileOptions
-////{
-////    ServeUnknownFileTypes = true,
-////});
 var contentTypeProvider = new FileExtensionContentTypeProvider();
 var evergineExtensions = new[] { ".weptx", ".wepsn", ".wepsc", ".wepsp", ".weprl", ".weprp", ".weppp", ".wepmd", ".wepmt", ".wepfb", ".wepfx", ".wepprf" };
 foreach (var evergineExtension in evergineExtensions)
 {
     contentTypeProvider.Mappings.Add(evergineExtension, "application/octet-stream");
 }
-app.UseCompressedStaticFiles(new StaticFileOptions
+app.UseStaticFiles(new StaticFileOptions
 {
     ServeUnknownFileTypes = true,
     ContentTypeProvider = contentTypeProvider
 });
 
 app.UseRouting();
-
 
 app.MapRazorPages();
 //app.MapControllers();

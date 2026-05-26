@@ -26,6 +26,10 @@ html {
     overflow: hidden;
 }
 
+.tracker-image {
+    width: 100%;
+}
+
 #splash {
     background: var(--background-color);
     height: 100%;
