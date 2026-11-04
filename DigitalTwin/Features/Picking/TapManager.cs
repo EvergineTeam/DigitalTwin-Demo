@@ -1,5 +1,6 @@
 ﻿using Evergine.Framework;
 using Evergine.Mathematics;
+using Evergine.Framework.Physics;
 
 namespace DigitalTwin.Features.Picking
 {
@@ -52,10 +53,10 @@ namespace DigitalTwin.Features.Picking
             var camera3D = this.Managers.RenderManager.ActiveCamera3D;
             camera3D.CalculateRay(ref screenPos, out var ray);
 
-            var result = this.Managers.PhysicManager3D.RayCast(ref ray, this.TestDistance);
-            if (result.Succeeded)
+            bool resultSucceeded = this.Managers.PhysicsManager.RayCast(ref ray, this.TestDistance, new QueryFilter { CategoryMask = CollisionCategory.All, IncludeSensors = true }, out RayCastHit result);
+            if (resultSucceeded)
             {
-                var name = result.PhysicBody.BodyComponent.Owner.Name;
+                var name = result.Entity.Name;
 
                 MyApplication.FireEntitySelected(name);
             }
