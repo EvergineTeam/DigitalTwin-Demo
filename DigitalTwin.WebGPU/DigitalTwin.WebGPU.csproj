@@ -27,13 +27,13 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Evergine.Framework" Version="2026.11.4.444-nightly" />
-    <PackageReference Include="Evergine.HLSLEverywhere" Version="2026.11.4.444-nightly" />
-    <PackageReference Include="Evergine.WebGPU" Version="2026.11.4.444-nightly" />
-    <PackageReference Include="Evergine.Serialization.Converters" Version="2026.11.4.444-nightly" />
-    <PackageReference Include="Evergine.Targets" Version="2026.11.4.444-nightly" />
-    <PackageReference Include="Evergine.Targets.Web" Version="2026.11.4.444-nightly" />
-    <PackageReference Include="Evergine.Web" Version="2026.11.4.444-nightly" />
+    <PackageReference Include="Evergine.Framework" Version="2026.11.5.670-nightly" />
+    <PackageReference Include="Evergine.HLSLEverywhere" Version="2026.11.5.670-nightly" />
+    <PackageReference Include="Evergine.WebGPU" Version="2026.11.5.670-nightly" />
+    <PackageReference Include="Evergine.Serialization.Converters" Version="2026.11.5.670-nightly" />
+    <PackageReference Include="Evergine.Targets" Version="2026.11.5.670-nightly" />
+    <PackageReference Include="Evergine.Targets.Web" Version="2026.11.5.670-nightly" />
+    <PackageReference Include="Evergine.Web" Version="2026.11.5.670-nightly" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DigitalTwin\DigitalTwin.csproj" />
